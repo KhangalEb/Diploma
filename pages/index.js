@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import TeachersList from "./components/TeachersList";
 import CategoryList from "./components/CategoryList";
 import ScheduleList from "./components/ScheduleList";
+import Navbarr from "./components/Navbarr";
 export default function Home() {
   return (
     <div>
@@ -16,7 +17,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar></Navbar>
+      <Navbarr></Navbarr>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
           <div className="col-span-3">
