@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
-
+import { useRouter } from "next/router";
+import { useState } from "react";
 function CategoryList() {
+  const router = useRouter();
+  const [text, setText] = useState();
   //   useEffect(() => {
   //     document.querySelector("body").addEventListener("click", (e) => {
   //       // e.stopPropagation();
@@ -34,9 +37,16 @@ function CategoryList() {
       .getElementById("drop-down-div_search_5")
       .classList.toggle("hidden");
     console.log(targetText);
+    setText(targetText);
   }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push(`/subject/${text}`);
+  };
+
   return (
-    <>
+    <div>
       <div className="py-4 px-4 h-[550px] ">
         <div className="lg:max-w-[356px] md:max-w-[744px] max-w-[375px] mx-auto py-3">
           <div className="mt-8 px-6">
@@ -72,12 +82,13 @@ function CategoryList() {
                   />
                 </svg>
               </button>
+
               <div
-                className="hidden rounded w-full  border-t border-gray-200 px-3 py-2 absolute top-16 right-0 bg-white shadow-full shadow-lg"
+                className="hidden rounded w-full  border-t border-gray-200 px-3 py-2 absolute top-16 right-0 bg-white shadow-full shadow-lg bg-50"
                 id="drop-down-div_search_5"
               >
-                <div className="overflow-y-scroll h-[330px]">
-                  <a href="#">
+                <div className="overflow-y-scroll h-[330px] float-left bg-50">
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 hover:font-medium p-3"
                       onClick={(event) => {
@@ -87,8 +98,8 @@ function CategoryList() {
                     >
                       Architecture and engineering
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -98,8 +109,8 @@ function CategoryList() {
                     >
                       Arts, culture and entertainment
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -109,8 +120,8 @@ function CategoryList() {
                     >
                       Law and public policy
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -120,8 +131,8 @@ function CategoryList() {
                     >
                       Communications
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -131,8 +142,8 @@ function CategoryList() {
                     >
                       Community and social services
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -142,8 +153,8 @@ function CategoryList() {
                     >
                       Education
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -153,8 +164,8 @@ function CategoryList() {
                     >
                       Science and technology
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -164,8 +175,8 @@ function CategoryList() {
                     >
                       Health and medicine
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:ont-medium"
                       onClick={(event) => {
@@ -175,8 +186,8 @@ function CategoryList() {
                     >
                       Farming, fishing and forestry
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -186,10 +197,10 @@ function CategoryList() {
                     >
                       Government
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full">
                     <p
-                      className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 text-left hover:font-medium"
+                      className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3  hover:font-medium"
                       onClick={(event) => {
                         event.stopPropagation();
                         text_search_5(event.target);
@@ -197,10 +208,10 @@ function CategoryList() {
                     >
                       Installation, repair and maintenance
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
-                      className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 text-left hover:font-medium"
+                      className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3  hover:font-medium"
                       onClick={(event) => {
                         event.stopPropagation();
                         text_search_5(event.target);
@@ -208,8 +219,8 @@ function CategoryList() {
                     >
                       Business, management and administration
                     </p>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button className="w-full hover:bg-1000">
                     <p
                       className="text-base font-normal leading-none text-gray-600 hover:text-gray-800 p-3 hover:font-medium"
                       onClick={(event) => {
@@ -219,10 +230,17 @@ function CategoryList() {
                     >
                       Sales
                     </p>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
+            <button
+              type="submit"
+              className=" px-5 py-[12px] flex items-center justify-between w-full shadow-md bg-500 mt-4"
+              onClick={handleClick}
+            >
+              Search
+            </button>
           </div>
         </div>
       </div>
@@ -243,7 +261,7 @@ function CategoryList() {
 
 `}
       </style>
-    </>
+    </div>
   );
 }
 
