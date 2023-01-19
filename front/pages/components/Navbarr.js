@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import DropDown from "./Navbar-drop-down";
-export default function Navbar({ fixed }) {
+export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3">
+        <div className="container top-0 px-4 mx-auto flex flex-wrap items-center justify-between">
+          <div className="w-full top-0 flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a href="/" className="flex items-center">
               <Image
                 src="/Logo eteacher.png"
@@ -52,7 +52,7 @@ export default function Navbar({ fixed }) {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="#"
+                  href="/"
                 >
                   <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
                   <span className="ml-2">Home</span>
@@ -61,7 +61,7 @@ export default function Navbar({ fixed }) {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="#"
+                  href="/subject"
                 >
                   <i className="fab fa-twitter text-lg leading-lg text-0 opacity-75"></i>
                   <span className="ml-2">Courses</span>
@@ -70,7 +70,7 @@ export default function Navbar({ fixed }) {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="#"
+                  href="/Teachers"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
                   <span className="ml-2">Teachers</span>

@@ -1,10 +1,10 @@
 import Footer from "./components/Footer";
 import TeachersList from "./components/TeachersList";
-import Navbar from "./components/Navbar";
+import Navbarr from "./components/Navbarr";
 const Teachers = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbarr></Navbarr>
       <div>
         <p className="text-gray-500 dark:text-gray-200 text-lg text-center font-normal pb-3 mx-auto pt-16">
           MONGOLIAN EDUCATION FIRST
