@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import TeachersList from "./components/TeachersList";
 import CategoryList from "./components/CategoryList";
 import ScheduleList from "./components/ScheduleList";
-import NavbarMainHome from "./components/NavbarMainHome";
+import Navbarr from "./components/Navbarr";
 export default function Home() {
   return (
     <div>
@@ -17,24 +17,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavbarMainHome></NavbarMainHome>
-
-      <div className="container w-full h-96 mt-96">
-        <Image
-          src="/OnlineSchool.jpg"
-          alt="Background home"
-          className="brightness-50"
-          // placeholder="blur"
-          quality={100}
-          fill
-          sizes="100vw"
-          style={{
-            objectFit: "cover",
-          }}
-        />
-        <h1 className="relative xl:text-4xl text-3xl text-center text-gray-800 text-0 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-50">
-          Let's study from today
-        </h1>
+      <Navbarr></Navbarr>
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
+          <div className="col-span-3">
+            <ScheduleList />
+          </div>
+          <div className="col-span-2">
+            <CategoryList />
+          </div>
+        </div>
       </div>
       <div>
         <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4">

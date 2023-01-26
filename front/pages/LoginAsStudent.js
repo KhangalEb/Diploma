@@ -1,16 +1,26 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import PlainNavbar from "./components/PlainNavbar";
+import Footer from "./components/Footer";
 const Login = () => {
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push("/SignUp");
+    router.push("/info");
+  };
+  const handleSubmit1 = (e) => {
+    e.preventDefault();
+    router.push("/HomeStudent");
   };
   return (
-    <>
-      <section className="h-screen">
-        <div className="flex justify-center items-center flex-wrap h-full text-gray-800">
+    <div>
+      <PlainNavbar />
+      <section className="h-auto">
+        <div className="flex justify-center items-center flex-wrap mt-12 mb-28 text-gray-800">
           <div className="lg:w-3/12">
+            <h1 className="text-center text-xl  uppercase font-semibold leading-snug">
+              Log in as a STUDENT
+            </h1>
             <form>
               <Image
                 src="/Logo eteacher.png"
@@ -49,6 +59,7 @@ const Login = () => {
                 className="inline-block px-7 py-3 bg-500 text-0 font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
+                onClick={handleSubmit1}
               >
                 Sign in
               </button>
@@ -88,7 +99,8 @@ const Login = () => {
           </div>
         </div>
       </section>
-    </>
+      <Footer />
+    </div>
   );
 };
 

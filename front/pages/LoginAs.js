@@ -1,23 +1,23 @@
 import Image from "next/image";
 import React from "react";
-import Footer from "../components/Footer";
-import PlainNavbar from "../components/PlainNavbar";
+import Footer from "./components/Footer";
+import PlainNavbar from "./components/PlainNavbar";
 import { useRouter } from "next/router";
 const Info = () => {
   const router = useRouter();
   const handleClick = (e) => {
     e.preventDefault();
-    router.push("/SignUpAsStudent");
+    router.push("/LoginAsStudent");
   };
   const handleClick1 = (e) => {
     e.preventDefault();
-    router.push("/SignUpAsTeacher");
+    router.push("/LoginAsTeacher");
   };
   return (
     <div>
       <PlainNavbar />
       <div class="flex flex-col items-center my-48">
-        <h1 class="font-bold text-center">SIGN UP AS</h1>
+        <h1 class="font-bold text-center">LOGIN AS</h1>
         <div class="">
           <button
             class=" m-4 bg-transparent hover:bg-1 hover:border-1 text-700 font-semibold hover:text-0 py-10 px-14 border border-500 hover:border-transparent rounded"
