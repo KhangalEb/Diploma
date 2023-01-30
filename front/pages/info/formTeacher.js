@@ -1,11 +1,16 @@
 import PlainNavbar from "../components/PlainNavbar";
+import Footer from "../components/Footer";
 import { useState } from "react";
-const FormStudent = () => {
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+const FormTeacher = () => {
   const [gender, setGender] = useState("");
-
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [year, setYear] = useState("");
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
+  console.log(startDate);
   return (
     <div>
       <PlainNavbar />
@@ -37,34 +42,6 @@ const FormStudent = () => {
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
-                        Phone Number
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-6/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
-                      >
-                        Email address
-                      </label>
-                      <input
-                        type="email"
-                        className="border-0 px-3 py-3 placeholder-1000 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-6/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
-                      >
                         First Name
                       </label>
                       <input
@@ -87,6 +64,48 @@ const FormStudent = () => {
                       />
                     </div>
                   </div>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Phone Number 1
+                      </label>
+                      <input
+                        type="email"
+                        className="border-0 px-3 py-3 placeholder-1000 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Phone Number 2
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        E-mail Address
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <hr className="mt-6 border-b-1 border-blueGray-300" />
@@ -95,13 +114,79 @@ const FormStudent = () => {
                   Contact Information
                 </h6>
                 <div className="flex flex-wrap">
+                  <div className="w-full lg:w-4/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Аймаг/Хот
+                      </label>
+                      <select
+                        type="email"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      >
+                        <option value="null">-Select-</option>
+                        <option value="Улаанбаатар">Улаанбаатар</option>
+                        <option value="Архангай">Архангай</option>
+                        <option value="Баян-Өлгий">Баян-Өлгий</option>
+                        <option value="Баянхонгор">Баянхонгор</option>
+                        <option value="Булган">Булган</option>
+                        <option value="Говь-Алтай">Говь-Алтай</option>
+                        <option value="Говьсүмбэр">Говьсүмбэр</option>
+                        <option value="Дархан-Уул">Дархан-Уул</option>
+                        <option value="Дорноговь">Дорноговь</option>
+                        <option value="Дорнод">Дорнод</option>
+                        <option value="Дундговь">Дундговь</option>
+                        <option value="Завхан">Завхан</option>
+                        <option value="Орхон">Орхон</option>
+                        <option value="Өвөрхангай">Өвөрхангай</option>
+                        <option value="Өмнөговь">Өмнөговь</option>
+                        <option value="Сүхбаатар">Сүхбаатар</option>
+                        <option value="Сэлэнгэ">Сэлэнгэ</option>
+                        <option value="	Төв"> Төв</option>
+                        <option value="Увс">Увс</option>
+                        <option value="Ховд">Ховд</option>
+                        <option value="Хөвсгөл">Хөвсгөл</option>
+                        <option value="Хэнтий">Хэнтий</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-4/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        баг/хороо
+                      </label>
+                      <input
+                        type="email"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-4/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        сум/дүүрэг
+                      </label>
+                      <input
+                        type="email"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      />
+                    </div>
+                  </div>
                   <div className="w-full lg:w-12/12 px-4">
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
-                        Address
+                        Дэлгэрэнгүй хаяг
                       </label>
                       <input
                         type="text"
@@ -109,7 +194,7 @@ const FormStudent = () => {
                       />
                     </div>
                   </div>
-                  <div className="w-full lg:w-4/12 px-4">
+                  <div className="w-full lg:w-3/12 px-4">
                     <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                       Gender
                     </label>
@@ -134,21 +219,21 @@ const FormStudent = () => {
                     />{" "}
                     Female
                   </div>
-                  <div className="w-full lg:w-4/12 px-4">
+                  <div className="w-full lg:w-3/12 px-4">
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
-                        City
+                        Сургууль
                       </label>
                       <input
-                        type="email"
+                        type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       />
                     </div>
                   </div>
-                  <div className="w-full lg:w-4/12 px-4">
+                  <div className="w-full lg:w-3/12 px-4">
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -197,13 +282,65 @@ const FormStudent = () => {
                       />
                     </div>
                   </div>
+                  <div className=" w-32 lg:w-3/12 px-4">
+                    <div className="relative w-32 mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Анги
+                      </label>
+                      <select
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      >
+                        <option value="null">-Select-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
-
-                <hr className="mt-6 border-b-1 border-blueGray-300" />
-
-                <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                  About Me
-                </h6>
+                <div className=" w-32 lg:w-4/12 px-4">
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      htmlfor="grid-password"
+                    >
+                      Start day
+                    </label>
+                    <DatePicker
+                      dateFormat="dd/MM/yyyy"
+                      selected={startDate}
+                      onChange={(date) => setStartDate(date)}
+                    />
+                  </div>
+                </div>
+                <div className=" w-32 lg:w-4/12 px-4">
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      htmlfor="grid-password"
+                    >
+                      End day
+                    </label>
+                    <DatePicker
+                      dateFormat="dd/MM/yyyy"
+                      selected={endDate}
+                      onChange={(date) => setEndDate(date)}
+                    />
+                  </div>
+                </div>
                 <div className="flex flex-wrap">
                   <div className="w-full lg:w-12/12 px-4">
                     <div className="relative w-full mb-3">
@@ -211,7 +348,7 @@ const FormStudent = () => {
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
-                        About me
+                        Өөрийн товч танилцуулга
                       </label>
                       <textarea
                         type="text"
@@ -221,6 +358,7 @@ const FormStudent = () => {
                     </div>
                   </div>
                 </div>
+                <hr className="mt-6 border-b-1 border-blueGray-300" />
               </form>
             </div>
           </div>
@@ -233,8 +371,9 @@ const FormStudent = () => {
           </footer>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
 
-export default FormStudent;
+export default FormTeacher;

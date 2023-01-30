@@ -61,24 +61,6 @@ export default function NavbarMainHome() {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="/subject"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Courses</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="/Teachers"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Teachers</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
                   href="#"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>

@@ -32,7 +32,7 @@ export default function Home() {
             objectFit: "cover",
           }}
         />
-        <h1 className="relative xl:text-4xl text-3xl text-center text-gray-800 text-0 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-50">
+        <h1 className="relative xl:text-4xl text-3xl text-center text-gray-800 text-0 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10">
           Let's study from today
         </h1>
       </div>

@@ -32,20 +32,9 @@ const Profile = () => {
                 Khangal Erdenebileg
               </h1>
               <h3 className="text-gray-600 font-lg text-semibold leading-6">
-                Заадаг хичээлийн нэр
+                Анги
               </h3>
-              <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
-                Товч тайлбар
-              </p>
               <ul className="bg-50 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                <li className="flex items-center py-3">
-                  <span>Status</span>
-                  <span className="ml-auto">
-                    <span className="bg-1 py-1 px-2 rounded text-white text-sm">
-                      Active
-                    </span>
-                  </span>
-                </li>
                 <li className="flex items-center py-3">
                   <span>Member since</span>
                   <span className="ml-auto">Nov 07, 2016</span>
@@ -56,7 +45,57 @@ const Profile = () => {
             <div className="my-4"></div>
             {/* <!-- Friends card --> */}
             <div className="bg-0 p-3 hover:shadow">
-              <div className="flex items-center space-x-3 font-semibold text-900 text-xl leading-8"></div>
+              <div className="flex items-center space-x-3 font-semibold text-900 text-xl leading-8">
+                <span className="text-1">
+                  <svg
+                    className="h-5 fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                </span>
+                <span>Your Teachers</span>
+              </div>
+              <div className="grid grid-cols-3">
+                <div className="text-center my-2">
+                  <img
+                    className="h-16 w-16 rounded-full mx-auto"
+                    src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
+                    alt=""
+                  />
+                  <a href="#" className="text-main-color">
+                    Kojstantin
+                  </a>
+                </div>
+                <div className="text-center my-2">
+                  <img
+                    className="h-16 w-16 rounded-full mx-auto"
+                    src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4"
+                    alt=""
+                  />
+                  <a href="#" className="text-main-color">
+                    James
+                  </a>
+                </div>
+                <div className="text-center my-2">
+                  <img
+                    className="h-16 w-16 rounded-full mx-auto"
+                    src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png"
+                    alt=""
+                  />
+                  <a href="#" className="text-main-color">
+                    Casey
+                  </a>
+                </div>
+              </div>
             </div>
             {/* <!-- End of friends card --> */}
           </div>
@@ -99,8 +138,8 @@ const Profile = () => {
                     <div className="px-4 py-2">Male</div>
                   </div>
                   <div className="grid grid-cols-2">
-                    <div className="px-4 py-2 font-semibold">Phone No.</div>
-                    <div className="px-4 py-2">99405740</div>
+                    <div className="px-4 py-2 font-semibold">Phone No. 1</div>
+                    <div className="px-4 py-2">+11 998001001</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">
@@ -111,8 +150,8 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="grid grid-cols-2">
-                    <div className="px-4 py-2 font-semibold">Зэрэг</div>
-                    <div className="px-4 py-2">Ахлах багш</div>
+                    <div className="px-4 py-2 font-semibold">Phone No. 2</div>
+                    <div className="px-4 py-2">99405740</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email.</div>
@@ -136,53 +175,6 @@ const Profile = () => {
             {/* <!-- Experience and education --> */}
             <div className="bg-50 p-3 shadow-sm rounded-sm">
               <div className="grid grid-cols-2">
-                <div>
-                  <div className="flex items-center space-x-2 font-semibold text-900 leading-8 mb-3">
-                    <span clas="text-1">
-                      <svg
-                        className="h-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                    </span>
-                    <span className="tracking-wide">Experience</span>
-                  </div>
-                  <ul className="list-inside space-y-2">
-                    <li>
-                      <div className="text-teal-600">1 дүгээр сургууль</div>
-                      <div className="text-gray-500 text-xs">
-                        March 2020 - Now
-                      </div>
-                    </li>
-                    <li>
-                      <div className="text-teal-600">1 дүгээр сургууль</div>
-                      <div className="text-gray-500 text-xs">
-                        March 2020 - Now
-                      </div>
-                    </li>
-                    <li>
-                      <div className="text-teal-600">1 дүгээр сургууль</div>
-                      <div className="text-gray-500 text-xs">
-                        March 2020 - Now
-                      </div>
-                    </li>
-                    <li>
-                      <div className="text-teal-600">1 дүгээр сургууль</div>
-                      <div className="text-gray-500 text-xs">
-                        March 2020 - Now
-                      </div>
-                    </li>
-                  </ul>
-                </div>
                 <div>
                   <div className="flex items-center space-x-2 font-semibold text-900 leading-8 mb-3">
                     <span clas="text-1">
@@ -221,12 +213,6 @@ const Profile = () => {
                       <div className="text-teal-600">
                         Bachelors Degreen in LPU
                       </div>
-                      <div className="text-gray-500 text-xs">
-                        March 2020 - Now
-                      </div>
-                    </li>
-                    <li>
-                      <div className="text-teal-600">Бүрэн дунд</div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>
