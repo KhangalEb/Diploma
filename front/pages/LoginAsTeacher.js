@@ -2,15 +2,39 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import PlainNavbar from "./components/PlainNavbar";
 import Footer from "./components/Footer";
+import { useState } from "react";
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/info");
   };
-  const handleSubmit1 = (e) => {
+  const handleSubmit1 = async (e) => {
     e.preventDefault();
-    router.push("/HomeTeacher");
+    try {
+      const response = await fetch("http://localhost:8000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const data = await response.json();
+      if (data.user) {
+        alert("login success");
+        router.push("/HomeTeacher");
+      } else {
+        alert("error login");
+      }
+      console.log(data);
+    } catch (error) {
+      console.log("error");
+    }
   };
   return (
     <div>
@@ -37,6 +61,8 @@ const Login = () => {
                   type="text"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
                   placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-6">
@@ -44,6 +70,8 @@ const Login = () => {
                   type="password"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="flex justify-between items-center mb-6 float-right">

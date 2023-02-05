@@ -1,15 +1,37 @@
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-const SignUp = () => {
+import { useState } from "react";
+import axios from "axios";
+export default function SignUp() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/LoginAs");
   };
-  const handleSubmit1 = (e) => {
+  const handleSubmit1 = async (e) => {
     e.preventDefault();
-    router.push("/formTeacher");
+    try {
+      const response = await fetch("http://localhost:8000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+    // router.push("/info/formTeacher");
   };
+
   return (
     <section className="h-screen">
       <div className="flex justify-center items-center flex-wrap h-full text-gray-800">
@@ -30,6 +52,8 @@ const SignUp = () => {
                 type="text"
                 className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
                 placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-6">
@@ -37,6 +61,8 @@ const SignUp = () => {
                 type="password"
                 className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="mb-6">
@@ -100,6 +126,4 @@ const SignUp = () => {
       </div>
     </section>
   );
-};
-
-export default SignUp;
+}
