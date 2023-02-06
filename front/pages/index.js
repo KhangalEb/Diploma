@@ -19,7 +19,7 @@ export default function Home() {
       </Head>
       <NavbarMainHome></NavbarMainHome>
 
-      <div className="container w-full h-96 mt-96">
+      <div className="container w-full h-96 mt-96 mx-auto">
         <Image
           src="/OnlineSchool.jpg"
           alt="Background home"

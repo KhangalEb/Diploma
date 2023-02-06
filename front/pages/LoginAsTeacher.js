@@ -26,8 +26,9 @@ const Login = () => {
       });
       const data = await response.json();
       if (data.user) {
+        localStorage.setItem("token", data.user);
         alert("login success");
-        router.push("/HomeTeacher");
+        router.push("/dashboard");
       } else {
         alert("error login");
       }

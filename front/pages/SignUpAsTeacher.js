@@ -7,6 +7,7 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  // const router = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/LoginAs");
@@ -25,6 +26,9 @@ export default function SignUp() {
         }),
       });
       const data = await response.json();
+      if (data.status === "ok") {
+        router.push("/LoginAsTeacher");
+      }
       console.log(data);
     } catch (error) {
       console.log(error);
