@@ -25,6 +25,7 @@ app.post("/api/register", async (req, res) => {
     const user = await User.create({
       email: req.body.email,
       password: req.body.password,
+      role: req.body.role,
     });
     res.json({ status: "ok" });
   } catch (error) {
@@ -32,11 +33,11 @@ app.post("/api/register", async (req, res) => {
   }
 });
 app.post("/api/login", async (req, res) => {
-  // console.log(req.body);
   try {
     const user = await User.findOne({
       email: req.body.email,
       password: req.body.password,
+      role: req.body.role,
     });
     if (user) {
       const token = jwt.sign(
@@ -45,7 +46,7 @@ app.post("/api/login", async (req, res) => {
         },
         "secret123"
       );
-      return res.json({ status: "ok", user: token });
+      return res.json({ status: "ok", user: token, role: user.role });
     } else {
       return res.json({ status: "error", user: false });
     }
