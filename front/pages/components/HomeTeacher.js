@@ -1,13 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import TeachersList from "./components/TeachersList";
-import CategoryList from "./components/CategoryList";
-import ScheduleList from "./components/ScheduleList";
-import NavbarrTeacher from "./components/NavbarrTeacher";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import TeachersList from "./TeachersList";
+import CategoryList from "./CategoryList";
+import ScheduleList from "./ScheduleList";
+import NavbarrTeacher from "./NavbarrTeacher";
 export default function Home() {
   return (
     <div>

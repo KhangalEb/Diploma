@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import jwt from "jsonwebtoken";
 import { useRouter } from "next/router";
+import HomeTeacher from "./components/HomeTeacher";
+import HomeStudent from "./components/HomeStudent";
 const Dashboard = () => {
   const router = useRouter();
-  const [userr, setUser] = useState();
+  const [userr, setUser] = useState("");
   // const [tempQuote, setTempQuote] = useState();
   async function populate() {
     const token = localStorage.getItem("token");
@@ -31,12 +33,12 @@ const Dashboard = () => {
       }
     }
   }, []);
-  console.log(userr);
-  return (
-    <div>
-      <h1>{userr.role}</h1>
-    </div>
-  );
+  const rolee = userr.role;
+  if (rolee == "student") {
+    return <HomeStudent />;
+  } else {
+    return <HomeTeacher />;
+  }
 };
 
 export default Dashboard;
