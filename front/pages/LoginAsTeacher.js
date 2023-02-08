@@ -3,9 +3,11 @@ import { useRouter } from "next/router";
 import PlainNavbar from "./components/PlainNavbar";
 import Footer from "./components/Footer";
 import { useState } from "react";
+import jwt from "jsonwebtoken";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("teacher");
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ const Login = () => {
         body: JSON.stringify({
           email,
           password,
+          role,
         }),
       });
       const data = await response.json();

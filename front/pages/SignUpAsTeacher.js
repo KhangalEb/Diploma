@@ -6,6 +6,7 @@ import axios from "axios";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("teacher");
   const router = useRouter();
   // const router = useHistory();
   const handleSubmit = (e) => {
@@ -23,6 +24,7 @@ export default function SignUp() {
         body: JSON.stringify({
           email,
           password,
+          role,
         }),
       });
       const data = await response.json();

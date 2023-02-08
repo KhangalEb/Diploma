@@ -1,14 +1,38 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("student");
   const router = useRouter();
+  // const router = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/LoginAs");
   };
-  const handleSubmit1 = (e) => {
+  const handleSubmit1 = async (e) => {
     e.preventDefault();
-    router.push("/info/formStudent");
+    try {
+      const response = await fetch("http://localhost:8000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          role,
+        }),
+      });
+      const data = await response.json();
+      if (data.status === "ok") {
+        router.push("/LoginAsStudent");
+      }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+    // router.push("/info/formTeacher");
   };
   return (
     <section className="h-screen">

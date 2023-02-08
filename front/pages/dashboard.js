@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import jwt from "jsonwebtoken";
 import { useRouter } from "next/router";
 const Dashboard = () => {
   const router = useRouter();
-  async function populateQuote() {
-    const req = await fetch("http://localhost:8000/api/quote", {
+  const [userr, setUser] = useState();
+  // const [tempQuote, setTempQuote] = useState();
+  async function populate() {
+    const token = localStorage.getItem("token");
+    const req = await fetch("http://localhost:8000/api/userData", {
+      method: "POST",
       headers: {
-        "x-access-token": localStorage.getItem("token"),
+        authorization: `
+        Bearer ${token}`,
       },
     });
-    const data = req.json();
-    console.log(data);
+    const data = await req.json();
+    console.log(data.data);
+    // console.log(data.password);
+    setUser(data.data);
   }
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -20,11 +27,16 @@ const Dashboard = () => {
         localStorage.removeItem("token");
         router.push("/LoginAsTeacher");
       } else {
-        populateQuote();
+        populate();
       }
     }
   }, []);
-  return <div>Hello</div>;
+  console.log(userr);
+  return (
+    <div>
+      <h1>{userr.role}</h1>
+    </div>
+  );
 };
 
 export default Dashboard;
