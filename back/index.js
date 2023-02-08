@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/user.model");
 const jwt = require("jsonwebtoken");
+const authenticateJWT = require("./middleware/index");
 app.use(cors());
 app.use(express.json());
 
@@ -55,8 +56,23 @@ app.post("/api/login", async (req, res) => {
     console.log(error);
   }
 });
-app.get("/", (req, res) => {
-  res.send("Hello World");
+app.post("/api/userData", authenticateJWT, async (req, res) => {
+  console.log(req.user);
+  // const token = req.headers["x-access-token"];
+  const { token } = req.body;
+  try {
+    const useremail = req.user.email;
+    User.findOne({ email: useremail })
+      .then((data) => {
+        res.send({ status: "ok", data: data });
+      })
+      .catch((error) => {
+        res.send({ status: "error", data: error });
+      });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "userData error" });
+  }
 });
 const PORT = 8000;
 app.listen(PORT, () => {
