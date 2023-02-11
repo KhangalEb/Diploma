@@ -1,7 +1,9 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Image from "next/image";
+import { useRouter } from "next/router";
 const Profile = () => {
+  const router = useRouter();
   return (
     <>
       <Navbar />
@@ -51,6 +53,12 @@ const Profile = () => {
                   <span className="ml-auto">Nov 07, 2016</span>
                 </li>
               </ul>
+              <button
+                className="bg-1 p-4 w-50 rounded-3xl mt-6"
+                onClick={() => router.push("/info/formTeacher")}
+              >
+                Update profile
+              </button>
             </div>
             {/* <!-- End of profile card --> */}
             <div className="my-4"></div>

@@ -35,9 +35,17 @@ const Dashboard = () => {
   }, []);
   const rolee = userr.role;
   if (rolee == "student") {
-    return <HomeStudent />;
+    return (
+      <div>
+        <HomeStudent />
+      </div>
+    );
   } else {
-    return <HomeTeacher />;
+    return (
+      <div>
+        <HomeTeacher />
+      </div>
+    );
   }
 };
 

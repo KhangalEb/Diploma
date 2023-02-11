@@ -8,7 +8,7 @@ export default function Navbar() {
       <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3">
         <div className="container top-0 px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full top-0 flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <a href="/" className="flex items-center">
+            <a href="/dashboard" className="flex items-center">
               <Image
                 src="/Logo eteacher.png"
                 alt="Logo"
@@ -52,7 +52,7 @@ export default function Navbar() {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="/"
+                  href="/dashboard"
                 >
                   <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
                   <span className="ml-2">Home</span>

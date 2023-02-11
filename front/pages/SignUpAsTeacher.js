@@ -6,6 +6,22 @@ import axios from "axios";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fname, setfname] = useState("");
+  const [lname, setlname] = useState("");
+  const [pnum1, setpnum1] = useState("");
+  const [pnum2, setpnum2] = useState("");
+  const [province, setprovince] = useState("");
+  const [bag, setbag] = useState("");
+  const [sum, setsum] = useState("");
+  const [delgerengui, setdelgerengui] = useState("");
+  const [gender, setgender] = useState("");
+  const [surguuli, setsurguuli] = useState("");
+  const [year, setyear] = useState("");
+  const [day, setday] = useState("");
+  const [month, setmonth] = useState("");
+  const [angi, setangi] = useState("");
+  const [tovchtaniltsuulga, settovchtaniltsuulga] = useState("");
+
   const [role, setRole] = useState("teacher");
   const router = useRouter();
   // const router = useHistory();
@@ -25,6 +41,21 @@ export default function SignUp() {
           email,
           password,
           role,
+          fname,
+          lname,
+          pnum1,
+          pnum2,
+          province,
+          bag,
+          sum,
+          delgerengui,
+          gender,
+          surguuli,
+          year,
+          day,
+          month,
+          angi,
+          tovchtaniltsuulga,
         }),
       });
       const data = await response.json();

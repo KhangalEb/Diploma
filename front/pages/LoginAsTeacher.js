@@ -29,6 +29,7 @@ const Login = () => {
       });
       const data = await response.json();
       if (data.user) {
+        localStorage.setItem("token", "dpfinewouhgewhogewj");
         localStorage.setItem("token", data.user);
         alert("login success");
         router.push("/dashboard");

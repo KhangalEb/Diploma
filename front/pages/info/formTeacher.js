@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Router from "next/router";
 const FormTeacher = () => {
   const [gender, setGender] = useState("");
   const [startDate, setStartDate] = useState(new Date());
@@ -10,7 +11,42 @@ const FormTeacher = () => {
   const [year, setYear] = useState("");
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
-  console.log(startDate);
+  const [fname, setfname] = useState("");
+  const [lname, setlname] = useState("");
+  const [pnum1, setpnum1] = useState("");
+  const [pnum2, setpnum2] = useState("");
+  const [province, setprovince] = useState("");
+  const [bag, setbag] = useState("");
+  const [sum, setsum] = useState("");
+  const [delgerengui, setdelgerengui] = useState("");
+  const [surguuli, setsurguuli] = useState("");
+  const [angi, setangi] = useState("");
+  const [tovchtaniltsuulga, settovchtaniltsuulga] = useState("");
+  const values = {
+    gender,
+    year,
+    day,
+    month,
+    fname,
+    lname,
+    pnum1,
+    pnum2,
+    province,
+    bag,
+    sum,
+    delgerengui,
+    surguuli,
+    angi,
+    tovchtaniltsuulga,
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    localStorage.setItem("values", JSON.stringify(values));
+  };
+  if (typeof window !== "undefined") {
+    const valuese = JSON.parse(localStorage.getItem("values"));
+    console.log(valuese);
+  }
   return (
     <div>
       <PlainNavbar />
@@ -23,10 +59,18 @@ const FormTeacher = () => {
                   My account
                 </h6>
                 <button
-                  className="bg-500 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                  className="bg-1 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={handleSubmit}
                 >
                   Save
+                </button>
+                <button
+                  className="bg-500 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                  type="button"
+                  onClick={() => Router.back()}
+                >
+                  back
                 </button>
               </div>
             </div>
@@ -40,13 +84,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         First Name
                       </label>
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={fname}
+                        onChange={(e) => setfname(e.target.value)}
                       />
                     </div>
                   </div>
@@ -54,13 +100,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Last Name
                       </label>
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={lname}
+                        onChange={(e) => setlname(e.target.value)}
                       />
                     </div>
                   </div>
@@ -68,13 +116,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Phone Number 1
                       </label>
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-1000 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={pnum1}
+                        onChange={(e) => setpnum1(e.target.value)}
                       />
                     </div>
                   </div>
@@ -82,27 +132,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Phone Number 2
                       </label>
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-6/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
-                      >
-                        E-mail Address
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={pnum2}
+                        onChange={(e) => setpnum2(e.target.value)}
                       />
                     </div>
                   </div>
@@ -118,13 +156,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Аймаг/Хот
                       </label>
                       <select
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={province}
+                        onChange={(e) => setprovince(e.target.value)}
                       >
                         <option value="null">-Select-</option>
                         <option value="Улаанбаатар">Улаанбаатар</option>
@@ -156,13 +196,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         баг/хороо
                       </label>
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={bag}
+                        onChange={(e) => setbag(e.target.value)}
                       />
                     </div>
                   </div>
@@ -170,13 +212,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         сум/дүүрэг
                       </label>
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={sum}
+                        onChange={(e) => setsum(e.target.value)}
                       />
                     </div>
                   </div>
@@ -184,13 +228,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Дэлгэрэнгүй хаяг
                       </label>
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={delgerengui}
+                        onChange={(e) => setdelgerengui(e.target.value)}
                       />
                     </div>
                   </div>
@@ -223,13 +269,15 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Сургууль
                       </label>
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={surguuli}
+                        onChange={(e) => setsurguuli(e.target.value)}
                       />
                     </div>
                   </div>
@@ -237,7 +285,7 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Date of birth
                       </label>
@@ -286,13 +334,15 @@ const FormTeacher = () => {
                     <div className="relative w-32 mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Анги
                       </label>
                       <select
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={angi}
+                        onChange={(e) => setangi(e.target.value)}
                       >
                         <option value="null">-Select-</option>
                         <option value="1">1</option>
@@ -315,7 +365,7 @@ const FormTeacher = () => {
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                      htmlfor="grid-password"
+                      htmlFor="grid-password"
                     >
                       Start day
                     </label>
@@ -330,7 +380,7 @@ const FormTeacher = () => {
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                      htmlfor="grid-password"
+                      htmlFor="grid-password"
                     >
                       End day
                     </label>
@@ -346,7 +396,7 @@ const FormTeacher = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Өөрийн товч танилцуулга
                       </label>
@@ -354,6 +404,8 @@ const FormTeacher = () => {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         rows="4"
+                        value={tovchtaniltsuulga}
+                        onChange={(e) => settovchtaniltsuulga(e.target.value)}
                       ></textarea>
                     </div>
                   </div>

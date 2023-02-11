@@ -36,7 +36,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         First Name
                       </label>
@@ -50,7 +50,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Last Name
                       </label>
@@ -64,7 +64,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Phone Number 1
                       </label>
@@ -78,7 +78,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Phone Number 2
                       </label>
@@ -92,7 +92,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         E-mail Address
                       </label>
@@ -114,7 +114,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Аймаг/Хот
                       </label>
@@ -152,7 +152,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         баг/хороо
                       </label>
@@ -166,7 +166,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         сум/дүүрэг
                       </label>
@@ -180,7 +180,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Дэлгэрэнгүй хаяг
                       </label>
@@ -219,7 +219,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Сургууль
                       </label>
@@ -233,7 +233,7 @@ const FormStudent = () => {
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Date of birth
                       </label>
@@ -282,7 +282,7 @@ const FormStudent = () => {
                     <div className="relative w-32 mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlfor="grid-password"
+                        htmlFor="grid-password"
                       >
                         Анги
                       </label>
