@@ -73,7 +73,7 @@ app.post("/api/login", async (req, res) => {
   }
 });
 app.post("/api/userData", authenticateJWT, async (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
   // const token = req.headers["x-access-token"];
   const { token } = req.body;
   try {
@@ -91,60 +91,43 @@ app.post("/api/userData", authenticateJWT, async (req, res) => {
   }
 });
 
-app.post("/api/updateUserData", authenticateJWT, async (req, res) => {
-  const user = await User.findById(req.user.id);
+app.post("/api/update", authenticateJWT, async (req, res) => {
+  try {
+    const useremail = req.user.email;
+    User.findOne({ email: useremail })
+      .then((data) => {
+        res.send({ status: "ok", data: data });
+        console.log(req.body.fname);
+      })
+      .catch((error) => {
+        res.send({ status: "error", data: error });
+      });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "userData error" });
+  }
+  // const user = await User.findById(req.user.id);
 
-  console.log(req.user);
+  // // console.log(req.user);
 
-  // try {
-  //   const useremail = req.body;
-  //   User.findOne({ email: useremail })
-  //     .then((data) => {
-  //       res.send({ status: "ok", data: data });
-  //     })
-  //     .catch((error) => {
-  //       res.send({ status: "error", data: error });
-  //     });
-  // } catch (error) {
-  //   console.log(error);
-  //   res.json({ status: "error", error: "userData error" });
-  // }
-  // if (user) {
-  //   user.email = req.body.email || user.email;
-  //   const updateUser = await user.save();
-  //   res.json({
-  //     fname: updateUser.fname,
-  //     lname: updateUser.lname,
-  //   });
-  // } else {
-  //   res.status(401);
-  //   throw new Error("User Not found");
-  // }
-  User.findById(req.user.id, function (err, user) {
-    // todo: don't forget to handle err
+  // User.findById(req.user.id, function (err, user) {
+  //   // todo: don't forget to handle err
 
-    if (!user) {
-      req.flash("error", "No account found");
-      // return res.redirect('/edit');
-    }
+  //   if (!user) {
+  //     req.flash("error", "No account found");
+  //   }
 
-    // good idea to trim
-    // var email = req.body.email.trim();
-    // var username = req.body.username.trim();
-    // var firstname = req.body.firstname.trim();
-    // var lastname = req.body.lastname.trim();
-    var fname = req.body.fname.trim();
-    var lname = req.body.fname.trim();
+  //   var fname = req.body.fname.trim();
+  //   var lname = req.body.fname.trim();
 
-    // validate
+  //   user.fname = fname;
+  //   user.lname = lname;
 
-    // no need for else since you are returning early ^
-    user.fname = fname;
-    user.lname = lname;
-
-    // don't forget to save!
-    user.save(function (err) {});
-  });
+  //   user.save(function (err) {});
+  // });
+});
+app.get("/api/update", authenticateJWT, (req, res) => {
+  res.json(req.user);
 });
 
 const PORT = 8000;
