@@ -41,7 +41,24 @@ const FormTeacher = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    localStorage.setItem("values", JSON.stringify(values));
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch("http://localhost:8000/api/update", {
+        method: "POST",
+        headers: {
+          authorization: `
+          Bearer ${token}`,
+        },
+        body: JSON.stringify(values),
+      });
+      const data = await response.json();
+      if (data.status === "ok") {
+        console.log("ok");
+      }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   if (typeof window !== "undefined") {
     const valuese = JSON.parse(localStorage.getItem("values"));
