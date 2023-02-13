@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const User = require("./models/user.model");
 const jwt = require("jsonwebtoken");
 const authenticateJWT = require("./middleware/index");
-const asynchHandler = require("express-async-handler");
 app.use(cors());
 app.use(express.json());
 
@@ -73,9 +72,7 @@ app.post("/api/login", async (req, res) => {
   }
 });
 app.post("/api/userData", authenticateJWT, async (req, res) => {
-  // console.log(req.user);
-  // const token = req.headers["x-access-token"];
-  const { token } = req.body;
+
   try {
     const useremail = req.user.email;
     User.findOne({ email: useremail })
@@ -94,14 +91,25 @@ app.post("/api/userData", authenticateJWT, async (req, res) => {
 app.post("/api/update", authenticateJWT, async (req, res) => {
   try {
     const useremail = req.user.email;
-    User.findOne({ email: useremail })
+    const user = await User.findOne({ email: useremail })
       .then((data) => {
         res.send({ status: "ok", data: data });
-        console.log(req.body.fname);
       })
       .catch((error) => {
         res.send({ status: "error", data: error });
       });
+    if (user) {
+      const updatedUser = await user.save();
+      res.json({
+        _id: updatedUser._id,
+        fname: updatedUser.fname,
+        lname: updatedUser.lname,
+      })
+    } else {
+      console.log("Usernotfound")
+    }
+
+
   } catch (error) {
     console.log(error);
     res.json({ status: "error", error: "userData error" });
