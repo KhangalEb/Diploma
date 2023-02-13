@@ -1,10 +1,12 @@
 import PlainNavbar from "../components/PlainNavbar";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
+import jwt from "jsonwebtoken";
 const FormTeacher = () => {
+  const router = useRouter();
   const [gender, setGender] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -22,6 +24,7 @@ const FormTeacher = () => {
   const [surguuli, setsurguuli] = useState("");
   const [angi, setangi] = useState("");
   const [tovchtaniltsuulga, settovchtaniltsuulga] = useState("");
+  const [userr, setUser] = useState("");
   const values = {
     gender,
     year,
@@ -39,9 +42,39 @@ const FormTeacher = () => {
     angi,
     tovchtaniltsuulga,
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+
+  async function populate() {
     const token = localStorage.getItem("token");
+    const req = await fetch("http://localhost:8000/api/userData", {
+      method: "POST",
+      headers: {
+        authorization: `
+        Bearer ${token}`,
+      },
+    });
+    const data = await req.json();
+    console.log(data.data);
+    // console.log(data.password);
+    setUser(data.data);
+  }
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const user = jwt.decode(token);
+      if (!user) {
+        localStorage.removeItem("token");
+        router.push("/LoginAsTeacher");
+      } else {
+        populate();
+      }
+    }
+  }, []);
+  const handleSubmit = async (e) => {
+    const token = localStorage.getItem("token");
+    e.preventDefault();
+
+    const user = jwt.decode(token);
+    console.log(user);
     try {
       const response = await fetch("http://localhost:8000/api/update", {
         method: "POST",
@@ -49,7 +82,24 @@ const FormTeacher = () => {
           authorization: `
           Bearer ${token}`,
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          token: token,
+          gender,
+          year,
+          day,
+          month,
+          fname,
+          lname,
+          pnum1,
+          pnum2,
+          province,
+          bag,
+          sum,
+          delgerengui,
+          surguuli,
+          angi,
+          tovchtaniltsuulga,
+        }),
       });
       const data = await response.json();
       if (data.status === "ok") {
@@ -60,10 +110,6 @@ const FormTeacher = () => {
       console.log(error);
     }
   };
-  if (typeof window !== "undefined") {
-    const valuese = JSON.parse(localStorage.getItem("values"));
-    console.log(valuese);
-  }
   return (
     <div>
       <PlainNavbar />
@@ -108,7 +154,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={fname}
+                        value={userr.fname}
                         onChange={(e) => setfname(e.target.value)}
                       />
                     </div>
@@ -124,7 +170,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={lname}
+                        value={userr.lname}
                         onChange={(e) => setlname(e.target.value)}
                       />
                     </div>
