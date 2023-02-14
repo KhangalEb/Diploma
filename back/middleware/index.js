@@ -7,7 +7,6 @@ const authenticateJWT = (req, res, next) => {
     const token = authHeader.split(" ")[1];
 
     jwt.verify(token, "secret123", (err, user) => {
-      console.log(err);
       if (err) {
         return res.sendStatus(403);
       }
