@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const User = require("./models/user.model");
 const jwt = require("jsonwebtoken");
 const authenticateJWT = require("./middleware/index");
+
 app.use(cors());
 app.use(express.json());
 
@@ -59,6 +60,7 @@ app.post("/api/login", async (req, res) => {
       const token = jwt.sign(
         {
           email: user.email,
+          _id: user._id,
         },
         "secret123"
       );
@@ -90,53 +92,51 @@ app.post("/api/userData", authenticateJWT, async (req, res) => {
 
 app.post("/api/update", authenticateJWT, async (req, res) => {
   try {
-    const useremail = req.user.email;
-    const user = await User.findOne({ email: useremail })
-      .then((data) => {
-        res.send({ status: "ok", data: data });
-      })
-      .catch((error) => {
-        res.send({ status: "error", data: error });
-      });
-    if (user) {
-      const updatedUser = await user.save();
-      res.json({
-        _id: updatedUser._id,
-        fname: updatedUser.fname,
-        lname: updatedUser.lname,
-      })
-    } else {
-      console.log("Usernotfound")
-    }
+    const _id = req.user._id;
 
+    User.findByIdAndUpdate(_id, req.body).then(docs => {
+      if (docs) {
+        res.json({ success: true, data: req.body });
+      }
+      res.json({ success: false, data: docs });
+    })
 
   } catch (error) {
     console.log(error);
     res.json({ status: "error", error: "userData error" });
   }
-  // const user = await User.findById(req.user.id);
-
-  // // console.log(req.user);
-
-  // User.findById(req.user.id, function (err, user) {
-  //   // todo: don't forget to handle err
-
-  //   if (!user) {
-  //     req.flash("error", "No account found");
-  //   }
-
-  //   var fname = req.body.fname.trim();
-  //   var lname = req.body.fname.trim();
-
-  //   user.fname = fname;
-  //   user.lname = lname;
-
-  //   user.save(function (err) {});
-  // });
 });
-app.get("/api/update", authenticateJWT, (req, res) => {
-  res.json(req.user);
+
+app.get("/api/userData", (req, res) => {
+  // const _id = req.user._id;
+  // console.log(_id);
+  // User.findOne({ _id: _id })
+  //   .then((data) => {
+  //     res.json({ status: "ok", data: data });
+  //   })
+  //   .catch((error) => {
+  //     res.json({ status: "error", data: error });
+  //   });
+  // try {
+  //   const useremail = req.user.email;
+  //   User.findOne({ email: useremail })
+  //     .then((data) => {
+  //       res.json({ status: "ok", data: data });
+  //     })
+  //     .catch((error) => {
+  //       res.json({ status: "error", data: error });
+  //     });
+  // } catch (error) {
+  //   console.log(error);
+  //   res.json({ status: "error", error: "userData error" });
+  // }
+  res.json(res.body)
 });
+
+
+
+
+
 
 const PORT = 8000;
 app.listen(PORT, () => {
