@@ -12,7 +12,6 @@ const Dashboard = () => {
     const req = await fetch("http://localhost:8000/api/userData", {
       method: "POST",
       headers: {
-
         authorization: `
         Bearer ${token}`,
         "Content-Type": "application/json",
