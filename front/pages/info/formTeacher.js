@@ -81,9 +81,9 @@ const FormTeacher = () => {
         headers: {
           authorization: `
           Bearer ${token}`,
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          token: token,
           gender,
           year,
           day,
@@ -110,6 +110,7 @@ const FormTeacher = () => {
       console.log(error);
     }
   };
+
   return (
     <div>
       <PlainNavbar />
@@ -154,7 +155,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={userr.fname}
+                        value={fname}
                         onChange={(e) => setfname(e.target.value)}
                       />
                     </div>
@@ -170,7 +171,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={userr.lname}
+                        value={lname}
                         onChange={(e) => setlname(e.target.value)}
                       />
                     </div>
