@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/user.model");
+const Subject = require("./models/subject.model");
 const jwt = require("jsonwebtoken");
 const authenticateJWT = require("./middleware/index");
 
@@ -90,6 +91,25 @@ app.post("/api/userData", authenticateJWT, async (req, res) => {
   }
 });
 
+app.post("/api/subjectData", async (req, res) => {
+  try {
+    await Subject.create({
+      title: req.body.title,
+      description: req.body.description,
+      range: req.body.range,
+    });
+    res.json({ status: "ok" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.get("/api/subjectData", async (req, res) => {
+  Subject.find(({ id: req.params.id }), function (err, obj) {
+
+    res.send(obj);
+  });
+});
+
 app.post("/api/update", authenticateJWT, async (req, res) => {
   try {
     const _id = req.user._id;
@@ -107,32 +127,34 @@ app.post("/api/update", authenticateJWT, async (req, res) => {
   }
 });
 
-app.get("/api/userData", (req, res) => {
-  // const _id = req.user._id;
-  // console.log(_id);
-  // User.findOne({ _id: _id })
-  //   .then((data) => {
-  //     res.json({ status: "ok", data: data });
-  //   })
-  //   .catch((error) => {
-  //     res.json({ status: "error", data: error });
-  //   });
-  // try {
-  //   const useremail = req.user.email;
-  //   User.findOne({ email: useremail })
-  //     .then((data) => {
-  //       res.json({ status: "ok", data: data });
-  //     })
-  //     .catch((error) => {
-  //       res.json({ status: "error", data: error });
-  //     });
-  // } catch (error) {
-  //   console.log(error);
-  //   res.json({ status: "error", error: "userData error" });
-  // }
-  res.json(res.body)
-});
+app.get('/api/teacherList', function (req, res) {
+  User.find({}, function (err, users) {
+    var userMap = {};
 
+    users.forEach(function (user) {
+      if (user.role === "teacher") {
+        userMap[user._id] = user;
+      }
+
+    });
+
+    res.send(userMap);
+  });
+});
+app.get('/api/studentList', function (req, res) {
+  User.find({}, function (err, users) {
+    var userMap = {};
+
+    users.forEach(function (user) {
+      if (user.role === "student") {
+        userMap[user._id] = user;
+      }
+
+    });
+
+    res.send(userMap);
+  });
+});
 
 
 
