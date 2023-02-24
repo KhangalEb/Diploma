@@ -69,6 +69,7 @@ const FormTeacher = () => {
       }
     }
   }, []);
+
   const handleSubmit = async (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault();
@@ -104,13 +105,16 @@ const FormTeacher = () => {
       const data = await response.json();
       if (data.status === "ok") {
         console.log("ok");
+
       }
       console.log(data);
+      setfname(userr.fname);
+      setlname(userr.lname);
     } catch (error) {
       console.log(error);
     }
   };
-
+  console.log(userr);
   return (
     <div>
       <PlainNavbar />
@@ -155,7 +159,8 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={fname}
+                        defaultValue={userr.fname}
+                        // value={fname}
                         onChange={(e) => setfname(e.target.value)}
                       />
                     </div>
@@ -171,7 +176,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={lname}
+                        defaultValue={userr.lname}
                         onChange={(e) => setlname(e.target.value)}
                       />
                     </div>
@@ -187,7 +192,7 @@ const FormTeacher = () => {
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-1000 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={pnum1}
+                        defaultValue={userr.pnum1}
                         onChange={(e) => setpnum1(e.target.value)}
                       />
                     </div>
@@ -203,7 +208,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={pnum2}
+                        defaultValue={userr.pnum2}
                         onChange={(e) => setpnum2(e.target.value)}
                       />
                     </div>
@@ -227,10 +232,10 @@ const FormTeacher = () => {
                       <select
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={province}
+                        defaultValue={userr.province}
                         onChange={(e) => setprovince(e.target.value)}
                       >
-                        <option value="null">-Select-</option>
+                        <option value="null">{userr.province}</option>
                         <option value="Улаанбаатар">Улаанбаатар</option>
                         <option value="Архангай">Архангай</option>
                         <option value="Баян-Өлгий">Баян-Өлгий</option>
@@ -267,7 +272,7 @@ const FormTeacher = () => {
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={bag}
+                        defaultValue={userr.bag}
                         onChange={(e) => setbag(e.target.value)}
                       />
                     </div>
@@ -283,7 +288,7 @@ const FormTeacher = () => {
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={sum}
+                        defaultValue={userr.sum}
                         onChange={(e) => setsum(e.target.value)}
                       />
                     </div>
@@ -299,7 +304,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={delgerengui}
+                        defaultValue={userr.delgerengui}
                         onChange={(e) => setdelgerengui(e.target.value)}
                       />
                     </div>
@@ -340,7 +345,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={surguuli}
+                        defaultValue={userr.surguuli}
                         onChange={(e) => setsurguuli(e.target.value)}
                       />
                     </div>
@@ -356,7 +361,7 @@ const FormTeacher = () => {
                       <input
                         type="text"
                         className="inputDate"
-                        value={year}
+                        defaultValue={userr.year}
                         placeholder="Он"
                         onChange={(e) => {
                           setYear(e.target.value);
@@ -370,7 +375,7 @@ const FormTeacher = () => {
                         type="text"
                         className="inputDate"
                         placeholder="Сар"
-                        value={month}
+                        defaultValue={userr.month}
                         onChange={(e) => {
                           setMonth(e.target.value);
                         }}
@@ -383,7 +388,7 @@ const FormTeacher = () => {
                         type="text"
                         className="inputDate"
                         placeholder="Өдөр"
-                        value={day}
+                        defaultValue={userr.day}
                         onChange={(e) => {
                           setDay(e.target.value);
                         }}
@@ -405,7 +410,7 @@ const FormTeacher = () => {
                       <select
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        value={angi}
+                        defaultValue={userr.angi}
                         onChange={(e) => setangi(e.target.value)}
                       >
                         <option value="null">-Select-</option>
@@ -435,7 +440,7 @@ const FormTeacher = () => {
                     </label>
                     <DatePicker
                       dateFormat="dd/MM/yyyy"
-                      selected={startDate}
+                      defaultValue={userr.startDate}
                       onChange={(date) => setStartDate(date)}
                     />
                   </div>
@@ -450,7 +455,7 @@ const FormTeacher = () => {
                     </label>
                     <DatePicker
                       dateFormat="dd/MM/yyyy"
-                      selected={endDate}
+                      defaultValue={userr.endDate}
                       onChange={(date) => setEndDate(date)}
                     />
                   </div>
@@ -468,7 +473,7 @@ const FormTeacher = () => {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         rows="4"
-                        value={tovchtaniltsuulga}
+                        defaultValue={userr.tovchtaniltsuulga}
                         onChange={(e) => settovchtaniltsuulga(e.target.value)}
                       ></textarea>
                     </div>

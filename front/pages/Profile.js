@@ -1,12 +1,42 @@
-import Navbar from "./components/Navbar";
+import Navbarr from "./components/Navbarr";
 import Footer from "./components/Footer";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import jwt from "jsonwebtoken";
 const Profile = () => {
   const router = useRouter();
+
+  const [userr, setUser] = useState("");
+  async function populate() {
+    const token = localStorage.getItem("token");
+    const req = await fetch("http://localhost:8000/api/userData", {
+      method: "POST",
+      headers: {
+        authorization: `
+        Bearer ${token}`,
+      },
+    });
+    const data = await req.json();
+    console.log(data.data);
+    // console.log(data.password);
+    setUser(data.data);
+  }
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const user = jwt.decode(token);
+      if (!user) {
+        localStorage.removeItem("token");
+        router.push("/LoginAsTeacher");
+      } else {
+        populate();
+      }
+    }
+  }, []);
   return (
     <>
-      <Navbar />
+      <Navbarr />
       <div className="container mx-auto my-5 p-5">
         <div className="md:flex no-wrap md:-mx-2 ">
           {/* <!-- Left Side --> */}
@@ -31,7 +61,7 @@ const Profile = () => {
                 }}
               />
               <h1 className="text-900 font-bold text-xl leading-8 my-1">
-                Khangal Erdenebileg
+                {userr.fname} {userr.lname}
               </h1>
               <h3 className="text-gray-600 font-lg text-semibold leading-6">
                 Заадаг хичээлийн нэр
@@ -83,9 +113,9 @@ const Profile = () => {
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                     />
                   </svg>
@@ -96,43 +126,39 @@ const Profile = () => {
                 <div className="grid md:grid-cols-2 text-sm">
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">First Name</div>
-                    <div className="px-4 py-2">Khangal</div>
+                    <div className="px-4 py-2"> {userr.fname}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Last Name</div>
-                    <div className="px-4 py-2">Erdenebileg</div>
+                    <div className="px-4 py-2"> {userr.lname}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Gender</div>
-                    <div className="px-4 py-2">Male</div>
+                    <div className="px-4 py-2"> {userr.gender}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Phone No.</div>
-                    <div className="px-4 py-2">99405740</div>
+                    <div className="px-4 py-2"> {userr.pnum1}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">
                       Current Address
                     </div>
                     <div className="px-4 py-2">
-                      Beech Creek, PA, Pennsylvania
+                      {userr.province}, {userr.sum}, {userr.delgerengui}
                     </div>
-                  </div>
-                  <div className="grid grid-cols-2">
-                    <div className="px-4 py-2 font-semibold">Зэрэг</div>
-                    <div className="px-4 py-2">Ахлах багш</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email.</div>
                     <div className="px-4 py-2">
-                      <a className="text-blue-800" href="mailto:ex@example.com">
-                        ex@example.com
+                      <a className="text-blue-800" href={userr.email}>
+                        {userr.email}
                       </a>
                     </div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Birthday</div>
-                    <div className="px-4 py-2">Feb 06, 1998</div>
+                    <div className="px-4 py-2">{userr.month}, {userr.day}, {userr.year}</div>
                   </div>
                 </div>
               </div>
@@ -155,9 +181,9 @@ const Profile = () => {
                         stroke="currentColor"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                         />
                       </svg>
@@ -166,25 +192,25 @@ const Profile = () => {
                   </div>
                   <ul className="list-inside space-y-2">
                     <li>
-                      <div className="text-teal-600">1 дүгээр сургууль</div>
+                      <div className="text-teal-600">Coming soon...</div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>
                     </li>
                     <li>
-                      <div className="text-teal-600">1 дүгээр сургууль</div>
+                      <div className="text-teal-600">Coming soon...</div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>
                     </li>
                     <li>
-                      <div className="text-teal-600">1 дүгээр сургууль</div>
+                      <div className="text-teal-600">Coming soon...</div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>
                     </li>
                     <li>
-                      <div className="text-teal-600">1 дүгээр сургууль</div>
+                      <div className="text-teal-600">Coming soon...</div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>
@@ -207,9 +233,9 @@ const Profile = () => {
                           d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
                         />
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
                         />
                       </svg>
@@ -219,7 +245,7 @@ const Profile = () => {
                   <ul className="list-inside space-y-2">
                     <li>
                       <div className="text-teal-600">
-                        Masters Degree in Oxford
+                        Coming soon...
                       </div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
@@ -227,14 +253,14 @@ const Profile = () => {
                     </li>
                     <li>
                       <div className="text-teal-600">
-                        Bachelors Degreen in LPU
+                        Coming soon...
                       </div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>
                     </li>
                     <li>
-                      <div className="text-teal-600">Бүрэн дунд</div>
+                      <div className="text-teal-600">Coming soon...</div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>

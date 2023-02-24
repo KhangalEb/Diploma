@@ -49,27 +49,27 @@ export default function NavbarMainHome() {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
+              <li className="nav-item relative">
                 <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
+                  className="px-3 py-2 block items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
                   href="/"
                 >
                   <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
                   <span className="ml-2">Home</span>
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item relative">
                 <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
+                  className="px-3 py-2 block items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
                   href="#"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
                   <span className="ml-2">About Us</span>
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item relative">
                 <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
+                  className="px-3 py-2 block items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
                   href="#"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
