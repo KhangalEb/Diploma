@@ -155,7 +155,12 @@ app.get('/api/studentList', function (req, res) {
     res.send(userMap);
   });
 });
+app.get("/api/allUsers", async (req, res) => {
+  User.find(({ id: req.params.id }), function (err, obj) {
 
+    res.send(obj);
+  });
+});
 
 
 

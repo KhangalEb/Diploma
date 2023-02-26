@@ -16,7 +16,6 @@ const User = new mongoose.Schema(
     delgerengui: { type: String },
     gender: { type: String },
     surguuli: { type: String },
-
     year: { type: String },
     day: { type: String },
     month: { type: String },
