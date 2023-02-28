@@ -25,6 +25,7 @@ const FormTeacher = () => {
   const [angi, setangi] = useState("");
   const [tovchtaniltsuulga, settovchtaniltsuulga] = useState("");
   const [userr, setUser] = useState("");
+  const [price, setPrice] = useState("");
   const values = {
     gender,
     year,
@@ -100,6 +101,7 @@ const FormTeacher = () => {
           surguuli,
           angi,
           tovchtaniltsuulga,
+          price,
         }),
       });
       const data = await response.json();
@@ -210,6 +212,22 @@ const FormTeacher = () => {
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userr.pnum2}
                         onChange={(e) => setpnum2(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        price
+                      </label>
+                      <input
+                        type="number"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userr.price}
+                        onChange={(e) => setPrice(e.target.value)}
                       />
                     </div>
                   </div>
