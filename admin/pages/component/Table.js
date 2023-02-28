@@ -1,6 +1,6 @@
 import { Divider, Radio, Table } from 'antd';
 import { useState, useEffect } from 'react';
-
+import { Button } from 'antd';
 const columns = [
     {
         title: 'Категорийн нэр',
@@ -16,8 +16,8 @@ const columns = [
     },
 ];
 const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    onChange: (rowKey, selectedRows) => {
+        console.log(`selectedRowKeys: ${rowKey}`, 'selectedRows: ', selectedRows);
     },
     getCheckboxProps: (record) => ({
         disabled: record.name === 'Disabled User',
@@ -27,6 +27,7 @@ const rowSelection = {
 };
 function App() {
     const [selectionType, setSelectionType] = useState('checkbox');
+    console.log(selectionType);
     const [dataa, setData] = useState([]);
     console.log(dataa);
     const fetchData = async () => {
@@ -53,10 +54,7 @@ function App() {
             <Divider />
 
             <Table
-                rowSelection={{
-                    type: selectionType,
-                    ...rowSelection,
-                }}
+                rowSelection={rowSelection}
                 columns={columns}
                 dataSource={dataa}
             />
