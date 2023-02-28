@@ -44,6 +44,7 @@ app.post("/api/register", async (req, res) => {
       month: req.body.month,
       angi: req.body.angi,
       tovchtaniltsuulga: req.body.tovchtaniltsuulga,
+      price: req.body.price,
     });
     res.json({ status: "ok" });
   } catch (error) {

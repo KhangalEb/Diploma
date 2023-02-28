@@ -21,6 +21,7 @@ const User = new mongoose.Schema(
     month: { type: String },
     angi: { type: String },
     tovchtaniltsuulga: { type: String },
+    price: { type: Number },
   },
   { collection: "user-data" }
 );
