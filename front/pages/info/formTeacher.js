@@ -1,5 +1,7 @@
 import PlainNavbar from "../components/PlainNavbar";
 import Footer from "../components/Footer";
+import { Button, Form, Input, InputNumber } from "antd";
+import { Select, Space } from "antd";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -26,6 +28,8 @@ const FormTeacher = () => {
   const [tovchtaniltsuulga, settovchtaniltsuulga] = useState("");
   const [userr, setUser] = useState("");
   const [price, setPrice] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [dataa, setData] = useState([]);
   const values = {
     gender,
     year,
@@ -42,7 +46,18 @@ const FormTeacher = () => {
     surguuli,
     angi,
     tovchtaniltsuulga,
+    categories,
   };
+
+  console.log(dataa);
+  const fetchData = async () => {
+    return fetch("http://localhost:8000/api/categoryData")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   async function populate() {
     const token = localStorage.getItem("token");
@@ -70,50 +85,58 @@ const FormTeacher = () => {
       }
     }
   }, []);
-
+  const a = [];
+  dataa.map((i) => {
+    a.push({ label: i.title, value: i.title });
+  });
+  const handleclick = (e) => {
+    setCategories(e);
+  };
   const handleSubmit = async (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault();
-
+    console.log(categories);
     const user = jwt.decode(token);
     console.log(user);
-    try {
-      const response = await fetch("http://localhost:8000/api/update", {
-        method: "POST",
-        headers: {
-          authorization: `
+    if (categories.length < 4) {
+      try {
+        const response = await fetch("http://localhost:8000/api/update", {
+          method: "POST",
+          headers: {
+            authorization: `
           Bearer ${token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          gender,
-          year,
-          day,
-          month,
-          fname,
-          lname,
-          pnum1,
-          pnum2,
-          province,
-          bag,
-          sum,
-          delgerengui,
-          surguuli,
-          angi,
-          tovchtaniltsuulga,
-          price,
-        }),
-      });
-      const data = await response.json();
-      if (data.status === "ok") {
-        console.log("ok");
-
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            gender: gender,
+            year: year,
+            day: day,
+            month: month,
+            fname: fname,
+            lname: lname,
+            pnum1: pnum1,
+            pnum2: pnum2,
+            province: province,
+            bag: bag,
+            sum: sum,
+            delgerengui: delgerengui,
+            surguuli: surguuli,
+            angi: angi,
+            tovchtaniltsuulga: tovchtaniltsuulga,
+            price: price,
+            categories: categories,
+          }),
+        });
+        const data = await response.json();
+        if (data.status === "ok") {
+          console.log("ok");
+        }
+        console.log(data);
+        setfname(userr.fname);
+        setlname(userr.lname);
+      } catch (error) {
+        console.log(error);
       }
-      console.log(data);
-      setfname(userr.fname);
-      setlname(userr.lname);
-    } catch (error) {
-      console.log(error);
     }
   };
   console.log(userr);
@@ -497,6 +520,37 @@ const FormTeacher = () => {
                     </div>
                   </div>
                 </div>
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-12/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Ордог хичээлүүд
+                      </label>
+                      <Space
+                        style={{
+                          width: "100%",
+                        }}
+                        direction="vertical"
+                      >
+                        <Select
+                          mode="multiple"
+                          allowClear
+                          style={{
+                            width: "100%",
+                          }}
+                          maxTagCount={5}
+                          onChange={handleclick}
+                          placeholder="Please select"
+                          options={a}
+                        />
+                      </Space>
+                    </div>
+                  </div>
+                </div>
+
                 <hr className="mt-6 border-b-1 border-blueGray-300" />
               </form>
             </div>
