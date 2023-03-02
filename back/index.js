@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/user.model");
+const Category = require("./models/category.model");
 const Subject = require("./models/subject.model");
 const jwt = require("jsonwebtoken");
 const authenticateJWT = require("./middleware/index");
@@ -45,6 +46,7 @@ app.post("/api/register", async (req, res) => {
       angi: req.body.angi,
       tovchtaniltsuulga: req.body.tovchtaniltsuulga,
       price: req.body.price,
+      categories: req.body.categories,
     });
     res.json({ status: "ok" });
   } catch (error) {
@@ -76,7 +78,6 @@ app.post("/api/login", async (req, res) => {
   }
 });
 app.post("/api/userData", authenticateJWT, async (req, res) => {
-
   try {
     const useremail = req.user.email;
     User.findOne({ email: useremail })
@@ -92,12 +93,29 @@ app.post("/api/userData", authenticateJWT, async (req, res) => {
   }
 });
 
+app.post("/api/categoryData", async (req, res) => {
+  try {
+    await Category.create({
+      title: req.body.title,
+      description: req.body.description,
+    });
+    res.json({ status: "ok" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.get("/api/categoryData", async (req, res) => {
+  Category.find({ id: req.params.id }, function (err, obj) {
+    res.send(obj);
+  });
+});
 app.post("/api/subjectData", async (req, res) => {
   try {
     await Subject.create({
       title: req.body.title,
       description: req.body.description,
       range: req.body.range,
+      category: req.body.category,
     });
     res.json({ status: "ok" });
   } catch (error) {
@@ -105,8 +123,7 @@ app.post("/api/subjectData", async (req, res) => {
   }
 });
 app.get("/api/subjectData", async (req, res) => {
-  Subject.find(({ id: req.params.id }), function (err, obj) {
-
+  Subject.find({ id: req.params.id }, function (err, obj) {
     res.send(obj);
   });
 });
@@ -115,20 +132,19 @@ app.post("/api/update", authenticateJWT, async (req, res) => {
   try {
     const _id = req.user._id;
 
-    User.findByIdAndUpdate(_id, req.body).then(docs => {
+    User.findByIdAndUpdate(_id, req.body).then((docs) => {
       if (docs) {
         res.json({ success: true, data: req.body });
       }
       res.json({ success: false, data: docs });
-    })
-
+    });
   } catch (error) {
     console.log(error);
     res.json({ status: "error", error: "userData error" });
   }
 });
 
-app.get('/api/teacherList', function (req, res) {
+app.get("/api/teacherList", function (req, res) {
   User.find({}, function (err, users) {
     var userMap = {};
 
@@ -136,13 +152,12 @@ app.get('/api/teacherList', function (req, res) {
       if (user.role === "teacher") {
         userMap[user._id] = user;
       }
-
     });
 
     res.send(userMap);
   });
 });
-app.get('/api/studentList', function (req, res) {
+app.get("/api/studentList", function (req, res) {
   User.find({}, function (err, users) {
     var userMap = {};
 
@@ -150,21 +165,16 @@ app.get('/api/studentList', function (req, res) {
       if (user.role === "student") {
         userMap[user._id] = user;
       }
-
     });
 
     res.send(userMap);
   });
 });
 app.get("/api/allUsers", async (req, res) => {
-  User.find(({ id: req.params.id }), function (err, obj) {
-
+  User.find({ id: req.params.id }, function (err, obj) {
     res.send(obj);
   });
 });
-
-
-
 
 const PORT = 8000;
 app.listen(PORT, () => {

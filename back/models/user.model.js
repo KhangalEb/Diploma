@@ -22,6 +22,7 @@ const User = new mongoose.Schema(
     angi: { type: String },
     tovchtaniltsuulga: { type: String },
     price: { type: Number },
+    categories: { type: Object, required: true },
   },
   { collection: "user-data" }
 );
