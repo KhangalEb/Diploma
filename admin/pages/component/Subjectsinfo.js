@@ -60,10 +60,6 @@ const Subjectsinfo = () => {
       console.log(error);
     }
   };
-  const a = [];
-  dataa.map((i) => {
-    a.push({ label: i.title, value: i.title });
-  });
   const handleclick = (e) => {
     setCategories(e);
   };
