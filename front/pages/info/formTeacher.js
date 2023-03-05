@@ -30,24 +30,6 @@ const FormTeacher = () => {
   const [price, setPrice] = useState("");
   const [categories, setCategories] = useState([]);
   const [dataa, setData] = useState([]);
-  const values = {
-    gender,
-    year,
-    day,
-    month,
-    fname,
-    lname,
-    pnum1,
-    pnum2,
-    province,
-    bag,
-    sum,
-    delgerengui,
-    surguuli,
-    angi,
-    tovchtaniltsuulga,
-    categories,
-  };
 
   console.log(dataa);
   const fetchData = async () => {

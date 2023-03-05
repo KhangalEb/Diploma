@@ -1,4 +1,4 @@
-import Navbarr from "./components/Navbarr";
+import NavbarrTeacher from "./components/NavbarrTeacher";
 import Footer from "./components/Footer";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -6,42 +6,17 @@ import { useRouter } from "next/router";
 import jwt from "jsonwebtoken";
 const Profile = () => {
   const router = useRouter();
-
-  const [userr, setUser] = useState("");
-  async function populate() {
-    const token = localStorage.getItem("token");
-    const req = await fetch("http://localhost:8000/api/userData", {
-      method: "POST",
-      headers: {
-        authorization: `
-        Bearer ${token}`,
-      },
-    });
-    const data = await req.json();
-    console.log(data.data);
-    // console.log(data.password);
-    setUser(data.data);
-  }
+  const [userrr, setUserrr] = useState("");
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const user = jwt.decode(token);
-      if (!user) {
-        localStorage.removeItem("token");
-        router.push("/LoginAsTeacher");
-      } else {
-        populate();
-      }
-    }
+    setUserrr(JSON.parse(localStorage.getItem("user")));
   }, []);
+
   return (
     <>
-      <Navbarr />
+      <NavbarrTeacher />
       <div className="container mx-auto my-5 p-5">
         <div className="md:flex no-wrap md:-mx-2 ">
-          {/* <!-- Left Side --> */}
           <div className="w-full md:w-3/12 md:mx-2">
-            {/* <!-- Profile Card --> */}
             <div className="bg-0 p-3 border-t-4 border-1">
               <div className="image overflow-hidden">
                 <img
@@ -61,14 +36,28 @@ const Profile = () => {
                 }}
               />
               <h1 className="text-900 font-bold text-xl leading-8 my-1">
-                {userr.fname} {userr.lname}
+                {userrr.fname} {userrr.lname}
               </h1>
               <h3 className="text-gray-600 font-lg text-semibold leading-6">
-                Заадаг хичээлийн нэр
+                {/* {userrr.categories.map((e, i) => {
+                  return (
+                    <a className=" cursor-pointer">
+                      <div
+                        className=" bg-100 p-3 mb-1 text-center rounded"
+                        key={i}
+                      >
+                        {e}
+                      </div>
+                    </a>
+                  );
+                })} */}
+                {userrr.categories}
               </h3>
+              <label>Товч танилцуулга</label>
               <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
-                Товч тайлбар
+                {userrr.tovchtaniltsuulga}
               </p>
+
               <ul className="bg-50 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                 <li className="flex items-center py-3">
                   <span>Status</span>
@@ -126,39 +115,41 @@ const Profile = () => {
                 <div className="grid md:grid-cols-2 text-sm">
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">First Name</div>
-                    <div className="px-4 py-2"> {userr.fname}</div>
+                    <div className="px-4 py-2"> {userrr.fname}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Last Name</div>
-                    <div className="px-4 py-2"> {userr.lname}</div>
+                    <div className="px-4 py-2"> {userrr.lname}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Gender</div>
-                    <div className="px-4 py-2"> {userr.gender}</div>
+                    <div className="px-4 py-2"> {userrr.gender}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Phone No.</div>
-                    <div className="px-4 py-2"> {userr.pnum1}</div>
+                    <div className="px-4 py-2"> {userrr.pnum1}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">
                       Current Address
                     </div>
                     <div className="px-4 py-2">
-                      {userr.province}, {userr.sum}, {userr.delgerengui}
+                      {userrr.province}, {userrr.sum}, {userrr.delgerengui}
                     </div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Email.</div>
                     <div className="px-4 py-2">
-                      <a className="text-blue-800" href={userr.email}>
-                        {userr.email}
+                      <a className="text-blue-800" href={userrr.email}>
+                        {userrr.email}
                       </a>
                     </div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Birthday</div>
-                    <div className="px-4 py-2">{userr.month}, {userr.day}, {userr.year}</div>
+                    <div className="px-4 py-2">
+                      {userrr.month}, {userrr.day}, {userrr.year}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -244,17 +235,13 @@ const Profile = () => {
                   </div>
                   <ul className="list-inside space-y-2">
                     <li>
-                      <div className="text-teal-600">
-                        Coming soon...
-                      </div>
+                      <div className="text-teal-600">Coming soon...</div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>
                     </li>
                     <li>
-                      <div className="text-teal-600">
-                        Coming soon...
-                      </div>
+                      <div className="text-teal-600">Coming soon...</div>
                       <div className="text-gray-500 text-xs">
                         March 2020 - Now
                       </div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import DropDown from "./Navbar-drop-down";
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
   return (
     <>
       <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3">
@@ -102,14 +103,7 @@ export default function Navbar() {
                   overflow: "hidden",
                   margin: "10px",
                 }}
-              >
-                <Image
-                  src="/userpro.png"
-                  alt="user photo"
-                  width={30}
-                  height={30}
-                />
-              </div>
+              ></div>
               <DropDown />
             </div>
           </div>

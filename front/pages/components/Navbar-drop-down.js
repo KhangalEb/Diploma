@@ -4,16 +4,26 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 export default function DropDown() {
   const router = useRouter();
+  const [userrr, setUserrr] = useState("");
+  useEffect(() => {
+    setUserrr(JSON.parse(localStorage.getItem("user")));
+  }, []);
+  console.log(userrr);
   const handleClick = (e) => {
     e.preventDefault();
     router.push("/Profile");
+  };
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    router.push("/");
   };
   return (
     <div className="w-20">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex w-full justify-center rounded-md bg-400 bg-opacity-40 px-4 py-2 text-sm font-medium text-0 hover:bg-opacity-30 focus:outline-none  focus-visible:ring-0 focus-visible:ring-opacity-75">
-            Khangal
+            {userrr.fname}
           </Menu.Button>
         </div>
         <Transition
@@ -35,27 +45,14 @@ export default function DropDown() {
                   Profile
                 </button>
               </Menu.Item>
-              <Menu.Item>
-                <button className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-500 hover:text-0">
-                  History
-                </button>
-              </Menu.Item>
             </div>
+
             <div className="px-1 py-1">
               <Menu.Item>
-                <button className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-500 hover:text-0">
-                  Balance
-                </button>
-              </Menu.Item>
-              <Menu.Item>
-                <button className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-500 hover:text-0">
-                  Move
-                </button>
-              </Menu.Item>
-            </div>
-            <div className="px-1 py-1">
-              <Menu.Item>
-                <button className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-3 hover:text-0">
+                <button
+                  className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-3 hover:text-0"
+                  onClick={handleLogout}
+                >
                   Log Out
                 </button>
               </Menu.Item>

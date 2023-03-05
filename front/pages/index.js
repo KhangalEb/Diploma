@@ -8,7 +8,15 @@ import TeachersList from "./components/TeachersList";
 import CategoryList from "./components/CategoryList";
 import ScheduleList from "./components/ScheduleList";
 import NavbarMainHome from "./components/NavbarMainHome";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 export default function Home() {
+  const router = useRouter();
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      router.push("/dashboard");
+    }
+  });
   return (
     <div>
       <Head>

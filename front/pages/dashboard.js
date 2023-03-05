@@ -6,6 +6,15 @@ import HomeStudent from "./components/HomeStudent";
 const Dashboard = () => {
   const router = useRouter();
   const [userr, setUser] = useState("");
+  //shidelt
+  useEffect(() => {
+    if (localStorage.getItem("token") === null) {
+      router.push("/");
+    } else {
+      //show validation message
+    }
+  });
+
   // const [tempQuote, setTempQuote] = useState();
   async function populate() {
     const token = localStorage.getItem("token");
@@ -22,6 +31,7 @@ const Dashboard = () => {
     // console.log(data.password);
     setUser(data.data);
   }
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {

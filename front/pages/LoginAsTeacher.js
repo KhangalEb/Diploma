@@ -30,14 +30,27 @@ const Login = () => {
       const data = await response.json();
       if (data.user) {
         localStorage.setItem("token", data.user);
+        const req = await fetch("http://localhost:8000/api/userData", {
+          method: "POST",
+          headers: {
+            authorization: `
+              Bearer ${data.user}`,
+            "Content-Type": "application/json",
+          },
+        });
+        const dataa = await req.json();
+        console.log(dataa.data);
+        localStorage.setItem("user", JSON.stringify(dataa.data));
+
         alert("login success");
+
         router.push("/dashboard");
       } else {
         alert("error login");
       }
       console.log(data);
     } catch (error) {
-      console.log("error");
+      console.log(error);
     }
   };
   return (

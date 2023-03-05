@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import DropDown from "./Navbar-drop-down";
-export default function Navbar() {
+export default function NavbarrTeacher() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -58,24 +58,7 @@ export default function Navbar() {
                   <span className="ml-2">Home</span>
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="/subject"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Courses</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="/Teachers"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Teachers</span>
-                </a>
-              </li>
+
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
@@ -102,14 +85,7 @@ export default function Navbar() {
                   overflow: "hidden",
                   margin: "10px",
                 }}
-              >
-                <Image
-                  src="/userpro.png"
-                  alt="user photo"
-                  width={30}
-                  height={30}
-                />
-              </div>
+              ></div>
               <DropDown />
             </div>
           </div>
