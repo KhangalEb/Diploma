@@ -146,11 +146,11 @@ app.post("/api/update", authenticateJWT, async (req, res) => {
 
 app.get("/api/teacherList", function (req, res) {
   User.find({}, function (err, users) {
-    var userMap = {};
+    var userMap = [];
 
-    users.forEach(function (user) {
+    users.forEach(function (user, i) {
       if (user.role === "teacher") {
-        userMap[user._id] = user;
+        userMap.push(user);
       }
     });
 
@@ -159,17 +159,22 @@ app.get("/api/teacherList", function (req, res) {
 });
 app.get("/api/studentList", function (req, res) {
   User.find({}, function (err, users) {
-    var userMap = {};
+    var userMap = [];
 
     users.forEach(function (user) {
       if (user.role === "student") {
-        userMap[user._id] = user;
+        userMap.push(user);
       }
     });
 
     res.send(userMap);
   });
 });
+
+app.get("/api/user", authenticateJWT, async (req, res) => {
+  res.send("lol");
+});
+
 app.get("/api/allUsers", async (req, res) => {
   User.find({ id: req.params.id }, function (err, obj) {
     res.send(obj);
