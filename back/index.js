@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/user.model");
+const Student = require("./models/student.model");
 const Category = require("./models/category.model");
 const Subject = require("./models/subject.model");
 const jwt = require("jsonwebtoken");
@@ -22,7 +23,32 @@ async function connect() {
   }
 }
 connect();
-
+app.post("/api/registerStudent", async (req, res) => {
+  console.log(req.body);
+  try {
+    const student = await Student.create({
+      email: req.body.email,
+      password: req.body.password,
+      role: req.body.role,
+      fname: req.body.fname,
+      lname: req.body.lname,
+      pnum1: req.body.pnum1,
+      pnum2: req.body.pnum2,
+      province: req.body.province,
+      bag: req.body.bag,
+      sum: req.body.sum,
+      delgerengui: req.body.delgerengui,
+      gender: req.body.gender,
+      surguuli: req.body.surguuli,
+      year: req.body.year,
+      day: req.body.day,
+      month: req.body.month,
+    });
+    res.json({ status: "ok" });
+  } catch (error) {
+    console.log(error);
+  }
+});
 app.post("/api/register", async (req, res) => {
   console.log(req.body);
   try {
@@ -77,10 +103,49 @@ app.post("/api/login", async (req, res) => {
     console.log(error);
   }
 });
+app.post("/api/loginStudent", async (req, res) => {
+  try {
+    const user = await Student.findOne({
+      email: req.body.email,
+      password: req.body.password,
+      role: req.body.role,
+    });
+    if (user) {
+      const token = jwt.sign(
+        {
+          email: user.email,
+          _id: user._id,
+        },
+        "secret123"
+      );
+      return res.json({ status: "ok", user: token, role: user.role });
+    } else {
+      return res.json({ status: "error", user: false });
+    }
+    // res.json({ status: "ok" });
+  } catch (error) {
+    console.log(error);
+  }
+});
 app.post("/api/userData", authenticateJWT, async (req, res) => {
   try {
     const useremail = req.user.email;
     User.findOne({ email: useremail })
+      .then((data) => {
+        res.send({ status: "ok", data: data });
+      })
+      .catch((error) => {
+        res.send({ status: "error", data: error });
+      });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "userData error" });
+  }
+});
+app.post("/api/studentData", authenticateJWT, async (req, res) => {
+  try {
+    const useremail = req.user.email;
+    Student.findOne({ email: useremail })
       .then((data) => {
         res.send({ status: "ok", data: data });
       })
