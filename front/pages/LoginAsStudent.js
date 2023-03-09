@@ -16,7 +16,7 @@ const Login = () => {
   const handleSubmit1 = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/api/login", {
+      const response = await fetch("http://localhost:8000/api/loginStudent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,6 +30,17 @@ const Login = () => {
       const data = await response.json();
       if (data.user) {
         localStorage.setItem("token", data.user);
+        const req = await fetch("http://localhost:8000/api/studentData", {
+          method: "POST",
+          headers: {
+            authorization: `
+              Bearer ${data.user}`,
+            "Content-Type": "application/json",
+          },
+        });
+        const dataa = await req.json();
+        console.log(dataa.data);
+        localStorage.setItem("user", JSON.stringify(dataa.data));
         alert("login success");
         router.push("/dashboard");
       } else {

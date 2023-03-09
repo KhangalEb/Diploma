@@ -9,9 +9,11 @@ const TeachersList = () => {
       .then((data) => setData(data));
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [index, setIndex] = useState("");
   const showModal = (i, ind) => {
-    console.log(ind);
+    setIndex(ind);
     setIsModalOpen(true);
+    createModal();
   };
   const handleOk = () => {
     setIsModalOpen(false);
@@ -22,7 +24,19 @@ const TeachersList = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(dataa);
+  const createModal = () => {
+    return (
+      <Modal
+        title="Basic Modal"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        mask={false}
+      >
+        {/* <p>{dataa[index] && dataa[index].fname}</p> */}
+      </Modal>
+    )
+  }
   return (
     <div>
       <div className="container flex justify-center mx-auto pt-16"></div>
@@ -52,14 +66,13 @@ const TeachersList = () => {
                       </div>
                     </div>
                     <div className="px-6 mt-16">
-                      <a
-                        href="#"
+                      <button
                         className="block font-bold dark:text-white text-2xl text-center mb-1"
                         key={i._id}
                         onClick={(e) => showModal(e, ind)}
                       >
                         {i.fname} {i.lname}
-                      </a>
+                      </button>
                       <p className=" text-700 text-xl text-center font-bold">
                         {i.price}
                       </p>
@@ -92,17 +105,7 @@ const TeachersList = () => {
                             />
                           </div>
                         </a>
-                        <Modal
-                          title="Basic Modal"
-                          open={isModalOpen}
-                          onOk={handleOk}
-                          onCancel={handleCancel}
-                          mask={false}
-                        >
-                          <p>{ind.fname}</p>
-                          <p>{i.fname}</p>
-                          <p>{i.fname}</p>
-                        </Modal>
+
                       </div>
                     </div>
                   </div>

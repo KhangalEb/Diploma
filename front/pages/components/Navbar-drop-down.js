@@ -11,7 +11,10 @@ export default function DropDown() {
   console.log(userrr);
   const handleClick = (e) => {
     e.preventDefault();
-    router.push("/Profile");
+    if (userrr.role == "student")
+      router.push("/Profile2");
+    else
+      router.push("/Profile");
   };
   const handleLogout = (e) => {
     e.preventDefault();
@@ -23,7 +26,7 @@ export default function DropDown() {
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex w-full justify-center rounded-md bg-400 bg-opacity-40 px-4 py-2 text-sm font-medium text-0 hover:bg-opacity-30 focus:outline-none  focus-visible:ring-0 focus-visible:ring-opacity-75">
-            {userrr.fname}
+            {userrr.email}
           </Menu.Button>
         </div>
         <Transition

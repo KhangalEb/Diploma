@@ -1,12 +1,81 @@
 import PlainNavbar from "../components/PlainNavbar";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { Button, Form, Input, InputNumber } from "antd";
+import { Select, Space } from "antd";
+import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Router, { useRouter } from "next/router";
+import jwt from "jsonwebtoken";
 const FormStudent = () => {
+  const router = useRouter();
   const [gender, setGender] = useState("");
-
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [year, setYear] = useState("");
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
+  const [fname, setfname] = useState("");
+  const [lname, setlname] = useState("");
+  const [pnum1, setpnum1] = useState("");
+  const [pnum2, setpnum2] = useState("");
+  const [province, setprovince] = useState("");
+  const [bag, setbag] = useState("");
+  const [sum, setsum] = useState("");
+  const [delgerengui, setdelgerengui] = useState("");
+  const [surguuli, setsurguuli] = useState("");
+  const [angi, setangi] = useState("");
+  const [tovchtaniltsuulga, settovchtaniltsuulga] = useState("");
+  const [userr, setUser] = useState("");
+  const [price, setPrice] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [dataa, setData] = useState([]);
+  const [userrr, setUserrr] = useState("");
+  useEffect(() => {
+    setUserrr(JSON.parse(localStorage.getItem("user")));
+  }, []);
+  console.log(dataa);
+
+  const handleSubmit = async (e) => {
+    const token = localStorage.getItem("token");
+    e.preventDefault();
+    const user = jwt.decode(token);
+    console.log(user);
+    if (categories.length < 4) {
+      try {
+        const response = await fetch("http://localhost:8000/api/update", {
+          method: "POST",
+          headers: {
+            authorization: `
+          Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            gender: gender,
+            year: year,
+            day: day,
+            month: month,
+            fname: fname,
+            lname: lname,
+            pnum1: pnum1,
+            pnum2: pnum2,
+            province: province,
+            bag: bag,
+            sum: sum,
+            delgerengui: delgerengui,
+          }),
+        });
+        const data = await response.json();
+        if (data.status === "ok") {
+          console.log("ok");
+        }
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+  console.log(userr);
   return (
     <div>
       <PlainNavbar />
@@ -19,10 +88,18 @@ const FormStudent = () => {
                   My account
                 </h6>
                 <button
-                  className="bg-500 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                  className="bg-1 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={handleSubmit}
                 >
                   Save
+                </button>
+                <button
+                  className="bg-500 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                  type="button"
+                  onClick={() => Router.back()}
+                >
+                  back
                 </button>
               </div>
             </div>
@@ -43,6 +120,9 @@ const FormStudent = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.fname}
+                        // value={fname}
+                        onChange={(e) => setfname(e.target.value)}
                       />
                     </div>
                   </div>
@@ -57,6 +137,8 @@ const FormStudent = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.lname}
+                        onChange={(e) => setlname(e.target.value)}
                       />
                     </div>
                   </div>
@@ -71,6 +153,8 @@ const FormStudent = () => {
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-1000 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.pnum1}
+                        onChange={(e) => setpnum1(e.target.value)}
                       />
                     </div>
                   </div>
@@ -85,6 +169,8 @@ const FormStudent = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.pnum2}
+                        onChange={(e) => setpnum2(e.target.value)}
                       />
                     </div>
                   </div>
@@ -94,11 +180,13 @@ const FormStudent = () => {
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlFor="grid-password"
                       >
-                        E-mail Address
+                        price
                       </label>
                       <input
-                        type="text"
+                        type="number"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.price}
+                        onChange={(e) => setPrice(e.target.value)}
                       />
                     </div>
                   </div>
@@ -121,8 +209,10 @@ const FormStudent = () => {
                       <select
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.province}
+                        onChange={(e) => setprovince(e.target.value)}
                       >
-                        <option value="null">-Select-</option>
+                        <option value="null">{userrr.province}</option>
                         <option value="Улаанбаатар">Улаанбаатар</option>
                         <option value="Архангай">Архангай</option>
                         <option value="Баян-Өлгий">Баян-Өлгий</option>
@@ -159,6 +249,8 @@ const FormStudent = () => {
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.bag}
+                        onChange={(e) => setbag(e.target.value)}
                       />
                     </div>
                   </div>
@@ -173,6 +265,8 @@ const FormStudent = () => {
                       <input
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.sum}
+                        onChange={(e) => setsum(e.target.value)}
                       />
                     </div>
                   </div>
@@ -187,6 +281,8 @@ const FormStudent = () => {
                       <input
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.delgerengui}
+                        onChange={(e) => setdelgerengui(e.target.value)}
                       />
                     </div>
                   </div>
@@ -221,26 +317,12 @@ const FormStudent = () => {
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlFor="grid-password"
                       >
-                        Сургууль
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-3/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
                         Date of birth
                       </label>
                       <input
                         type="text"
                         className="inputDate"
-                        value={year}
+                        defaultValue={userrr.year}
                         placeholder="Он"
                         onChange={(e) => {
                           setYear(e.target.value);
@@ -254,7 +336,7 @@ const FormStudent = () => {
                         type="text"
                         className="inputDate"
                         placeholder="Сар"
-                        value={month}
+                        defaultValue={userrr.month}
                         onChange={(e) => {
                           setMonth(e.target.value);
                         }}
@@ -267,7 +349,7 @@ const FormStudent = () => {
                         type="text"
                         className="inputDate"
                         placeholder="Өдөр"
-                        value={day}
+                        defaultValue={userrr.day}
                         onChange={(e) => {
                           setDay(e.target.value);
                         }}
@@ -289,6 +371,8 @@ const FormStudent = () => {
                       <select
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue={userrr.angi}
+                        onChange={(e) => setangi(e.target.value)}
                       >
                         <option value="null">-Select-</option>
                         <option value="1">1</option>

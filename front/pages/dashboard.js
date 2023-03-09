@@ -14,7 +14,10 @@ const Dashboard = () => {
       //show validation message
     }
   });
-
+  const [userrr, setUserrr] = useState("");
+  useEffect(() => {
+    setUserrr(JSON.parse(localStorage.getItem("user")));
+  }, []);
   // const [tempQuote, setTempQuote] = useState();
   async function populate() {
     const token = localStorage.getItem("token");
@@ -44,7 +47,7 @@ const Dashboard = () => {
       }
     }
   }, []);
-  if (userr.role == "student") {
+  if (userrr.role == "student") {
     return (
       <div>
         <HomeStudent />

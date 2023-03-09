@@ -7,6 +7,19 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
+  const [fname, setfname] = useState("");
+  const [lname, setlname] = useState("");
+  const [pnum1, setpnum1] = useState("");
+  const [pnum2, setpnum2] = useState("");
+  const [province, setprovince] = useState("");
+  const [bag, setbag] = useState("");
+  const [sum, setsum] = useState("");
+  const [delgerengui, setdelgerengui] = useState("");
+  const [gender, setgender] = useState("");
+  const [surguuli, setsurguuli] = useState("");
+  const [year, setyear] = useState("");
+  const [day, setday] = useState("");
+  const [month, setmonth] = useState("");
   const router = useRouter();
   // const router = useHistory();
   const handleSubmit = (e) => {
@@ -16,7 +29,7 @@ const SignUp = () => {
   const handleSubmit1 = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/api/register", {
+      const response = await fetch("http://localhost:8000/api/registerStudent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,6 +38,18 @@ const SignUp = () => {
           email,
           password,
           role,
+          fname,
+          lname,
+          pnum1,
+          pnum2,
+          province,
+          bag,
+          sum,
+          delgerengui,
+          gender,
+          year,
+          day,
+          month,
         }),
       });
       const data = await response.json();
