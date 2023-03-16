@@ -1,10 +1,12 @@
 import Footer from "./components/Footer";
 import TeachersList from "./components/TeachersList";
 import Navbarr from "./components/Navbarr";
+import BackButton from "./components/BackButton";
 const Teachers = () => {
   return (
     <div>
       <Navbarr></Navbarr>
+      <BackButton />
       <div>
         <p className="text-gray-500 dark:text-gray-200 text-lg text-center font-normal pb-3 mx-auto pt-16">
           MONGOLIAN EDUCATION FIRST

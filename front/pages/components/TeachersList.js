@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button, Modal } from "antd";
 import ModalTeacher from "../components/ModalTeacher";
+import { useRouter } from "next/router";
 const TeachersList = () => {
   const [dataa, setData] = useState([]);
+  const router = useRouter();
   const fetchData = async () => {
     return fetch("http://localhost:8000/api/teacherList")
       .then((response) => response.json())
@@ -12,8 +14,9 @@ const TeachersList = () => {
   const [index, setIndex] = useState("");
   const showModal = (i, ind) => {
     setIndex(ind);
-    setIsModalOpen(true);
-    createModal();
+    router.push({ path: '/teacherprofile', query: { ind: `${ind}` } })
+    // setIsModalOpen(true);
+    // createModal();
   };
   const handleOk = () => {
     setIsModalOpen(false);
@@ -69,7 +72,7 @@ const TeachersList = () => {
                       <button
                         className="block font-bold dark:text-white text-2xl text-center mb-1"
                         key={i._id}
-                        onClick={(e) => showModal(e, ind)}
+                        onClick={(e) => router.push(`/teacherprofile/${i._id}`)}
                       >
                         {i.fname} {i.lname}
                       </button>

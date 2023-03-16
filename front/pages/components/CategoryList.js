@@ -63,7 +63,7 @@ function CategoryList() {
             </Select>
             <button
               type="submit"
-              className=" px-5 py-[12px] flex items-center justify-between w-full shadow-md bg-500 mt-4"
+              className=" px-5 py-[12px] flex items-center justify-between w-full shadow-md bg-500 mt-4 text-0 rounded-lg"
               onClick={handleClick}
             >
               Search

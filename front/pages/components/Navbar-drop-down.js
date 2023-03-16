@@ -8,7 +8,6 @@ export default function DropDown() {
   useEffect(() => {
     setUserrr(JSON.parse(localStorage.getItem("user")));
   }, []);
-  console.log(userrr);
   const handleClick = (e) => {
     e.preventDefault();
     if (userrr.role == "student")

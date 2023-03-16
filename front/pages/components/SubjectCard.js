@@ -38,16 +38,20 @@ const SubjectCard = () => {
                 </svg>
               </div>
               <div className="pl-3 pr-10 mt-1">
-                <h3 className="font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">
+                <h3 className="break-words font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">
                   {i.title}
                 </h3>
                 <div className="flex items-end mt-4">
-                  <h2 className="text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">
+                  <h2 className="break-all text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">
                     {i.description}
                   </h2>
-                  <p className="ml-2 mb-1 text-sm text-gray-600 dark:text-gray-400">
-                    {i.range}
-                  </p>
+
+
+                </div>
+                <div className="flex items-end mt-4">
+                  <h3 className="break-words font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">
+                    Анги: {i.range}
+                  </h3>
                 </div>
                 <div className="float-right mt-5">
                   <div className="bg-500 p-3 border text-0 rounded-2xl">

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import jwt from "jsonwebtoken";
+import BackButton from "./components/BackButton";
+
 const Profile = () => {
   const router = useRouter();
   const [userrr, setUserrr] = useState("");
@@ -14,7 +16,8 @@ const Profile = () => {
   return (
     <>
       <NavbarrTeacher />
-      <div className="container mx-auto my-5 p-5">
+      <BackButton />
+      <div className="container mx-auto my-10 p-5">
         <div className="md:flex no-wrap md:-mx-2 ">
           <div className="w-full md:w-3/12 md:mx-2">
             <div className="bg-0 p-3 border-t-4 border-1">

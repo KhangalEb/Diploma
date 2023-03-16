@@ -2,6 +2,7 @@ import Navbarr from "./components/Navbarr";
 import Footer from "./components/Footer";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import BackButton from "./components/BackButton";
 const Profile = () => {
   const [userrr, setUserrr] = useState("");
   useEffect(() => {
@@ -11,8 +12,11 @@ const Profile = () => {
   return (
     <>
       <Navbarr />
-      <div className="container mx-auto my-5 p-5">
+      <BackButton />
+      <div className="container mx-auto my-10 p-5">
+
         <div className="md:flex no-wrap md:-mx-2 ">
+
           {/* <!-- Left Side --> */}
           <div className="w-full md:w-3/12 md:mx-2">
             {/* <!-- Profile Card --> */}
