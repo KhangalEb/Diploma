@@ -21,6 +21,8 @@ export default function SignUp() {
   const [month, setmonth] = useState("");
   const [angi, setangi] = useState("");
   const [tovchtaniltsuulga, settovchtaniltsuulga] = useState("");
+  const [price, settovchtaniltsuurlga] = useState("");
+  const [categories, settovchtaniltsurrulga] = useState([]);
 
   const [role, setRole] = useState("teacher");
   const router = useRouter();
@@ -56,6 +58,8 @@ export default function SignUp() {
           month,
           angi,
           tovchtaniltsuulga,
+          price,
+          categories,
         }),
       });
       const data = await response.json();

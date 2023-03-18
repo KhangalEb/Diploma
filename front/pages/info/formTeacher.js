@@ -9,32 +9,33 @@ import Router, { useRouter } from "next/router";
 import jwt from "jsonwebtoken";
 const FormTeacher = () => {
   const router = useRouter();
-  const [gender, setGender] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [year, setYear] = useState("");
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [fname, setfname] = useState("");
-  const [lname, setlname] = useState("");
-  const [pnum1, setpnum1] = useState("");
-  const [pnum2, setpnum2] = useState("");
-  const [province, setprovince] = useState("");
-  const [bag, setbag] = useState("");
-  const [sum, setsum] = useState("");
-  const [delgerengui, setdelgerengui] = useState("");
-  const [surguuli, setsurguuli] = useState("");
-  const [angi, setangi] = useState("");
-  const [tovchtaniltsuulga, settovchtaniltsuulga] = useState("");
+  // const [gender, setGender] = useState("");
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date());
+  // const [year, setYear] = useState("");
+  // const [day, setDay] = useState("");
+  // const [month, setMonth] = useState("");
+  // const [fname, setfname] = useState("");
+  // const [lname, setlname] = useState("");
+  // const [pnum1, setpnum1] = useState("");
+  // const [pnum2, setpnum2] = useState("");
+  // const [province, setprovince] = useState("");
+  // const [bag, setbag] = useState("");
+  // const [sum, setsum] = useState("");
+  // const [delgerengui, setdelgerengui] = useState("");
+  // const [surguuli, setsurguuli] = useState("");
+  // const [angi, setangi] = useState("");
+  const [categories, setcategories] = useState([]);
   const [userr, setUser] = useState("");
-  const [price, setPrice] = useState("");
-  const [categories, setCategories] = useState([]);
+  // const [price, setPrice] = useState("");
+  const [categoriess, setCategoriess] = useState([]);
   const [dataa, setData] = useState([]);
   const [userrr, setUserrr] = useState("");
+
   useEffect(() => {
     setUserrr(JSON.parse(localStorage.getItem("user")));
   }, []);
-  console.log(dataa);
+  console.log(userrr);
   const fetchData = async () => {
     return fetch("http://localhost:8000/api/categoryData")
       .then((response) => response.json())
@@ -43,22 +44,22 @@ const FormTeacher = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  console.log(dataa)
 
   const a = [];
   dataa.map((i) => {
     a.push({ label: i.title, value: i.title });
   });
-  const handleclick = (e) => {
-    setCategories(e);
-  };
+  // const handleclick = (e) => {
+  //   setCategoriess(e);
+  // };
   const handleSubmit = async (e) => {
+
     const token = localStorage.getItem("token");
     e.preventDefault();
-    console.log(categories);
     const user = jwt.decode(token);
     console.log(user);
-    if (categories.length < 4) {
+    if (userrr.categories.length < 4) {
       try {
         const response = await fetch("http://localhost:8000/api/update", {
           method: "POST",
@@ -68,23 +69,7 @@ const FormTeacher = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            gender: gender,
-            year: year,
-            day: day,
-            month: month,
-            fname: fname,
-            lname: lname,
-            pnum1: pnum1,
-            pnum2: pnum2,
-            province: province,
-            bag: bag,
-            sum: sum,
-            delgerengui: delgerengui,
-            surguuli: surguuli,
-            angi: angi,
-            tovchtaniltsuulga: tovchtaniltsuulga,
-            price: price,
-            categories: categories,
+            userrr
           }),
         });
         const data = await response.json();
@@ -92,14 +77,12 @@ const FormTeacher = () => {
           console.log("ok");
         }
         console.log(data);
-        setfname(userrr.fname);
-        setlname(userrr.lname);
+        localStorage.setItem("user", JSON.stringify(userrr));
       } catch (error) {
         console.log(error);
       }
     }
   };
-  console.log(userr);
   return (
     <div>
       <PlainNavbar />
@@ -146,7 +129,7 @@ const FormTeacher = () => {
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.fname}
                         // value={fname}
-                        onChange={(e) => setfname(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, fname: e.target.value })}
                       />
                     </div>
                   </div>
@@ -162,7 +145,7 @@ const FormTeacher = () => {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.lname}
-                        onChange={(e) => setlname(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, lname: e.target.value })}
                       />
                     </div>
                   </div>
@@ -178,7 +161,7 @@ const FormTeacher = () => {
                         type="email"
                         className="border-0 px-3 py-3 placeholder-1000 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.pnum1}
-                        onChange={(e) => setpnum1(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, pnum1: e.target.value })}
                       />
                     </div>
                   </div>
@@ -194,7 +177,7 @@ const FormTeacher = () => {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.pnum2}
-                        onChange={(e) => setpnum2(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, pnum2: e.target.value })}
                       />
                     </div>
                   </div>
@@ -210,7 +193,7 @@ const FormTeacher = () => {
                         type="number"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, price: e.target.value })}
                       />
                     </div>
                   </div>
@@ -234,7 +217,7 @@ const FormTeacher = () => {
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.province}
-                        onChange={(e) => setprovince(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, province: e.target.value })}
                       >
                         <option value="null">{userrr.province}</option>
                         <option value="Улаанбаатар">Улаанбаатар</option>
@@ -274,7 +257,7 @@ const FormTeacher = () => {
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.bag}
-                        onChange={(e) => setbag(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, bag: e.target.value })}
                       />
                     </div>
                   </div>
@@ -290,7 +273,7 @@ const FormTeacher = () => {
                         type="email"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.sum}
-                        onChange={(e) => setsum(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, sum: e.target.value })}
                       />
                     </div>
                   </div>
@@ -306,7 +289,7 @@ const FormTeacher = () => {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.delgerengui}
-                        onChange={(e) => setdelgerengui(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, delgerengui: e.target.value })}
                       />
                     </div>
                   </div>
@@ -318,9 +301,7 @@ const FormTeacher = () => {
                       className=""
                       type="radio"
                       value="male"
-                      onChange={(e) => {
-                        setGender(e.target.value);
-                      }}
+                      onChange={(e) => setUserrr({ ...userrr, gender: e.target.value })}
                       name="gender"
                     />{" "}
                     Male
@@ -328,9 +309,7 @@ const FormTeacher = () => {
                       className="ml-6"
                       type="radio"
                       value="female"
-                      onChange={(e) => {
-                        setGender(e.target.value);
-                      }}
+                      onChange={(e) => setUserrr({ ...userrr, gender: e.target.value })}
                       name="gender"
                     />{" "}
                     Female
@@ -347,7 +326,7 @@ const FormTeacher = () => {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.surguuli}
-                        onChange={(e) => setsurguuli(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, surguuli: e.target.value })}
                       />
                     </div>
                   </div>
@@ -364,9 +343,7 @@ const FormTeacher = () => {
                         className="inputDate"
                         defaultValue={userrr.year}
                         placeholder="Он"
-                        onChange={(e) => {
-                          setYear(e.target.value);
-                        }}
+                        onChange={(e) => setUserrr({ ...userrr, year: e.target.value })}
                         id="Year"
                         name="Year"
                         required
@@ -377,9 +354,7 @@ const FormTeacher = () => {
                         className="inputDate"
                         placeholder="Сар"
                         defaultValue={userrr.month}
-                        onChange={(e) => {
-                          setMonth(e.target.value);
-                        }}
+                        onChange={(e) => setUserrr({ ...userrr, month: e.target.value })}
                         id="month"
                         name="month"
                         required
@@ -390,9 +365,7 @@ const FormTeacher = () => {
                         className="inputDate"
                         placeholder="Өдөр"
                         defaultValue={userrr.day}
-                        onChange={(e) => {
-                          setDay(e.target.value);
-                        }}
+                        onChange={(e) => setUserrr({ ...userrr, day: e.target.value })}
                         id="day"
                         name="day"
                         required
@@ -412,7 +385,7 @@ const FormTeacher = () => {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.angi}
-                        onChange={(e) => setangi(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, angi: e.target.value })}
                       >
                         <option value="null">-Select-</option>
                         <option value="1">1</option>
@@ -475,7 +448,7 @@ const FormTeacher = () => {
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         rows="4"
                         defaultValue={userrr.tovchtaniltsuulga}
-                        onChange={(e) => settovchtaniltsuulga(e.target.value)}
+                        onChange={(e) => setUserrr({ ...userrr, tovchtaniltsuulga: e.target.value })}
                       ></textarea>
                     </div>
                   </div>
@@ -501,8 +474,14 @@ const FormTeacher = () => {
                           style={{
                             width: "100%",
                           }}
+                          value={userrr.categories}
                           maxTagCount={5}
-                          onChange={handleclick}
+                          onChange={(e) => {
+                            setUserrr({
+                              ...userrr,
+                              categories: e,
+                            });
+                          }}
                           placeholder="Please select"
                           options={a}
                         />
