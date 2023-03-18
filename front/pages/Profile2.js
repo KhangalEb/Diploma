@@ -3,7 +3,10 @@ import Footer from "./components/Footer";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import BackButton from "./components/BackButton";
+import { useRouter } from "next/router"
+import { redirect } from 'next/navigation';
 const Profile = () => {
+  const router = useRouter();
   const [userrr, setUserrr] = useState("");
   useEffect(() => {
     setUserrr(JSON.parse(localStorage.getItem("user")));
@@ -104,6 +107,12 @@ const Profile = () => {
                 </div>
               </div>
             </div>
+            <button
+              className="bg-1 p-4 w-50 rounded-3xl mt-6"
+              onClick={() => router.push("/info/formStudent")}
+            >
+              Update profile
+            </button>
             {/* <!-- End of friends card --> */}
           </div>
           {/* <!-- Right Side --> */}

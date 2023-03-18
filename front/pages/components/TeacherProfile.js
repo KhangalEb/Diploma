@@ -56,7 +56,7 @@ const Teacher = () => {
             <div className="text-center xl:text-left mb-3 xl:mb-0 flex flex-col xl:flex-row items-center justify-between xl:justify-start">
               <a
                 tabindex="0"
-                className=" focus:outline-none  text-gray-800 dark:text-gray-100 focus:outline-none"
+                className=" focus:outline-none  text-gray-800 dark:text-gray-100 "
               >
                 {" "}
                 <h2 className="mb-3 xl:mb-0 xl:mr-4 text-2xl  font-medium tracking-normal">

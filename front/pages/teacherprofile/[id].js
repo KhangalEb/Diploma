@@ -1,7 +1,16 @@
 import Navbarr from "../components/Navbarr";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-const TeacherProfile = () => {
+
+// export async function getServerSideProps() {
+//     // Fetch data from external API
+//     const res = await fetch(`http://localhost:8000/api/teacherList`);
+//     const data = await res.json();
+
+//     // Pass data to the page via props
+//     return { props: { mes: "haahhahaha" } }
+// }
+export default function TeacherProfile() {
     const router = useRouter();
     const { id } = router.query;
     const [dataa, setData] = useState([]);
@@ -17,13 +26,13 @@ const TeacherProfile = () => {
     console.log(dataa);
     useEffect(() => {
         dataa.map((e, ind) => {
-            console.log(dataa);
+            // console.log(dataa);
             if (e._id === id) {
                 console.log(e._id);
                 setDataTeacher(e);
             }
         });
-    }, []);
+    }, [dataa]);
     useEffect(() => {
         if (localStorage.getItem("token") === null) {
             router.push("/");
@@ -40,7 +49,7 @@ const TeacherProfile = () => {
     return (
         <div>
             <Navbarr />
-            <div className="p-8">
+            <div className="p-8 container flex justify-center mx-auto">
                 <div className="p-8 bg-white shadow mt-24">
                     {" "}
                     <div className="grid grid-cols-1 md:grid-cols-3">
@@ -95,7 +104,7 @@ const TeacherProfile = () => {
                     <div className="mt-20 text-center border-b pb-12">
                         {" "}
                         <h1 className="text-4xl font-medium text-gray-700">
-                            Jessica Jones,{" "}
+                            {datateacher.fname} {datateacher.lname},{" "}
                             <span className="font-light text-gray-500">27</span>
                         </h1>{" "}
                         <p className="font-light text-gray-600 mt-3">Bucharest, Romania</p>{" "}
@@ -122,5 +131,3 @@ const TeacherProfile = () => {
         </div>
     );
 };
-
-export default TeacherProfile;

@@ -1,6 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { redirect } from 'next/navigation';
 import { useRouter } from "next/router";
 export default function DropDown() {
   const router = useRouter();

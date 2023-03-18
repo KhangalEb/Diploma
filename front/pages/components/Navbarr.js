@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import DropDown from "./Navbar-drop-down";
+import { redirect } from "next/navigation";
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 

@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { useRouter } from "next/router";
 import HomeTeacher from "./components/HomeTeacher";
 import HomeStudent from "./components/HomeStudent";
+import { redirect } from "next/navigation";
 const Dashboard = () => {
   const router = useRouter();
   const [userr, setUser] = useState("");

@@ -1,3 +1,4 @@
+import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
@@ -7,7 +8,38 @@ import TeachersList from "./TeachersList";
 import CategoryList from "./CategoryList";
 import ScheduleList from "./ScheduleList";
 import NavbarrTeacher from "./NavbarrTeacher";
+
+import { DatePicker, Space, Table } from 'antd';
+
 export default function Home() {
+  const { RangePicker } = DatePicker;
+  const onOk = (value) => {
+    console.log('onOk: ', value);
+  };
+  const onChange = (value, dateString) => {
+    console.log('Formatted Selected Time: ', moment(dateString[0]).format("hh:mm"));
+
+    const n = moment(dateString[1]).format("hh") - moment(dateString[0]).format("hh");
+    console.log(n)
+    if (n > 1 || n < 0) {
+      alert("1 tsag songono uu")
+    } else {
+      alert("success")
+    }
+  };
+
+  const columns = [
+    {
+      title: 'Өдөр',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Цаг',
+      dataIndex: 'age',
+      key: 'age',
+    },
+  ];
   return (
     <div>
       <Head>
@@ -18,22 +50,20 @@ export default function Home() {
       </Head>
       <NavbarrTeacher></NavbarrTeacher>
       <div className="container mx-auto">
-        {/* <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
-          <div className="col-span-3">
-            <ScheduleList />
-          </div>
-          <div className="col-span-2">
-            <CategoryList />
-          </div>
-        </div> */}
+        <Space direction="vertical" size={12}>
+          {/* <DatePicker showTime onChange={onChange} onOk={onOk} /> */}
+          <RangePicker
+            showTime={{
+              format: 'HH:00',
+            }}
+            format="YYYY-MM-DD HH:00"
+            onChange={onChange}
+            onOk={onOk}
+          />
+        </Space>
+        <Table columns={columns} />;
+        <Footer></Footer>
       </div>
-      {/* <div>
-        <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4">
-          Recommended Teachers
-        </h1>
-      </div> */}
-      {/* <TeachersList></TeachersList> */}
-      <Footer></Footer>
     </div>
   );
 }
