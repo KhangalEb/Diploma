@@ -4,6 +4,7 @@ import PlainNavbar from "./components/PlainNavbar";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import jwt from "jsonwebtoken";
+import { PageWrapper } from "./components/page-warapper";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,62 +55,63 @@ const Login = () => {
   return (
     <div>
       <PlainNavbar />
-      <section className="h-auto">
-        <div className="flex justify-center items-center flex-wrap mt-12 mb-28 text-gray-800">
-          <div className="lg:w-3/12">
-            <h1 className="text-center text-xl  uppercase font-semibold leading-snug">
-              Log in as a STUDENT
-            </h1>
-            <form>
-              <Image
-                src="/Logo eteacher.png"
-                alt="Logo"
-                width={80}
-                height={80}
-                style={{
-                  margin: "auto",
-                  marginBottom: "20px",
-                }}
-              />
-              <div className="mb-6">
-                <input
-                  type="text"
-                  className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+      <PageWrapper>
+        <section className="h-auto">
+          <div className="flex justify-center items-center flex-wrap mt-12 mb-28 text-gray-800">
+            <div className="lg:w-3/12">
+              <h1 className="text-center text-xl  uppercase font-semibold leading-snug">
+                Log in as a STUDENT
+              </h1>
+              <form>
+                <Image
+                  src="/Logo eteacher.png"
+                  alt="Logo"
+                  width={80}
+                  height={80}
+                  style={{
+                    margin: "auto",
+                    marginBottom: "20px",
+                  }}
                 />
-              </div>
-              <div className="mb-6">
-                <input
-                  type="password"
-                  className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="flex justify-between items-center mb-6 float-right">
-                <a
-                  href="#!"
-                  className=" hover:text-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out text-right"
+                <div className="mb-6">
+                  <input
+                    type="text"
+                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="mb-6">
+                  <input
+                    type="password"
+                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <div className="flex justify-between items-center mb-6 float-right">
+                  <a
+                    href="#!"
+                    className=" hover:text-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out text-right"
+                  >
+                    Forgot password?
+                  </a>
+                </div>
+                <button
+                  type="submit"
+                  className="inline-block px-7 py-3 bg-500 text-0 font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                  onClick={handleSubmit1}
                 >
-                  Forgot password?
-                </a>
-              </div>
-              <button
-                type="submit"
-                className="inline-block px-7 py-3 bg-500 text-0 font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
-                onClick={handleSubmit1}
-              >
-                Sign in
-              </button>
-              <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
-                <p className="text-center font-semibold mx-4 mb-0">OR</p>
-              </div>
-              {/* <a
+                  Sign in
+                </button>
+                <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+                  <p className="text-center font-semibold mx-4 mb-0">OR</p>
+                </div>
+                {/* <a
                 className="px-7 py-3 text-0 font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-600"
                 href="#!"
                 role="button"
@@ -128,20 +130,21 @@ const Login = () => {
                 </svg>
                 Continue with Facebook
               </a> */}
-              {/* <div className="mt-2 ">Don't have account?</div> */}
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                className="inline-block px-7 mt-2 py-3 bg-1 text-0 font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
-              >
-                Sign Up
-              </button>
-            </form>
+                {/* <div className="mt-2 ">Don't have account?</div> */}
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  className="inline-block px-7 mt-2 py-3 bg-1 text-0 font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                >
+                  Sign Up
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </PageWrapper>
       <Footer />
     </div>
   );

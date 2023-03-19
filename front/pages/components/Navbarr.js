@@ -52,13 +52,15 @@ export default function Navbar() {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="/dashboard"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Home</span>
-                </a>
+                <motion.div whileHover={{ scale: 1.2 }}>
+                  <a
+                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
+                    href="/dashboard"
+                  >
+                    <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
+                    <span className="ml-2">Home</span>
+                  </a>
+                </motion.div>
               </li>
               <li className="nav-item">
                 <a

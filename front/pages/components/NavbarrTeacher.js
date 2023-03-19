@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import DropDown from "./Navbar-drop-down";
+import { motion } from "framer-motion";
 export default function NavbarrTeacher() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
@@ -50,35 +51,43 @@ export default function NavbarrTeacher() {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="/dashboard"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Home</span>
-                </a>
+                <motion.div whileHover={{ scale: 1.2 }}>
+                  <a
+                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
+                    href="/dashboard"
+                  >
+                    <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
+                    <span className="ml-2">Home</span>
+                  </a>
+                </motion.div>
+
               </li>
 
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="#"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">About Us</span>
-                </a>
+                <motion.div whileHover={{ scale: 1.2 }}>
+                  <a
+                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
+                    href="#"
+                  >
+                    <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
+                    <span className="ml-2">About Us</span>
+                  </a>
+                </motion.div>
+
               </li>
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="#"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Contact Us</span>
-                </a>
+                <motion.div whileHover={{ scale: 1.2 }}>
+                  <a
+                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
+                    href="#"
+                  >
+                    <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
+                    <span className="ml-2">Contact Us</span>
+                  </a>
+                </motion.div>
               </li>
             </ul>
-            <div className="flex items-center ml-auto">
+            <div className="flex items-center ml-auto mr-10">
               <div
                 style={{
                   borderRadius: "45px",

@@ -9,26 +9,6 @@ import Router, { useRouter } from "next/router";
 import jwt from "jsonwebtoken";
 const FormTeacher = () => {
   const router = useRouter();
-  // const [gender, setGender] = useState("");
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date());
-  // const [year, setYear] = useState("");
-  // const [day, setDay] = useState("");
-  // const [month, setMonth] = useState("");
-  // const [fname, setfname] = useState("");
-  // const [lname, setlname] = useState("");
-  // const [pnum1, setpnum1] = useState("");
-  // const [pnum2, setpnum2] = useState("");
-  // const [province, setprovince] = useState("");
-  // const [bag, setbag] = useState("");
-  // const [sum, setsum] = useState("");
-  // const [delgerengui, setdelgerengui] = useState("");
-  // const [surguuli, setsurguuli] = useState("");
-  // const [angi, setangi] = useState("");
-  const [categories, setcategories] = useState([]);
-  const [userr, setUser] = useState("");
-  // const [price, setPrice] = useState("");
-  const [categoriess, setCategoriess] = useState([]);
   const [dataa, setData] = useState([]);
   const [userrr, setUserrr] = useState("");
 
@@ -68,9 +48,9 @@ const FormTeacher = () => {
           Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
+          body: JSON.stringify(
             userrr
-          }),
+          ),
         });
         const data = await response.json();
         if (data.status === "ok") {

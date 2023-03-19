@@ -61,9 +61,9 @@ export default function Home() {
             onOk={onOk}
           />
         </Space>
-        <Table columns={columns} />;
-        <Footer></Footer>
+        <Table columns={columns} />
       </div>
+      <Footer />
     </div>
   );
 }
