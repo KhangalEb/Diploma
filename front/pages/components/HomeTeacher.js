@@ -18,10 +18,15 @@ export default function Home() {
   };
   const onChange = (value, dateString) => {
     console.log('Formatted Selected Time: ', moment(dateString[0]).format("hh:mm"));
-
-    const n = moment(dateString[1]).format("hh") - moment(dateString[0]).format("hh");
-    console.log(n)
-    if (n > 1 || n < 0) {
+    const h1 = moment(dateString[0]).format("hh")
+    const h2 = moment(dateString[1]).format("hh")
+    const year1 = moment(dateString[0]).format("YYYY")
+    const year2 = moment(dateString[1]).format("YYYY")
+    const day1 = moment(dateString[0]).format("DD")
+    const day2 = moment(dateString[1]).format("DD")
+    console.log(h1 + h2 + day1 + day2 + year1 + year2)
+    const n = h2 - h1;
+    if (n > 1 || n < 0 || year2 !== year1 || day2 !== day1) {
       alert("1 tsag songono uu")
     } else {
       alert("success")
@@ -48,7 +53,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavbarrTeacher></NavbarrTeacher>
+      <NavbarrTeacher />
       <div className="container mx-auto">
         <Space direction="vertical" size={12}>
           {/* <DatePicker showTime onChange={onChange} onOk={onOk} /> */}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-
+import { useRouter } from "next/router";
 const SubjectCard = () => {
+  const router = useRouter();
   const [dataa, setData] = useState([]);
   console.log(dataa);
   const fetchData = async () => {
@@ -12,6 +13,30 @@ const SubjectCard = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const handleClick = async (e) => {
+    try {
+      const response = await fetch("http://localhost:8000/api/teacherListBySubjects", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          { subject: subject }
+        ),
+      });
+      const data = await response.json();
+      localStorage.setItem("FilteredTeachers", JSON.stringify(data));
+      if (data.status === "ok") {
+        console.log("ok");
+      }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+
+
+    router.push(`/subject/${e}`);
+  };
   return (
     <>
       <div className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -39,12 +64,19 @@ const SubjectCard = () => {
               </div>
               <div className="pl-3 pr-10 mt-1">
                 <h3 className="break-words font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">
-                  {i.title}
+                  {i.category}
                 </h3>
                 <div className="flex items-end mt-4">
                   <h2 className="break-all text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">
-                    {i.description}
+                    {i.name}
                   </h2>
+
+
+                </div>
+                <div className="flex items-end mt-4">
+                  <p className="break-all text-indigo-700 dark:text-indigo-600 leading-normal ">
+                    {i.description}
+                  </p>
 
 
                 </div>
@@ -55,7 +87,7 @@ const SubjectCard = () => {
                 </div>
                 <div className="float-right mt-5">
                   <div className="bg-500 p-3 border text-0 rounded-2xl">
-                    <button>View</button>
+                    <button onClick={() => handleClick(i.title)}>View</button>
                   </div>
                 </div>
               </div>

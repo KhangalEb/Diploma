@@ -86,7 +86,6 @@ const FormStudent = () => {
                         type="text"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         defaultValue={userrr.fname}
-                        // value={fname}
                         onChange={(e) => setUserrr({ ...userrr, fname: e.target.value })}
                       />
                     </div>
@@ -139,22 +138,7 @@ const FormStudent = () => {
                       />
                     </div>
                   </div>
-                  <div className="w-full lg:w-6/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
-                        price
-                      </label>
-                      <input
-                        type="number"
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        defaultValue={userrr.price}
-                        onChange={(e) => setUserrr({ ...userrr, price: e.target.value })}
-                      />
-                    </div>
-                  </div>
+
                 </div>
 
                 <hr className="mt-6 border-b-1 border-blueGray-300" />
@@ -261,7 +245,7 @@ const FormStudent = () => {
                       value="male"
                       onChange={(e) => setUserrr({ ...userrr, gender: e.target.value })}
                       name="gender"
-                    />{" "}
+                    />
                     Male
                     <input
                       className="ml-6"

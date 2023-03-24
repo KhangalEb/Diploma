@@ -66,14 +66,14 @@ const TeachersList = () => {
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
-                          {" "}
+
                           <path
                             fillRule="evenodd"
                             d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                             clipRule="evenodd"
                           />
-                        </svg>{" "}
-                      </div>{" "}
+                        </svg>
+                      </div>
                     </div>
                     <div className=" px-6 mt-16">
                       <button
@@ -84,7 +84,7 @@ const TeachersList = () => {
                         {i.fname} {i.lname}
                       </button>
                       <p className=" text-700 text-xl text-center font-bold">
-                        {i.price}
+                        {i.price}₮
                       </p>
                       <p className="text-center text-gray-600 dark:text-gray-200 text-base pt-3 font-normal">
                         {i.tovchtaniltsuulga}

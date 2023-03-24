@@ -17,10 +17,33 @@ function CategoryList() {
   const [subject, setSubject] = useState([]);
 
   const handleclick = (e) => {
+
     setSubject(e);
   };
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
+    console.log(subject)
+    try {
+      const response = await fetch("http://localhost:8000/api/teacherListBySubjects", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          { subject: subject }
+        ),
+      });
+      const data = await response.json();
+      localStorage.setItem("FilteredTeachers", JSON.stringify(data));
+      if (data.status === "ok") {
+        console.log("ok");
+      }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+
+
     router.push(`/subject/${subject}`);
   };
 

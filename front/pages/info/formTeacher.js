@@ -17,7 +17,7 @@ const FormTeacher = () => {
   }, []);
   console.log(userrr);
   const fetchData = async () => {
-    return fetch("http://localhost:8000/api/categoryData")
+    return fetch("http://localhost:8000/api/subjectData")
       .then((response) => response.json())
       .then((data) => setData(data));
   };
@@ -39,7 +39,7 @@ const FormTeacher = () => {
     e.preventDefault();
     const user = jwt.decode(token);
     console.log(user);
-    if (userrr.categories.length < 4) {
+    if (userrr.subject.length < 4) {
       try {
         const response = await fetch("http://localhost:8000/api/update", {
           method: "POST",
@@ -454,12 +454,12 @@ const FormTeacher = () => {
                           style={{
                             width: "100%",
                           }}
-                          value={userrr.categories}
+                          value={userrr.subject}
                           maxTagCount={5}
                           onChange={(e) => {
                             setUserrr({
                               ...userrr,
-                              categories: e,
+                              subject: e,
                             });
                           }}
                           placeholder="Please select"
