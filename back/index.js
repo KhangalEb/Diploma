@@ -72,7 +72,7 @@ app.post("/api/register", async (req, res) => {
       angi: req.body.angi,
       tovchtaniltsuulga: req.body.tovchtaniltsuulga,
       price: req.body.price,
-      categories: req.body.categories,
+      subject: req.body.subject,
     });
     res.json({ status: "ok" });
   } catch (error) {
@@ -191,6 +191,7 @@ app.get("/api/subjectData", async (req, res) => {
   Subject.find({ id: req.params.id }, function (err, obj) {
     res.send(obj);
   });
+
 });
 
 app.post("/api/update", authenticateJWT, async (req, res) => {
@@ -208,7 +209,47 @@ app.post("/api/update", authenticateJWT, async (req, res) => {
     res.json({ status: "error", error: "userData error" });
   }
 });
+app.post("/api/updateStudent", authenticateJWT, async (req, res) => {
+  try {
+    const _id = req.user._id;
 
+    Student.findByIdAndUpdate(_id, req.body).then((docs) => {
+      if (docs) {
+        res.json({ success: true, data: req.body });
+      }
+      res.json({ success: false, data: docs });
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "userData error" });
+  }
+});
+
+// app.get("/api/teacherListBySubjects", function (req, res) {
+
+//   // var dbsubjects = [];
+//   // Subject.find({ title: "Монгол хэл" }).then((data) => {
+//   //   res.send({ status: "ok", data: data });
+//   //   data.map((d, k) => {
+//   //     dbsubjects.push(d._id);
+
+//   //   })
+//   //   console.log(dbsubjects)
+//   // })
+//   //   .catch((error) => {
+//   //     res.send({ status: "error", data: error });
+//   //   });
+
+//   // User.find({ subject: "Монгол хэл" }, function (err, users) {
+//   //   var userMap = [];
+
+//   //   users.forEach(function (user, i) {
+//   //     userMap.push(user);
+//   //   });
+
+//   //   res.send(userMap);
+//   // });
+// });
 app.get("/api/teacherList", function (req, res) {
   User.find({}, function (err, users) {
     var userMap = [];
@@ -222,8 +263,9 @@ app.get("/api/teacherList", function (req, res) {
     res.send(userMap);
   });
 });
+
 app.get("/api/studentList", function (req, res) {
-  User.find({}, function (err, users) {
+  Student.find({}, function (err, users) {
     var userMap = [];
 
     users.forEach(function (user) {
@@ -236,8 +278,17 @@ app.get("/api/studentList", function (req, res) {
   });
 });
 
-app.get("/api/user", authenticateJWT, async (req, res) => {
-  res.send("lol");
+app.post("/api/teacherListBySubjects", (req, res) => {
+  console.log(req.body);
+  User.find({ subject: req.body.subject }, function (err, users) {
+    var userMap = [];
+
+    users.forEach(function (user, i) {
+      userMap.push(user);
+    });
+
+    res.send(userMap);
+  });
 });
 
 app.get("/api/allUsers", async (req, res) => {
