@@ -7,6 +7,7 @@ import TeachersList from "./TeachersList";
 import CategoryList from "./CategoryList";
 import ScheduleList from "./ScheduleList";
 import Navbarr from "./Navbarr";
+import { PageWrapper } from "./page-warapper";
 export default function Home() {
   return (
     <div>
@@ -16,23 +17,25 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbarr></Navbarr>
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
-          <div className="col-span-3">
-            <ScheduleList />
-          </div>
-          <div className="col-span-2">
-            <CategoryList />
+      <Navbarr />
+      <PageWrapper>
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
+            <div className="col-span-3">
+              <ScheduleList />
+            </div>
+            <div className="col-span-2">
+              <CategoryList />
+            </div>
           </div>
         </div>
-      </div>
+      </PageWrapper>
       <div>
         <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4">
           Recommended Teachers
         </h1>
       </div>
-      <TeachersList></TeachersList>
+      <TeachersList />
       <Footer></Footer>
     </div>
   );

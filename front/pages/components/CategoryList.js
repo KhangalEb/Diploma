@@ -17,7 +17,6 @@ function CategoryList() {
   const [subject, setSubject] = useState([]);
 
   const handleclick = (e) => {
-
     setSubject(e);
   };
   const handleClick = async (e) => {
@@ -63,7 +62,7 @@ function CategoryList() {
               allowClear
               showSearch
               style={{
-                width: 200,
+                width: 220,
               }}
               placeholder="Search to Select"
               optionFilterProp="children"
@@ -86,7 +85,7 @@ function CategoryList() {
             </Select>
             <button
               type="submit"
-              className=" px-5 py-[12px] flex items-center justify-between w-full shadow-md bg-500 mt-4 text-0 rounded-lg"
+              className=" px-5 py-[6px] flex items-center justify-between w-56 shadow-md bg-500 mt-4 text-0 rounded-lg"
               onClick={handleClick}
             >
               Search

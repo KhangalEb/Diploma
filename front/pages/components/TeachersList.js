@@ -18,6 +18,13 @@ const TeachersList = () => {
     // setIsModalOpen(true);
     // createModal();
   };
+  const handleClick = (i) => {
+    if (localStorage.getItem("token") === null) {
+      router.push("/LoginAs")
+    } else {
+      router.push(`/teacherprofile/${i}`)
+    }
+  }
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -79,7 +86,7 @@ const TeachersList = () => {
                       <button
                         className="mx-auto block font-bold dark:text-white text-2xl text-center mb-1"
                         key={i._id}
-                        onClick={(e) => router.push(`/teacherprofile/${i._id}`)}
+                        onClick={() => handleClick(i._id)}
                       >
                         {i.fname} {i.lname}
                       </button>

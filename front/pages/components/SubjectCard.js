@@ -21,7 +21,7 @@ const SubjectCard = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(
-          { subject: subject }
+          { subject: e }
         ),
       });
       const data = await response.json();

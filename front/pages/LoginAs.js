@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import PlainNavbar from "./components/PlainNavbar";
 import { useRouter } from "next/router";
 import { PageWrapper } from "./components/page-warapper";
+import BackButton from "./components/BackButton";
 const Info = () => {
   const router = useRouter();
   const handleClick = (e) => {
@@ -18,6 +19,7 @@ const Info = () => {
     <div>
 
       <PlainNavbar />
+      <BackButton />
       <PageWrapper>
         <div className="flex flex-col items-center my-48">
           <h1 className="font-bold text-center">LOGIN AS</h1>
