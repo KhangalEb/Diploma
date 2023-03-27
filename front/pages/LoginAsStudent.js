@@ -2,18 +2,36 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import PlainNavbar from "./components/PlainNavbar";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
 import { PageWrapper } from "./components/page-warapper";
+import Notification from "./components/Notification";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
   const router = useRouter();
+  const [notification, setNotification] = useState({
+    message: "",
+    success: false,
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/info");
   };
+  useEffect(() => {
+    if (!notification.message) return;
+
+    const timer = setTimeout(() => {
+      setNotification({
+        message: "",
+        success: false,
+      });
+    }, 3000);
+
+
+    return () => clearTimeout(timer);
+  }, [notification]);
   const handleSubmit1 = async (e) => {
     e.preventDefault();
     try {
@@ -42,10 +60,16 @@ const Login = () => {
         const dataa = await req.json();
         console.log(dataa.data);
         localStorage.setItem("user", JSON.stringify(dataa.data));
-        alert("login success");
+        setNotification({
+          message: "Амжилттай",
+          success: true,
+        });
         router.push("/dashboard");
       } else {
-        alert("error login");
+        setNotification({
+          message: "Э-Майл эсвэл нууц үг буруу байна",
+          success: false,
+        });
       }
       console.log(data);
     } catch (error) {
@@ -55,6 +79,10 @@ const Login = () => {
   return (
     <div>
       <PlainNavbar />
+      <Notification
+        message={notification.message}
+        success={notification.success}
+      />
       <PageWrapper>
         <section className="h-auto">
           <div className="flex justify-center items-center flex-wrap mt-12 mb-28 text-gray-800">

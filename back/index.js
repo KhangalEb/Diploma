@@ -198,12 +198,8 @@ app.post("/api/update", authenticateJWT, async (req, res) => {
   try {
     const _id = req.user._id;
 
-    User.findByIdAndUpdate(_id, req.body).then((docs) => {
-      if (docs) {
-        res.json({ success: true, data: req.body });
-      }
-      res.json({ success: false, data: docs });
-    });
+    User.findByIdAndUpdate(_id, req.body)
+    res.json({ success: true, data: req.body });
   } catch (error) {
     console.log(error);
     res.json({ status: "error", error: "userData error" });
@@ -213,12 +209,8 @@ app.post("/api/updateStudent", authenticateJWT, async (req, res) => {
   try {
     const _id = req.user._id;
 
-    Student.findByIdAndUpdate(_id, req.body).then((docs) => {
-      if (docs) {
-        res.json({ success: true, data: req.body });
-      }
-      res.json({ success: false, data: docs });
-    });
+    Student.findByIdAndUpdate(_id, req.body);
+    res.json({ success: true, data: req.body });
   } catch (error) {
     console.log(error);
     res.json({ status: "error", error: "userData error" });

@@ -108,7 +108,7 @@ export default function Navbar() {
                 </motion.div>
               </li>
             </ul>
-            <div className="flex items-center ml-auto">
+            <div className="flex items-center ml-auto mr-20">
               <div
                 style={{
                   borderRadius: "45px",

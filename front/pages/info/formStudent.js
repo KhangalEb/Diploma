@@ -6,14 +6,32 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Router, { useRouter } from "next/router";
+import Notification from "../components/Notification";
 import jwt from "jsonwebtoken";
 const FormStudent = () => {
   const router = useRouter();
   const [userrr, setUserrr] = useState("");
+  const [notification, setNotification] = useState({
+    message: "",
+    success: false,
+  });
+
   useEffect(() => {
     setUserrr(JSON.parse(localStorage.getItem("user")));
   }, []);
+  useEffect(() => {
+    if (!notification.message) return;
 
+    const timer = setTimeout(() => {
+      setNotification({
+        message: "",
+        success: false,
+      });
+    }, 3000);
+
+
+    return () => clearTimeout(timer);
+  }, [notification]);
   const handleSubmit = async (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault();
@@ -32,18 +50,28 @@ const FormStudent = () => {
         ),
       });
       const data = await response.json();
-      if (data.status === "ok") {
-        console.log("ok");
-      }
-      console.log(data);
+
+
       localStorage.setItem("user", JSON.stringify(userrr));
+      setNotification({
+        message: "Амжилттай",
+        success: true,
+      });
     } catch (error) {
+      setNotification({
+        message: "Алдаа гарлаа",
+        success: false,
+      });
       console.log(error);
     }
   };
   return (
     <div>
       <PlainNavbar />
+      <Notification
+        message={notification.message}
+        success={notification.success}
+      />
       <section className=" py-1 bg-blueGray-50">
         <div className="w-full lg:w-8/12 px-4 mx-auto mt-6">
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">

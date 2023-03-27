@@ -87,7 +87,7 @@ export default function NavbarrTeacher() {
                 </motion.div>
               </li>
             </ul>
-            <div className="flex items-center ml-auto mr-10">
+            <div className="flex items-center ml-auto mr-20">
               <div
                 style={{
                   borderRadius: "45px",
