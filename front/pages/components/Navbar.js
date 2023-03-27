@@ -61,7 +61,7 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/about-us"
                   className="block py-2 pl-3 pr-4 text-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-900 md:p-0"
                 >
                   About Us
