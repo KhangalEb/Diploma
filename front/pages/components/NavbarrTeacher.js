@@ -16,7 +16,7 @@ export default function NavbarrTeacher() {
                 width={50}
                 height={30}
               />
-              <span className="self-center text-xl font-semibold whitespace-nowrap text-0 pl-2">
+              <span className="self-center text-xl font-semibold whitespace-nowrap text-0 pl-2 font-roboto">
                 E-Teacher
               </span>
             </a>
@@ -53,11 +53,11 @@ export default function NavbarrTeacher() {
               <li className="nav-item">
                 <motion.div whileHover={{ scale: 1.2 }}>
                   <a
-                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
+                    className=" px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75 "
                     href="/dashboard"
                   >
                     <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
-                    <span className="ml-2">Home</span>
+                    <span className=" ml-2">Home</span>
                   </a>
                 </motion.div>
 
@@ -70,7 +70,7 @@ export default function NavbarrTeacher() {
                     href="#"
                   >
                     <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                    <span className="ml-2">About Us</span>
+                    <span className="font-poppins ml-2">About Us</span>
                   </a>
                 </motion.div>
 
@@ -82,7 +82,7 @@ export default function NavbarrTeacher() {
                     href="#"
                   >
                     <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                    <span className="ml-2">Contact Us</span>
+                    <span className="font-poppins ml-2">Contact Us</span>
                   </a>
                 </motion.div>
               </li>

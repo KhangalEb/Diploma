@@ -59,7 +59,7 @@ export default function Navbar() {
                     href="/dashboard"
                   >
                     <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
-                    <span className="ml-2">Home</span>
+                    <span className="font-serif ml-2">Home</span>
                   </a>
                 </motion.div>
               </li>
@@ -70,7 +70,7 @@ export default function Navbar() {
                     href="/courses"
                   >
                     <i className="fab fa-twitter text-lg leading-lg text-0 opacity-75"></i>
-                    <span className="ml-2">Courses</span>
+                    <span className="font-serif ml-2">Courses</span>
                   </a>
                 </motion.div>
               </li>
@@ -81,7 +81,7 @@ export default function Navbar() {
                     href="/Teachers"
                   >
                     <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                    <span className="ml-2">Teachers</span>
+                    <span className="font-serif ml-2">Teachers</span>
                   </a>
                 </motion.div>
               </li>
@@ -92,7 +92,7 @@ export default function Navbar() {
                     href="#"
                   >
                     <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                    <span className="ml-2">About Us</span>
+                    <span className="font-serif ml-2">About Us</span>
                   </a>
                 </motion.div>
               </li>
@@ -103,7 +103,7 @@ export default function Navbar() {
                     href="#"
                   >
                     <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                    <span className="ml-2">Contact Us</span>
+                    <span className="font-serif ml-2">Contact Us</span>
                   </a>
                 </motion.div>
               </li>

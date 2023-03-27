@@ -84,7 +84,7 @@ const TeachersList = () => {
                     </div>
                     <div className=" px-6 mt-16">
                       <button
-                        className="mx-auto block font-bold dark:text-white text-2xl text-center mb-1"
+                        className="mx-auto block font-bold font-roboto dark:text-white text-2xl text-center mb-1"
                         key={i._id}
                         onClick={() => handleClick(i._id)}
                       >

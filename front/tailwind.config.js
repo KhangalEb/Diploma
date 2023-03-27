@@ -23,6 +23,12 @@ module.exports = {
       900: "#264882",
       1000: "#dddddd",
     },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+      glory: ["glory", "sans-serif"],
+      pop: ["pop", "sans"],
+      roboto: ['Roboto', 'sans-serif']
+    }
   },
   plugins: [],
 };

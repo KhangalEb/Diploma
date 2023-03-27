@@ -55,7 +55,7 @@ export default function NavbarMainHome() {
                   href="/"
                 >
                   <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Home</span>
+                  <span className="font-roboto ml-2">Home</span>
                 </a>
               </li>
               <li className="nav-item relative">
@@ -64,7 +64,7 @@ export default function NavbarMainHome() {
                   href="#"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">About Us</span>
+                  <span className="font-roboto ml-2">About Us</span>
                 </a>
               </li>
               <li className="nav-item relative">
@@ -73,7 +73,7 @@ export default function NavbarMainHome() {
                   href="#"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Contact Us</span>
+                  <span className="font-roboto ml-2">Contact Us</span>
                 </a>
               </li>
             </ul>

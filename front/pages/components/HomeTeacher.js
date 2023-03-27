@@ -10,6 +10,7 @@ import ScheduleList from "./ScheduleList";
 import NavbarrTeacher from "./NavbarrTeacher";
 
 import { DatePicker, Space, Table } from 'antd';
+import { PageWrapper } from "./page-warapper";
 
 export default function Home() {
   const { RangePicker } = DatePicker;
@@ -54,20 +55,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavbarrTeacher />
-      <div className="container mx-auto">
-        <Space direction="vertical" size={12}>
-          {/* <DatePicker showTime onChange={onChange} onOk={onOk} /> */}
-          <RangePicker
-            showTime={{
-              format: 'HH:00',
-            }}
-            format="YYYY-MM-DD HH:00"
-            onChange={onChange}
-            onOk={onOk}
-          />
-        </Space>
-        <Table columns={columns} />
-      </div>
+      <PageWrapper>
+        <div className="container mx-auto">
+          <Space direction="vertical" size={12}>
+            {/* <DatePicker showTime onChange={onChange} onOk={onOk} /> */}
+            <RangePicker
+              showTime={{
+                format: 'HH:00',
+              }}
+              format="YYYY-MM-DD HH:00"
+              onChange={onChange}
+              onOk={onOk}
+            />
+          </Space>
+          <Table columns={columns} />
+        </div>
+      </PageWrapper>
       <Footer />
     </div>
   );

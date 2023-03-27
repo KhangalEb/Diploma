@@ -16,7 +16,7 @@ export default function DropDownHome() {
     <div className="w-26">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center rounded-md bg-300 bg-opacity-40 px-4 py-2 text-sm font-medium text-0 hover:bg-opacity-30 focus:outline-none  focus-visible:ring-0 focus-visible:ring-opacity-75">
+          <Menu.Button className="inline-flex w-full justify-center rounded-md bg-300 bg-opacity-40 px-4 py-2 text-sm font-medium text-0 hover:bg-opacity-30 focus:outline-none  focus-visible:ring-0 focus-visible:ring-opacity-75 font-roboto">
             Let's Start!
           </Menu.Button>
         </div>
@@ -33,7 +33,7 @@ export default function DropDownHome() {
             <div className="px-1 py-1 ">
               <Menu.Item>
                 <button
-                  className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-400 hover:text-0"
+                  className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-400 hover:text-0 font-roboto"
                   onClick={handleClick}
                 >
                   Sign In
@@ -41,7 +41,7 @@ export default function DropDownHome() {
               </Menu.Item>
               <Menu.Item>
                 <button
-                  className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-500 hover:text-0"
+                  className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-500 hover:text-0 font-roboto"
                   onClick={handleClick1}
                 >
                   Sign Up

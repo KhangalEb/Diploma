@@ -11,6 +11,7 @@ import NavbarMainHome from "./components/NavbarMainHome";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { PageWrapper } from "./components/page-warapper";
+import AboutUs from "./components/AboutUs";
 
 export default function Home() {
   const router = useRouter();
@@ -39,14 +40,14 @@ export default function Home() {
               fill
               className="absolute brightness-50 object-cover"
             />
-            <h1 className=" mt-72 absolute xl:text-4xl my-auto  text-3xl text-gray-800 text-0 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10">
+            <h1 className=" mt-72 absolute xl:text-4xl my-auto  text-3xl text-gray-800 text-0 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10 font-roboto">
               Let's study from today
             </h1>
           </div>
         </div>
-
+        <AboutUs />
         <div>
-          <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4">
+          <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 font-roboto">
             Recommended Teachers
           </h1>
           <TeachersList></TeachersList>
