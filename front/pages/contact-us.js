@@ -1,10 +1,9 @@
-import AboutUs from "./components/AboutUs";
+import Contactus from "./components/ContactUs";
+import { useState, useEffect } from "react";
 import NavbarrTeacher from "./components/NavbarrTeacher";
 import Navbarr from "./components/Navbarr";
 import Footer from "./components/Footer";
-import { useState, useEffect } from "react";
-import NavbarMainHome from "./components/NavbarMainHome";
-const Aboutus = () => {
+const ContactUsPage = () => {
   const [userrr, setUserrr] = useState("");
   useEffect(() => {
     setUserrr(JSON.parse(localStorage.getItem("user")));
@@ -13,7 +12,7 @@ const Aboutus = () => {
     return (
       <div>
         <Navbarr />
-        <AboutUs />
+        <Contactus />
         <Footer />
       </div>
     );
@@ -21,12 +20,11 @@ const Aboutus = () => {
     return (
       <div>
         <NavbarrTeacher />
-        <AboutUs />
+        <Contactus />
         <Footer />
       </div>
     );
   }
-
 }
 
-export default Aboutus;
+export default ContactUsPage;

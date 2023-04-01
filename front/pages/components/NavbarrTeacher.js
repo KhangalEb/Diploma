@@ -6,7 +6,7 @@ export default function NavbarrTeacher() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3">
+      <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3 shadow-lg">
         <div className="container top-0 px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full top-0 flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a href="/dashboard" className="flex items-center">

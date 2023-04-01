@@ -10,6 +10,7 @@ import Navbarr from "../components/Navbarr";
 import BackButton from "../components/BackButton";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { PageWrapper } from "../components/page-warapper";
 const SubjectDetails = () => {
 
   const router = useRouter();
@@ -41,82 +42,84 @@ const SubjectDetails = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbarr></Navbarr>
-      <BackButton />
-      <h1 className="relative xl:text-4xl text-3xl text-center text-gray-800  font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10">
-        {subjectDetails}
-      </h1>
-      <h2 className="relative xl:text-2xl text-xl text-center text-gray-800  pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10">{subjectDetails}</h2>
-      {JSON.parse(localStorage.getItem("FilteredTeachers")).map((i, ind) => {
-        return (
-          <div
-            role="listitem"
-            className="  xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
-          >
-            <div className="bg-50 rounded overflow-hidden shadow-md  dark:bg-gray-900">
-              <div className="absolute -mt-0 w-full text-center">
-                <div className="w-32 h-32 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-24 w-24 z-10"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
+      <PageWrapper>
+        <BackButton />
+        <h1 className="relative xl:text-4xl text-3xl text-center text-gray-800  font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10">
+          {subjectDetails}
+        </h1>
+        <h2 className="relative xl:text-2xl text-xl text-center text-gray-800  pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10">{subjectDetails}</h2>
+        {JSON.parse(localStorage.getItem("FilteredTeachers")).map((i, ind) => {
+          return (
+            <div
+              role="listitem"
+              className="  xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
+            >
+              <div className="bg-50 rounded overflow-hidden shadow-md  dark:bg-gray-900">
+                <div className="absolute -mt-0 w-full text-center">
+                  <div className="w-32 h-32 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-24 w-24 z-10"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
 
-                    <path
-                      fillRule="evenodd"
-                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              </div>
-              <div className=" px-6 mt-16">
-                <button
-                  className="mx-auto block font-bold dark:text-white text-2xl text-center mb-1"
-                  key={i._id}
-                  onClick={(e) => router.push(`/teacherprofile/${i._id}`)}
-                >
-                  {i.fname} {i.lname}
-                </button>
-                <p className=" text-700 text-xl text-center font-bold">
-                  {i.price}₮
-                </p>
-                <p className="text-center text-gray-600 dark:text-gray-200 text-base pt-3 font-normal">
-                  {i.tovchtaniltsuulga}
-                </p>
+                <div className=" px-6 mt-16">
+                  <button
+                    className="mx-auto block font-bold dark:text-white text-2xl text-center mb-1"
+                    key={i._id}
+                    onClick={(e) => router.push(`/teacherprofile/${i._id}`)}
+                  >
+                    {i.fname} {i.lname}
+                  </button>
+                  <p className=" text-700 text-xl text-center font-bold">
+                    {i.price}₮
+                  </p>
+                  <p className="text-center text-gray-600 dark:text-gray-200 text-base pt-3 font-normal">
+                    {i.tovchtaniltsuulga}
+                  </p>
 
-                <div className="w-full flex justify-center pt-5 pb-5">
-                  <a href="#" className="mx-5">
-                    <div aria-label="Github" role="img">
-                      <img
-                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/gray-bg-with-description-svg1.svg"
-                        alt="github"
-                      />
-                    </div>
-                  </a>
-                  <a href="#" className="mx-5">
-                    <div aria-label="Twitter" role="img">
-                      <img
-                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/gray-bg-with-description-svg2.svg"
-                        alt="twitter"
-                      />
-                    </div>
-                  </a>
-                  <a href="#" className="mx-5">
-                    <div aria-label="Instagram" role="img">
-                      <img
-                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/gray-bg-with-description-svg3.svg"
-                        alt="instagram"
-                      />
-                    </div>
-                  </a>
+                  <div className="w-full flex justify-center pt-5 pb-5">
+                    <a href="#" className="mx-5">
+                      <div aria-label="Github" role="img">
+                        <img
+                          src="https://tuk-cdn.s3.amazonaws.com/can-uploader/gray-bg-with-description-svg1.svg"
+                          alt="github"
+                        />
+                      </div>
+                    </a>
+                    <a href="#" className="mx-5">
+                      <div aria-label="Twitter" role="img">
+                        <img
+                          src="https://tuk-cdn.s3.amazonaws.com/can-uploader/gray-bg-with-description-svg2.svg"
+                          alt="twitter"
+                        />
+                      </div>
+                    </a>
+                    <a href="#" className="mx-5">
+                      <div aria-label="Instagram" role="img">
+                        <img
+                          src="https://tuk-cdn.s3.amazonaws.com/can-uploader/gray-bg-with-description-svg3.svg"
+                          alt="instagram"
+                        />
+                      </div>
+                    </a>
 
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </PageWrapper>
     </div>
   );
 };

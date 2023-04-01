@@ -5,7 +5,7 @@ export default function NavbarMainHome() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3">
+      <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3 shadow-lg">
         <div className="container top-0 px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full top-0 flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a href="/" className="flex items-center">
@@ -48,35 +48,6 @@ export default function NavbarMainHome() {
             }
             id="example-navbar-danger"
           >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item relative">
-                <a
-                  className="px-3 py-2 block items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="/"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="font-roboto ml-2">Home</span>
-                </a>
-              </li>
-              <li className="nav-item relative">
-                <a
-                  className="px-3 py-2 block items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="#"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="font-roboto ml-2">About Us</span>
-                </a>
-              </li>
-              <li className="nav-item relative">
-                <a
-                  className="px-3 py-2 block items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                  href="#"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="font-roboto ml-2">Contact Us</span>
-                </a>
-              </li>
-            </ul>
             <div className="flex items-center ml-auto">
               <DropDownHome />
             </div>

@@ -1,4 +1,5 @@
 import Navbarr from "../components/Navbarr";
+import BackButton from "../components/BackButton";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import moment from "moment"
@@ -50,6 +51,7 @@ export default function TeacherProfile() {
     return (
         <div>
             <Navbarr />
+            <BackButton />
             <div className="p-8 container flex justify-center mx-auto">
                 <div className="p-8 bg-white shadow mt-24">
                     <div className="grid grid-cols-1 md:grid-cols-3">

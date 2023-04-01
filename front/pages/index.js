@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { PageWrapper } from "./components/page-warapper";
 import AboutUs from "./components/AboutUs";
 import { motion } from "framer-motion";
+import Contactus from "./components/ContactUs";
 export default function Home() {
 
   const router = useRouter();
@@ -50,6 +51,7 @@ export default function Home() {
         </div>
 
         <AboutUs />
+        <Contactus />
         <div>
 
           <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 font-roboto">

@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3">
+      <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-500 mb-3 shadow-lg">
         <div className="container top-0 px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full top-0 flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a href="/dashboard" className="flex items-center">
@@ -100,7 +100,7 @@ export default function Navbar() {
                 <motion.div whileHover={{ scale: 1.2 }}>
                   <a
                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-0 hover:opacity-75"
-                    href="#"
+                    href="contact-us"
                   >
                     <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
                     <span className="font-serif ml-2">Contact Us</span>

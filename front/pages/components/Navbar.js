@@ -36,7 +36,7 @@ const Navbar = () => {
             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
               <li>
                 <a
-                  href="/"
+                  href="/about-us"
                   className="block py-2 pl-3 pr-4 text-0 bg-blue-700 rounded md:bg-transparent md:text-0 md:p-0"
                   aria-current="page"
                 >
