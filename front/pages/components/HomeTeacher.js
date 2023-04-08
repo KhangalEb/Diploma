@@ -16,15 +16,37 @@ export default function Home() {
   const { RangePicker } = DatePicker;
   const [userrr, setUserrr] = useState("");
   const [dataa, setData] = useState([]);
-  const fetchData = async () => {
-    return fetch("http://localhost:8000/api/timetableData")
-      .then((response) => response.json())
-      .then((data) => setData(data));
-  };
+  const [dataatable, setDatatable] = useState([]);
+  const array = [];
   useEffect(() => {
     setUserrr(JSON.parse(localStorage.getItem("user")));
-    fetchData();
-  }, [dataa]);
+  }, []);
+
+  const filterData = (data) => {
+    const filteredData = data.filter((i) => {
+      if (userrr._id) {
+        return i.teacher === userrr._id;
+      }
+      return false;
+    });
+
+    console.log(filteredData);
+    setDatatable(filteredData);
+  };
+
+  const fetchData = async () => {
+    const response = await fetch("http://localhost:8000/api/timetableData");
+    const data = await response.json();
+    console.log(data);
+
+    filterData(data);
+  };
+  useEffect(() => {
+    if (userrr) {
+      fetchData();
+    }
+  }, [userrr, dataatable]);
+
   const onChange = async (value, dateString) => {
     console.log('Formatted Selected Time: ', moment(dateString[0]).format("YYYY-MM-DD HH:mm"), moment(dateString[1]).format("YYYY-MM-DD HH:mm"));
     const h1 = moment(dateString[0]).format("HH")
@@ -75,7 +97,6 @@ export default function Home() {
       key: 'edate',
     },
   ];
-  console.log(dataa);
   return (
     <div>
       <Head>
@@ -97,7 +118,7 @@ export default function Home() {
               onChange={onChange}
             />
           </Space>
-          <Table columns={columns} dataSource={dataa} />
+          <Table columns={columns} dataSource={dataatable} />
         </div>
       </PageWrapper>
       <Footer />

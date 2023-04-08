@@ -193,6 +193,19 @@ app.get("/api/timetableData", async (req, res) => {
   });
 });
 
+// app.post("/api/timetableDataByTeacher", (req, res) => {
+//   console.log(req.body);
+//   Timetable.find({ teacher: req.body.teacher }, function (err, users) {
+//     var userMap = [];
+
+//     users.forEach(function (user, i) {
+//       userMap.push(user);
+//     });
+
+//     res.send(userMap);
+//   });
+// });
+
 app.post("/api/subjectData", async (req, res) => {
   try {
     await Subject.create({
