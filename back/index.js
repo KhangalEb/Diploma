@@ -6,6 +6,7 @@ const User = require("./models/user.model");
 const Student = require("./models/student.model");
 const Category = require("./models/category.model");
 const Subject = require("./models/subject.model");
+const Timetable = require("./models/timetable.model");
 const jwt = require("jsonwebtoken");
 const authenticateJWT = require("./middleware/index");
 
@@ -174,6 +175,24 @@ app.get("/api/categoryData", async (req, res) => {
     res.send(obj);
   });
 });
+app.post("/api/timetableData", async (req, res) => {
+  try {
+    await Timetable.create({
+      sdate: req.body.sdate,
+      edate: req.body.edate,
+      teacher: req.body.teacher,
+    });
+    res.json({ status: "ok" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.get("/api/timetableData", async (req, res) => {
+  Timetable.find({ id: req.params.id }, function (err, obj) {
+    res.send(obj);
+  });
+});
+
 app.post("/api/subjectData", async (req, res) => {
   try {
     await Subject.create({
@@ -191,8 +210,9 @@ app.get("/api/subjectData", async (req, res) => {
   Subject.find({ id: req.params.id }, function (err, obj) {
     res.send(obj);
   });
-
 });
+
+
 
 app.post("/api/update", authenticateJWT, async (req, res) => {
   try {

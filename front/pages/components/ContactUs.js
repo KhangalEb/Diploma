@@ -30,7 +30,7 @@ const Contactus = () => {
               <div className="flex flex-wrap items-center">
                 <div className="grow-0 shrink-0 basis-auto block w-full lg:flex lg:w-6/12 xl:w-4/12">
                   <div className="map-container-2 w-full">
-                    <div className="mapouter"><div className="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=National university of mongolia&t=&z=10&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="yes" marginHeight="0" marginWidth="0"></iframe></div></div>
+                    <div className="mapouter"><div className="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=National university of mongolia&t=&z=10&ie=UTF8&iwloc=&output=embed" ></iframe></div></div>
                   </div>
 
                 </div>

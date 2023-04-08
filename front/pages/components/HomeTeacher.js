@@ -8,44 +8,74 @@ import TeachersList from "./TeachersList";
 import CategoryList from "./CategoryList";
 import ScheduleList from "./ScheduleList";
 import NavbarrTeacher from "./NavbarrTeacher";
-
+import { useState, useEffect } from "react";
 import { DatePicker, Space, Table } from 'antd';
 import { PageWrapper } from "./page-warapper";
 
 export default function Home() {
   const { RangePicker } = DatePicker;
-  const onOk = (value) => {
-    console.log('onOk: ', value);
+  const [userrr, setUserrr] = useState("");
+  const [dataa, setData] = useState([]);
+  const fetchData = async () => {
+    return fetch("http://localhost:8000/api/timetableData")
+      .then((response) => response.json())
+      .then((data) => setData(data));
   };
-  const onChange = (value, dateString) => {
-    console.log('Formatted Selected Time: ', moment(dateString[0]).format("hh:mm"));
-    const h1 = moment(dateString[0]).format("hh")
-    const h2 = moment(dateString[1]).format("hh")
+  useEffect(() => {
+    setUserrr(JSON.parse(localStorage.getItem("user")));
+    fetchData();
+  }, [dataa]);
+  const onChange = async (value, dateString) => {
+    console.log('Formatted Selected Time: ', moment(dateString[0]).format("YYYY-MM-DD HH:mm"), moment(dateString[1]).format("YYYY-MM-DD HH:mm"));
+    const h1 = moment(dateString[0]).format("HH")
+    const h2 = moment(dateString[1]).format("HH")
     const year1 = moment(dateString[0]).format("YYYY")
     const year2 = moment(dateString[1]).format("YYYY")
     const day1 = moment(dateString[0]).format("DD")
     const day2 = moment(dateString[1]).format("DD")
-    console.log(h1 + h2 + day1 + day2 + year1 + year2)
     const n = h2 - h1;
+    console.log(h1, h2);
     if (n > 1 || n < 0 || year2 !== year1 || day2 !== day1) {
       alert("1 tsag songono uu")
+
     } else {
-      alert("success")
+      try {
+        const response = await fetch("http://localhost:8000/api/timetableData", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            sdate: moment(dateString[0]).format("YYYY-MM-DD HH:mm"),
+            edate: moment(dateString[1]).format("YYYY-MM-DD HH:mm"),
+            teacher: userrr._id,
+          }),
+        });
+        const data = await response.json();
+        if (data.status === "ok") {
+          alert("added successfully");
+        }
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
+
   const columns = [
     {
-      title: 'Өдөр',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Эхлэх Цаг',
+      dataIndex: 'sdate',
+      key: 'sdate',
     },
     {
-      title: 'Цаг',
-      dataIndex: 'age',
-      key: 'age',
+      title: 'Дуусах Цаг',
+      dataIndex: 'edate',
+      key: 'edate',
     },
   ];
+  console.log(dataa);
   return (
     <div>
       <Head>
@@ -58,17 +88,16 @@ export default function Home() {
       <PageWrapper>
         <div className="container mx-auto">
           <Space direction="vertical" size={12}>
-            {/* <DatePicker showTime onChange={onChange} onOk={onOk} /> */}
+            {/* <DatePicker showTime onChange={onChange} onChange={onChange} /> */}
             <RangePicker
               showTime={{
                 format: 'HH:00',
               }}
               format="YYYY-MM-DD HH:00"
               onChange={onChange}
-              onOk={onOk}
             />
           </Space>
-          <Table columns={columns} />
+          <Table columns={columns} dataSource={dataa} />
         </div>
       </PageWrapper>
       <Footer />
