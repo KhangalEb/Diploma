@@ -85,23 +85,10 @@ function UsersTable() {
     }, [])
     return (
         <div>
-            <Radio.Group
-                onChange={({ target: { value } }) => {
-                    setSelectionType(value);
-                }}
-                value={selectionType}
-            >
-                <Radio value="checkbox">Checkbox</Radio>
-                <Radio value="radio">radio</Radio>
-            </Radio.Group>
 
             <Divider />
 
             <Table
-                rowSelection={{
-                    type: selectionType,
-                    ...rowSelection,
-                }}
                 columns={columns}
                 dataSource={dataa}
             />

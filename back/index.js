@@ -175,6 +175,16 @@ app.get("/api/categoryData", async (req, res) => {
     res.send(obj);
   });
 });
+app.delete("/api/categoryDataDelete/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    await Category.findByIdAndDelete(userId);
+    res.status(204).end();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to delete category.' });
+  }
+})
 app.post("/api/timetableData", async (req, res) => {
   try {
     await Timetable.create({
@@ -192,6 +202,7 @@ app.get("/api/timetableData", async (req, res) => {
     res.send(obj);
   });
 });
+
 
 // app.post("/api/timetableDataByTeacher", (req, res) => {
 //   console.log(req.body);
@@ -224,7 +235,16 @@ app.get("/api/subjectData", async (req, res) => {
     res.send(obj);
   });
 });
-
+app.delete("/api/subjectDataDelete/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    await Subject.findByIdAndDelete(userId);
+    res.status(204).end();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to delete category.' });
+  }
+})
 
 
 app.post("/api/update", authenticateJWT, async (req, res) => {

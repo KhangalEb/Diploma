@@ -1,6 +1,15 @@
-import { Divider, Radio, Table } from "antd";
+import { Divider, Radio, Table, Space } from "antd";
 import { useState, useEffect } from "react";
 import { Button } from "antd";
+const handleDelete = (id) => {
+  fetch(`http://localhost:8000/api/categoryDataDelete/${id}`, { method: 'DELETE' })
+    .then(() => {
+      alert("amjilttai")
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 const columns = [
   {
     title: "Категорийн нэр",
@@ -10,7 +19,17 @@ const columns = [
     title: "Категорийн тайлбар",
     dataIndex: "description",
   },
+  {
+    title: '',
+    key: 'action',
+    render: (record) => (
+      <Space size="middle">
+        <Button type="text" danger onClick={() => { handleDelete(record._id) }}>Delete</Button>
+      </Space>
+    ),
+  },
 ];
+
 const rowSelection = {
   onChange: (rowKey, selectedRows) => {
     console.log(`selectedRowKeys: ${rowKey}`, "selectedRows: ", selectedRows);
@@ -35,21 +54,13 @@ function TableCategory() {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div>
-      <Radio.Group
-        onChange={({ target: { value } }) => {
-          setSelectionType(value);
-        }}
-        value={selectionType}
-      >
-        <Radio value="checkbox">Checkbox</Radio>
-        <Radio value="radio">radio</Radio>
-      </Radio.Group>
 
       <Divider />
 
-      <Table rowSelection={rowSelection} columns={columns} dataSource={dataa} />
+      <Table columns={columns} dataSource={dataa} />
     </div>
   );
 }
