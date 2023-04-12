@@ -8,20 +8,38 @@ import TeachersList from "./TeachersList";
 import CategoryList from "./CategoryList";
 import ScheduleList from "./ScheduleList";
 import NavbarrTeacher from "./NavbarrTeacher";
-import { useState, useEffect } from "react";
-import { DatePicker, Space, Table } from 'antd';
+import { useState, useEffect, useCallback } from "react";
+import { DatePicker, Space, Table, Column } from 'antd';
 import { PageWrapper } from "./page-warapper";
-
+import Notification from "./Notification";
+import { useRouter } from "next/router";
 export default function Home() {
   const { RangePicker } = DatePicker;
   const [userrr, setUserrr] = useState("");
   const [dataa, setData] = useState([]);
   const [dataatable, setDatatable] = useState([]);
+  const router = useRouter();
+  const [notification, setNotification] = useState({
+    message: "",
+    success: false,
+  });
   const array = [];
   useEffect(() => {
     setUserrr(JSON.parse(localStorage.getItem("user")));
   }, []);
+  useEffect(() => {
+    if (!notification.message) return;
 
+    const timer = setTimeout(() => {
+      setNotification({
+        message: "",
+        success: false,
+      });
+    }, 3000);
+
+
+    return () => clearTimeout(timer);
+  }, [notification]);
   const filterData = (data) => {
     const filteredData = data.filter((i) => {
       if (userrr._id) {
@@ -34,19 +52,31 @@ export default function Home() {
     setDatatable(filteredData);
   };
 
-  const fetchData = async () => {
+  // const fetchData = async () => {
+  //   const response = await fetch("http://localhost:8000/api/timetableData");
+  //   const data = await response.json();
+  //   console.log(data);
+
+  //   filterData(data);
+  // };
+  // useEffect(() => {
+  //   if (userrr) {
+  //     fetchData();
+  //   }
+  // }, [userrr]);
+  const fetchData = useCallback(async () => {
     const response = await fetch("http://localhost:8000/api/timetableData");
     const data = await response.json();
     console.log(data);
 
     filterData(data);
-  };
+  }, [userrr]);
+
   useEffect(() => {
     if (userrr) {
       fetchData();
     }
-  }, [userrr, dataatable]);
-
+  }, [userrr]);
   const onChange = async (value, dateString) => {
     console.log('Formatted Selected Time: ', moment(dateString[0]).format("YYYY-MM-DD HH:mm"), moment(dateString[1]).format("YYYY-MM-DD HH:mm"));
     const h1 = moment(dateString[0]).format("HH")
@@ -58,7 +88,10 @@ export default function Home() {
     const n = h2 - h1;
     console.log(h1, h2);
     if (n > 1 || n < 0 || year2 !== year1 || day2 !== day1) {
-      alert("1 tsag songono uu")
+      setNotification({
+        message: "Нэмэгдэж буй цагийн дээд хэмжээ 1 цаг байна.",
+        success: false,
+      });
 
     } else {
       try {
@@ -75,7 +108,11 @@ export default function Home() {
         });
         const data = await response.json();
         if (data.status === "ok") {
-          alert("added successfully");
+          setNotification({
+            message: "Амжилттай Нэмэгдлээ",
+            success: true,
+          });
+
         }
         console.log(data);
       } catch (error) {
@@ -83,7 +120,23 @@ export default function Home() {
       }
     }
   };
+  const handleDelete = async (id) => {
+    try {
+      fetch(`http://localhost:8000/api/timetableDataDelete/${id}`, { method: 'DELETE' })
+        .then(() => {
+          setNotification({
+            message: "Амжилттай устгагдлаа",
+            success: true,
+          });
 
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const columns = [
     {
@@ -96,6 +149,15 @@ export default function Home() {
       dataIndex: 'edate',
       key: 'edate',
     },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (record) => (
+        <Space size="middle">
+          <button onClick={() => { handleDelete(record._id) }} className=" text-3">Delete</button>
+        </Space>
+      ),
+    },
   ];
   return (
     <div>
@@ -106,6 +168,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavbarrTeacher />
+      <Notification
+        message={notification.message}
+        success={notification.success}
+      />
       <PageWrapper>
         <div className="container mx-auto">
           <Space direction="vertical" size={12}>
@@ -118,7 +184,9 @@ export default function Home() {
               onChange={onChange}
             />
           </Space>
-          <Table columns={columns} dataSource={dataatable} />
+          <Table columns={columns} dataSource={dataatable}>
+
+          </Table>
         </div>
       </PageWrapper>
       <Footer />

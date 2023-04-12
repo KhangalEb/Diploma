@@ -43,19 +43,19 @@ const Profile = () => {
                   {userrr.fname} {userrr.lname}
                 </h1>
                 <h3 className="text-gray-600 font-lg text-semibold leading-6">
-                  {/* {userrr.categories.map((e, i) => {
-                  return (
-                    <a className=" cursor-pointer">
-                      <div
-                        className=" bg-100 p-3 mb-1 text-center rounded"
-                        key={i}
-                      >
-                        {e}
-                      </div>
-                    </a>
-                  );
-                })} */}
-                  {userrr.categories}
+                  {/* {userrr.subject.map((e, i) => {
+                    return (
+                      <a className=" cursor-pointer">
+                        <div
+                          className=" bg-100 p-3 mb-1 text-center rounded"
+                          key={i}
+                        >
+                          {e}
+                        </div>
+                      </a>
+                    );
+                  })} */}
+                  {userrr.subject}
                 </h3>
                 <label>Товч танилцуулга</label>
                 <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">

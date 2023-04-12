@@ -202,6 +202,16 @@ app.get("/api/timetableData", async (req, res) => {
     res.send(obj);
   });
 });
+app.delete("/api/timetableDataDelete/:id", async (req, res) => {
+  const dataId = req.params.id;
+  try {
+    await Timetable.findOneAndDelete(dataId);
+    res.json({ status: "deleted successfully" })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Failed to delete data.' });
+  }
+})
 
 
 // app.post("/api/timetableDataByTeacher", (req, res) => {
