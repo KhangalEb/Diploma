@@ -1,21 +1,16 @@
 import Navbarr from "../components/Navbarr";
 import BackButton from "../components/BackButton";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
+import { Table, Space } from "antd";
 import moment from "moment"
-// export async function getServerSideProps() {
-//     // Fetch data from external API
-//     const res = await fetch(`http://localhost:8000/api/teacherList`);
-//     const data = await res.json();
-
-//     // Pass data to the page via props
-//     return { props: { mes: "haahhahaha" } }
-// }
 export default function TeacherProfile() {
     const router = useRouter();
+    const [isOpen, setIsOpen] = useState(false);
     const { id } = router.query;
     const [dataa, setData] = useState([]);
     const [datateacher, setDataTeacher] = useState([]);
+    const [dataatable, setDatatable] = useState([]);
     const fetchData = async () => {
         return fetch("http://localhost:8000/api/teacherList")
             .then((response) => response.json())
@@ -43,17 +38,60 @@ export default function TeacherProfile() {
     });
     console.log(id);
     console.log(datateacher);
-    const [userrr, setUserrr] = useState("");
-    useEffect(() => {
-        setUserrr(JSON.parse(localStorage.getItem("user")));
-    }, []);
     const age = moment().year() - datateacher.year;
+    const columns = [
+        {
+            title: 'Эхлэх Цаг',
+            dataIndex: 'sdate',
+            key: 'sdate',
+        },
+        {
+            title: 'Дуусах Цаг',
+            dataIndex: 'edate',
+            key: 'edate',
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            render: (record) => (
+                <Space size="middle">
+                    <button className=" text-700">Сонгох</button>
+                </Space>
+            ),
+        },
+    ];
+
+    // onClick={() => { handleDelete(record._id) }} 
+    const filterDataa = (data) => {
+        const filteredData = data.filter((i) => {
+            if (datateacher._id) {
+                return i.teacher === datateacher._id;
+            }
+            return false;
+        });
+
+        console.log(filteredData);
+        setDatatable(filteredData);
+    };
+    const fetchDataa = useCallback(async () => {
+        const response = await fetch("http://localhost:8000/api/timetableData");
+        const data = await response.json();
+        console.log(data);
+
+        filterDataa(data);
+    }, [datateacher]);
+
+    useEffect(() => {
+        if (datateacher) {
+            fetchDataa();
+        }
+    }, [datateacher]);
     return (
         <div>
             <Navbarr />
             <BackButton />
             <div className="p-8 container flex justify-center mx-auto">
-                <div className="p-8 bg-white shadow mt-24">
+                <div className="p-8 bg-0 shadow mt-24">
                     <div className="grid grid-cols-1 md:grid-cols-3">
                         <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
                             {/* <div>
@@ -89,9 +127,6 @@ export default function TeacherProfile() {
                             <button className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                 Connect
                             </button>
-                            <button className="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                                Message
-                            </button>
                         </div>
                     </div>
                     <div className="mt-20 text-center border-b pb-12">
@@ -113,6 +148,11 @@ export default function TeacherProfile() {
                             Цагийн хуваарь харах
                         </button>
                     </div>
+                </div>
+            </div>
+            <div className="p-8 container flex justify-center mx-auto">
+                <div className="p-8 bg-0 shadow mt-24">
+                    <Table columns={columns} dataSource={dataatable} />
                 </div>
             </div>
         </div>
