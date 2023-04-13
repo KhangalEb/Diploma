@@ -256,29 +256,44 @@ app.delete("/api/subjectDataDelete/:id", async (req, res) => {
   }
 })
 
-
-app.post("/api/update", authenticateJWT, async (req, res) => {
+app.put('/api/userData/:id', async (req, res) => {
   try {
-    const _id = req.user._id;
-
-    User.findByIdAndUpdate(_id, req.body)
-    res.json({ success: true, data: req.body });
+    const user = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json(user);
   } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "userData error" });
+    res.status(500).json({ message: error.message });
   }
 });
-app.post("/api/updateStudent", authenticateJWT, async (req, res) => {
+app.put('/api/teacherData/:id', async (req, res) => {
   try {
-    const _id = req.user._id;
-
-    Student.findByIdAndUpdate(_id, req.body);
-    res.json({ success: true, data: req.body });
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json(user);
   } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "userData error" });
+    res.status(500).json({ message: error.message });
   }
 });
+// app.put("/api/userData", authenticateJWT, async (req, res) => {
+//   try {
+//     const _id = req.user._id;
+//     console.log(req.user._id, req.body)
+//     User.findByIdAndUpdate(_id, req.body, { new: true })
+//     res.json({ success: true, data: req.body });
+//   } catch (error) {
+//     console.log(error);
+//     res.json({ status: "error", error: "userData error" });
+//   }
+// });
+// app.put("/api/updateStudent", authenticateJWT, async (req, res) => {
+//   try {
+//     const _id = req.user._id;
+//     console.log(req.body)
+//     Student.findByIdAndUpdate(_id, req.body);
+//     res.json({ success: true, data: req.body });
+//   } catch (error) {
+//     console.log(error);
+//     res.json({ status: "error", error: "userData error" });
+//   }
+// });
 
 // app.get("/api/teacherListBySubjects", function (req, res) {
 

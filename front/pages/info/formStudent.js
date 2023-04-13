@@ -39,31 +39,25 @@ const FormStudent = () => {
     const user = jwt.decode(token);
     console.log(user);
     try {
-      const response = await fetch("http://localhost:8000/api/updateStudent", {
-        method: "POST",
-        headers: {
-          authorization: `
-          Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          userrr
-        ),
+      const res = await fetch(`http://localhost:8000/api/userData/${userrr._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userrr),
       });
-      const data = await response.json();
-
-
+      const updatedUser = await res.json();
       localStorage.setItem("user", JSON.stringify(userrr));
       setNotification({
         message: "Амжилттай",
         success: true,
       });
+      return updatedUser;
     } catch (error) {
       setNotification({
         message: "Алдаа гарлаа",
         success: false,
       });
-      console.log(error);
+      console.error(error);
+      return null;
     }
   };
   return (
