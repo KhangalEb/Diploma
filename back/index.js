@@ -7,6 +7,7 @@ const Student = require("./models/student.model");
 const Category = require("./models/category.model");
 const Subject = require("./models/subject.model");
 const Timetable = require("./models/timetable.model");
+const OrderWindow = require("./models/orderwindow.model");
 const jwt = require("jsonwebtoken");
 const authenticateJWT = require("./middleware/index");
 
@@ -157,6 +158,26 @@ app.post("/api/studentData", authenticateJWT, async (req, res) => {
     console.log(error);
     res.json({ status: "error", error: "userData error" });
   }
+});
+
+app.post("/api/orderwindowData", async (req, res) => {
+  try {
+    await OrderWindow.create({
+      sdate: req.body.sdate,
+      edate: req.body.edate,
+      teacher: req.body.teacher,
+      student: req.body.student,
+      datatable: req.body.datatable,
+    });
+    res.json({ status: "ok" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.get("/api/orderwindowData", async (req, res) => {
+  OrderWindow.find({ id: req.params.id }, function (err, obj) {
+    res.send(obj);
+  });
 });
 
 app.post("/api/categoryData", async (req, res) => {

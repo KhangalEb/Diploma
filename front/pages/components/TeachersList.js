@@ -11,14 +11,6 @@ const TeachersList = () => {
       .then((response) => response.json())
       .then((data) => setData(data));
   };
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [index, setIndex] = useState("");
-  const showModal = (i, ind) => {
-    setIndex(ind);
-    router.push({ path: '/teacherprofile', query: { ind: `${ind}` } })
-    // setIsModalOpen(true);
-    // createModal();
-  };
   const handleClick = (i) => {
     if (localStorage.getItem("token") === null) {
       router.push("/LoginAs")
@@ -26,12 +18,6 @@ const TeachersList = () => {
       router.push(`/teacherprofile/${i}`)
     }
   }
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
   useEffect(() => {
     fetchData();
   }, []);

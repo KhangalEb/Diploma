@@ -27,6 +27,7 @@ const SubjectCard = () => {
       });
       const data = await response.json();
       localStorage.setItem("FilteredTeachers", JSON.stringify(data));
+      localStorage.setItem("selectedCourse", JSON.stringify(e));
       if (data.status === "ok") {
         console.log("ok");
       }

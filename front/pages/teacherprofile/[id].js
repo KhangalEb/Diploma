@@ -3,20 +3,24 @@ import BackButton from "../components/BackButton";
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import { Table, Space } from "antd";
-import moment from "moment"
+import moment from "moment";
+import { Collapse } from 'antd';
+
 export default function TeacherProfile() {
     const router = useRouter();
-    const [isOpen, setIsOpen] = useState(false);
     const { id } = router.query;
     const [dataa, setData] = useState([]);
     const [datateacher, setDataTeacher] = useState([]);
     const [dataatable, setDatatable] = useState([]);
+    const [dataaa, setDataaa] = useState("")
+    const { Panel } = Collapse;
     const fetchData = async () => {
         return fetch("http://localhost:8000/api/teacherList")
             .then((response) => response.json())
             .then((data) => setData(data));
     };
     useEffect(() => {
+        setDataaa(JSON.parse(localStorage.getItem("user")))
         fetchData();
     }, []);
     console.log(dataa);
@@ -38,7 +42,33 @@ export default function TeacherProfile() {
     });
     console.log(id);
     console.log(datateacher);
+    console.log("datatable", dataatable);
     const age = moment().year() - datateacher.year;
+    const handleClick = async (record) => {
+        console.log(record);
+        try {
+            const response = await fetch("http://localhost:8000/api/orderwindowData", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    edate: record.edate,
+                    sdate: record.sdate,
+                    teacher: record.teacher,
+                    student: dataaa._id,
+                    datatable: record._id,
+                }),
+            });
+            const data = await response.json();
+            if (data.status === "ok") {
+                router.push(`/checkout/${record._id}`)
+            }
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     const columns = [
         {
             title: 'Эхлэх Цаг',
@@ -55,12 +85,14 @@ export default function TeacherProfile() {
             key: 'action',
             render: (record) => (
                 <Space size="middle">
-                    <button className=" text-700">Сонгох</button>
+                    <button className=" text-700" onClick={() => (handleClick(record))}>Сонгох</button>
                 </Space>
             ),
         },
     ];
-
+    const onChange = (key) => {
+        console.log(key);
+    };
     // onClick={() => { handleDelete(record._id) }} 
     const filterDataa = (data) => {
         const filteredData = data.filter((i) => {
@@ -94,18 +126,7 @@ export default function TeacherProfile() {
                 <div className="p-8 bg-0 shadow mt-24">
                     <div className="grid grid-cols-1 md:grid-cols-3">
                         <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
-                            {/* <div>
-                                <p className="font-bold text-gray-700 text-xl">22</p>
-                                <p className="text-gray-400">Friends</p>
-                            </div>
-                            <div>
-                                <p className="font-bold text-gray-700 text-xl">10</p>
-                                <p className="text-gray-400">Photos</p>
-                            </div>
-                            <div>
-                                <p className="font-bold text-gray-700 text-xl">89</p>
-                                <p className="text-gray-400">Comments</p>
-                            </div> */}
+
                         </div>
                         <div className="relative">
                             <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
@@ -144,17 +165,17 @@ export default function TeacherProfile() {
                         <p className="text-gray-600 text-center font-light lg:px-16">
                             Товч намтар: {datateacher.tovchtaniltsuulga}
                         </p>
-                        <button className="text-indigo-500 py-2 px-4  font-medium mt-4">
-                            Цагийн хуваарь харах
-                        </button>
                     </div>
+                    <Collapse defaultActiveKey={['1']} onChange={onChange} className="mt-8">
+                        <Panel showArrow={false} header="Цагийн хуваарь харах" key="2">
+                            <div className="p-8 bg-0 shadow">
+                                <Table columns={columns} dataSource={dataatable} />
+                            </div>
+                        </Panel>
+                    </Collapse>
                 </div>
             </div>
-            <div className="p-8 container flex justify-center mx-auto">
-                <div className="p-8 bg-0 shadow mt-24">
-                    <Table columns={columns} dataSource={dataatable} />
-                </div>
-            </div>
+
         </div>
     );
 };
