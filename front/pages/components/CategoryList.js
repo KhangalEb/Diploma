@@ -34,6 +34,7 @@ function CategoryList() {
       });
       const data = await response.json();
       localStorage.setItem("FilteredTeachers", JSON.stringify(data));
+      localStorage.setItem("selectedCourse", JSON.stringify(subject));
       if (data.status === "ok") {
         console.log("ok");
       }

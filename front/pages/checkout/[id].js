@@ -13,20 +13,38 @@ const Checkout = () => {
   const { id } = router.query;
   const [datatable, setDataTable] = useState([]);
   const [dataOrder, setDataOrder] = useState([]);
+  const [orderTable, setOrderTable] = useState([]);
+  const [subject, setSubject] = useState("")
   const fetchData = async () => {
+
+    setSubject(localStorage.getItem("selectedCourse"))
+    console.log(subject)
     await fetch("http://localhost:8000/api/orderwindowData")
       .then((response) => response.json())
       .then(async (data) => {
         setDataOrder(data);
         return await fetch("http://localhost:8000/api/teacherList")
           .then((response) => response.json())
-          .then((teacherData) => {
+          .then(async (teacherData) => {
             filterData(teacherData, data);
+            return await fetch("http://localhost:8000/api/timetableData")
+              .then((response) => response.json())
+              .then((orderdata) => {
+                filterDataa(orderdata, data);
+              })
           })
       })
 
       .catch((error) => console.log("Error fetching data:", error));
   };
+  const filterDataa = async (orderdata, dataOrder) => {
+    const filteredDataTable = orderdata.filter((i) => {
+      return i._id === dataOrder[0].datatable;
+    });
+    console.log("filteredDataTable:", filteredDataTable);
+    setOrderTable(filteredDataTable);
+  }
+
   const filterData = async (teacherData, dataOrder) => {
     const filteredData = teacherData.filter((i) => {
       return i._id === dataOrder[0].teacher;
@@ -37,7 +55,27 @@ const Checkout = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  console.log(orderTable)
+  const handleClick = async (id) => {
 
+    const response = await fetch(`http://localhost:8000/api/orderwindowData/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ isOrdered: true })
+    });
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Failed to update timetable');
+    } else {
+      router.push("/courses");
+    }
+    const data = await response.json();
+
+    // Do something with the response data
+    console.log(data);
+  }
   return (
     <div>
       <Navbarr />
@@ -56,7 +94,7 @@ const Checkout = () => {
                 <div className="text-left mb-6">
 
                   <div className="text-md">
-                    Хичээлийн нэр: {localStorage.getItem("selectedCourse")}
+                    Хичээлийн нэр: {subject}
                   </div>
                   <div className="text-md">
                     Үнэ: {datatable[0] && datatable[0].price}
@@ -145,7 +183,7 @@ const Checkout = () => {
                   </div>
 
                   <div className="mt-4">
-                    <button className="font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out w-full bg-indigo-500 hover:bg-indigo-600 text-white focus:outline-none focus-visible:ring-2 bg-1 border-1">
+                    <button className="font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out w-full bg-indigo-500 hover:bg-indigo-600 text-white focus:outline-none focus-visible:ring-2 bg-1 border-1" onClick={() => handleClick(dataOrder[0].datatable)}>
                       Төлөх
                     </button>
                   </div>

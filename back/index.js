@@ -174,6 +174,23 @@ app.post("/api/orderwindowData", async (req, res) => {
     console.log(error);
   }
 });
+app.put("/api/orderwindowData/:id", async (req, res) => {
+  try {
+    const updatedTimetable = await Timetable.findByIdAndUpdate(
+      req.params.id,
+      { isOrdered: req.body.isOrdered },
+      { new: true }
+    );
+
+    if (!updatedTimetable) {
+      return res.status(404).json({ message: 'Timetable not found' });
+    }
+
+    res.status(200).json(updatedTimetable);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 app.get("/api/orderwindowData", async (req, res) => {
   OrderWindow.find({ id: req.params.id }, function (err, obj) {
     res.send(obj);
@@ -212,6 +229,7 @@ app.post("/api/timetableData", async (req, res) => {
       sdate: req.body.sdate,
       edate: req.body.edate,
       teacher: req.body.teacher,
+      isOrdered: req.body.isOrdered,
     });
     res.json({ status: "ok" });
   } catch (error) {

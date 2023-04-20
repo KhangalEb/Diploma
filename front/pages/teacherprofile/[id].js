@@ -93,17 +93,14 @@ export default function TeacherProfile() {
     const onChange = (key) => {
         console.log(key);
     };
-    // onClick={() => { handleDelete(record._id) }} 
+    console.log(datateacher)
     const filterDataa = (data) => {
-        const filteredData = data.filter((i) => {
-            if (datateacher._id) {
-                return i.teacher === datateacher._id;
-            }
-            return false;
+        const fData = data.filter((i) => {
+            return i.teacher === datateacher._id && i.isOrdered === "false";
         });
 
-        console.log(filteredData);
-        setDatatable(filteredData);
+        console.log(fData);
+        setDatatable(fData);
     };
     const fetchDataa = useCallback(async () => {
         const response = await fetch("http://localhost:8000/api/timetableData");

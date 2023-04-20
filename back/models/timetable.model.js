@@ -5,6 +5,7 @@ const Timetable = new mongoose.Schema(
     sdate: { type: Date, required: true },
     edate: { type: Date, required: true },
     teacher: { type: String, required: true },
+    isOrdered: { type: String, required: true },
   },
   { collection: "timetable" }
 );

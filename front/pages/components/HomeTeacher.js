@@ -18,6 +18,7 @@ export default function Home() {
   const [userrr, setUserrr] = useState("");
   const [dataa, setData] = useState([]);
   const [dataatable, setDatatable] = useState([]);
+  const [isOrdered, setIsOrdered] = useState(false);
   const router = useRouter();
   const [notification, setNotification] = useState({
     message: "",
@@ -104,6 +105,7 @@ export default function Home() {
             sdate: moment(dateString[0]).format("YYYY-MM-DD HH:mm"),
             edate: moment(dateString[1]).format("YYYY-MM-DD HH:mm"),
             teacher: userrr._id,
+            isOrdered: isOrdered,
           }),
         });
         const data = await response.json();
