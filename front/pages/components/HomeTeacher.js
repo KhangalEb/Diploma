@@ -9,7 +9,7 @@ import CategoryList from "./CategoryList";
 import ScheduleList from "./ScheduleList";
 import NavbarrTeacher from "./NavbarrTeacher";
 import { useState, useEffect, useCallback } from "react";
-import { DatePicker, Space, Table, Column } from 'antd';
+import { DatePicker, Space, Table, Column, Input } from 'antd';
 import { PageWrapper } from "./page-warapper";
 import Notification from "./Notification";
 import { useRouter } from "next/router";
@@ -24,6 +24,37 @@ export default function Home() {
     message: "",
     success: false,
   });
+  const [tableData, setTableData] = useState([]);
+  const [dataTable, setDataTableee] = useState([]);
+  useEffect(() => {
+    setData(JSON.parse(localStorage.getItem("user")))
+    fetchData();
+  }, []);
+  const fetchDataa = async () => {
+    await fetch("http://localhost:8000/api/order")
+      .then((response) => response.json())
+      .then(async (data) =>
+        setTableData(data)
+
+      )
+  }
+  console.log(tableData)
+  console.log(dataTable)
+  useEffect(() => {
+    const matchingData = tableData.filter((e) => e.teacher === dataa._id);
+    setDataTableee(matchingData);
+  }, [tableData]);
+  // useEffect(() => {
+  //   tableData.map((e, ind) => {
+  //     if (e.teacher === dataa._id) {
+  //       console.log(e._id);
+  //       setDataTableee(e);
+  //     }
+  //   });
+  // }, [tableData]);
+  useEffect(() => {
+    fetchDataa();
+  }, []);
   const array = [];
   useEffect(() => {
     setUserrr(JSON.parse(localStorage.getItem("user")));
@@ -65,6 +96,7 @@ export default function Home() {
   //     fetchData();
   //   }
   // }, [userrr]);
+
   const fetchData = useCallback(async () => {
     const response = await fetch("http://localhost:8000/api/timetableData");
     const data = await response.json();
@@ -161,6 +193,63 @@ export default function Home() {
       ),
     },
   ];
+  const columnsOrder = [
+    {
+      title: 'Хичээлийн нэр',
+      dataIndex: 'subject',
+      key: 'subject',
+
+    },
+    {
+      title: 'Сурагчийн нэр',
+      dataIndex: 'userName',
+      key: 'userName',
+
+    },
+    {
+      title: 'Сурагчийн И-мэйл',
+      dataIndex: 'userEmail',
+      key: 'userEmail',
+
+    },
+    {
+      title: 'Сурагчийн утасны дугаар 1',
+      dataIndex: 'userPnum1',
+      key: 'userPnum1',
+
+    },
+    {
+      title: 'Сурагчийн утасны дугаар 2',
+      dataIndex: 'userPnum2',
+      key: 'userPnum2',
+
+    },
+    {
+      title: 'Захиалга Он сар өдөр',
+      dataIndex: 'dateCreated',
+      key: 'dateCreated',
+
+    },
+    {
+      title: 'Цагийн хуваарь Эхлэх',
+      dataIndex: 'sdate',
+      key: 'sdate',
+
+    },
+    {
+      title: 'Цагийн хуваарь Дуусах',
+      dataIndex: 'edate',
+      key: 'edate',
+
+    },
+    {
+      title: 'Link',
+      key: 'action',
+      fixed: 'right',
+      width: 100,
+    },
+
+  ];
   return (
     <div>
       <Head>
@@ -176,8 +265,11 @@ export default function Home() {
       />
       <PageWrapper>
         <div className="container mx-auto">
+          <h1 className=" my-4 font-bold">
+            Цагийн хуваарь оруулах
+          </h1>
           <Space direction="vertical" size={12}>
-            {/* <DatePicker showTime onChange={onChange} onChange={onChange} /> */}
+
             <RangePicker
               showTime={{
                 format: 'HH:00',
@@ -186,12 +278,20 @@ export default function Home() {
               onChange={onChange}
             />
           </Space>
-          <Table columns={columns} dataSource={dataatable}>
-
-          </Table>
+          <h1 className=" my-4 font-bold">
+            Цагийн хуваарь
+          </h1>
+          <Table columns={columns} dataSource={dataatable}></Table>
+          <h1 className=" my-4 font-bold">
+            Захиалга
+          </h1>
+          <Table columns={columnsOrder} dataSource={dataTable} scroll={{
+            x: 500,
+          }}></Table>
         </div>
       </PageWrapper>
       <Footer />
     </div>
   );
 }
+

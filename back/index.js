@@ -8,6 +8,7 @@ const Category = require("./models/category.model");
 const Subject = require("./models/subject.model");
 const Timetable = require("./models/timetable.model");
 const OrderWindow = require("./models/orderwindow.model");
+const Order = require("./models/order.model");
 const jwt = require("jsonwebtoken");
 const authenticateJWT = require("./middleware/index");
 
@@ -144,6 +145,11 @@ app.post("/api/userData", authenticateJWT, async (req, res) => {
     res.json({ status: "error", error: "userData error" });
   }
 });
+app.get("/api/userData", async (req, res) => {
+  Student.find({ id: req.params.id }, function (err, obj) {
+    res.send(obj);
+  });
+});
 app.post("/api/studentData", authenticateJWT, async (req, res) => {
   try {
     const useremail = req.user.email;
@@ -158,6 +164,35 @@ app.post("/api/studentData", authenticateJWT, async (req, res) => {
     console.log(error);
     res.json({ status: "error", error: "userData error" });
   }
+});
+app.post("/api/order", async (req, res) => {
+  try {
+    await Order.create({
+      subject: req.body.subject,
+      user: req.body.user,
+      price: req.body.price,
+      teacher: req.body.teacher,
+      sdate: req.body.sdate,
+      edate: req.body.edate,
+      dateCreated: req.body.dateCreated,
+      cardNo: req.body.cardNo,
+      exDate: req.body.exDate,
+      cvv: req.body.cvv,
+      name: req.body.name,
+      userEmail: req.body.userEmail,
+      userName: req.body.userName,
+      userPnum1: req.body.userPnum1,
+      userPnum2: req.body.userPnum2,
+    });
+    res.json({ status: "ok" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.get("/api/order", async (req, res) => {
+  Order.find({ id: req.params.id }, function (err, obj) {
+    res.send(obj);
+  });
 });
 
 app.post("/api/orderwindowData", async (req, res) => {
@@ -174,6 +209,7 @@ app.post("/api/orderwindowData", async (req, res) => {
     console.log(error);
   }
 });
+
 app.put("/api/orderwindowData/:id", async (req, res) => {
   try {
     const updatedTimetable = await Timetable.findByIdAndUpdate(
