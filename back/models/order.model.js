@@ -19,6 +19,7 @@ const Order = new mongoose.Schema(
     exDate: { type: String },
     cvv: { type: String },
     name: { type: String },
+    link: { type: String },
   },
   { collection: "order" }
 );

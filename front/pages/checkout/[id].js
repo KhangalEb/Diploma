@@ -99,6 +99,7 @@ const Checkout = () => {
             exDate: form.exDate,
             cvv: form.cvv,
             name: form.name,
+            link: "",
           }),
         });
       } catch (error) {

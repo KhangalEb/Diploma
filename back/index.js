@@ -183,6 +183,7 @@ app.post("/api/order", async (req, res) => {
       userName: req.body.userName,
       userPnum1: req.body.userPnum1,
       userPnum2: req.body.userPnum2,
+      link: req.body.link,
     });
     res.json({ status: "ok" });
   } catch (error) {
@@ -194,7 +195,23 @@ app.get("/api/order", async (req, res) => {
     res.send(obj);
   });
 });
+app.put("/api/order/:id", async (req, res) => {
+  try {
+    const updatedOrder = await Order.findByIdAndUpdate(
+      req.params.id,
+      { link: req.body.link },
+      { new: true }
+    );
 
+    if (!updatedOrder) {
+      return res.status(404).json({ message: 'Timetable not found' });
+    }
+
+    res.status(200).json(updatedOrder);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 app.post("/api/orderwindowData", async (req, res) => {
   try {
     await OrderWindow.create({
