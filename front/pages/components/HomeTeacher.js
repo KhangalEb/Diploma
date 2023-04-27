@@ -82,19 +82,6 @@ export default function Home() {
     setDatatable(filteredData);
   };
 
-  // const fetchData = async () => {
-  //   const response = await fetch("http://localhost:8000/api/timetableData");
-  //   const data = await response.json();
-  //   console.log(data);
-
-  //   filterData(data);
-  // };
-  // useEffect(() => {
-  //   if (userrr) {
-  //     fetchData();
-  //   }
-  // }, [userrr]);
-
   const fetchData = useCallback(async () => {
     const response = await fetch("http://localhost:8000/api/timetableData");
     const data = await response.json();
