@@ -57,9 +57,10 @@ const ScheduleList = () => {
             <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
               Эхлэх: {dataatable[0] && dataatable[0].sdate}
             </time>
-            <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+            Линк:
+            <a href={dataatable[0] && dataatable[0].link} className="font-normal text-700">
               {dataatable[0] && dataatable[0].link}
-            </p>
+            </a>
           </div>
         </li>
       </ol>

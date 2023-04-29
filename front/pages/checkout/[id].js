@@ -6,7 +6,7 @@ import moment from "moment";
 import { Collapse } from "antd";
 import Navbarr from "../components/Navbarr";
 import Footer from "../components/Footer";
-
+import Notification from "../components/Notification";
 const Checkout = () => {
   const router = useRouter();
   const { id } = router.query;
@@ -16,6 +16,10 @@ const Checkout = () => {
   const [subject, setSubject] = useState("");
   const [user, setUser] = useState("");
   const [form, setForm] = useState([]);
+  const [notification, setNotification] = useState({
+    message: "",
+    success: false,
+  });
   const fetchData = async () => {
     setSubject(localStorage.getItem("selectedCourse"));
     setUser(JSON.parse(localStorage.getItem("user")));
@@ -103,8 +107,16 @@ const Checkout = () => {
           }),
         });
       } catch (error) {
+        setNotification({
+          message: "Амжилтгүй",
+          success: false,
+        });
         console.log(error)
       }
+      setNotification({
+        message: "Амжилттай",
+        success: true,
+      });
       router.push("/courses");
     }
     const data = await response.json();
@@ -115,6 +127,10 @@ const Checkout = () => {
   return (
     <div>
       <Navbarr />
+      <Notification
+        message={notification.message}
+        success={notification.success}
+      />
       <section className="antialiased bg-gray-100 text-gray-600 min-h-screen p-4">
         <div className="h-full">
           <div>
