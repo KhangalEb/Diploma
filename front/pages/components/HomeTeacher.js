@@ -1,12 +1,6 @@
 import moment from "moment";
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
-import TeachersList from "./TeachersList";
-import CategoryList from "./CategoryList";
-import ScheduleList from "./ScheduleList";
 import NavbarrTeacher from "./NavbarrTeacher";
 import { useState, useEffect, useCallback } from "react";
 import { DatePicker, Space, Table, Column, Input, Button } from "antd";
@@ -88,11 +82,6 @@ export default function Home() {
     }
   }, [userrr]);
   const onChange = async (value, dateString) => {
-    console.log(
-      "Formatted Selected Time: ",
-      moment(dateString[0]).format("YYYY-MM-DD HH:mm"),
-      moment(dateString[1]).format("YYYY-MM-DD HH:mm")
-    );
     const h1 = moment(dateString[0]).format("HH");
     const h2 = moment(dateString[1]).format("HH");
     const year1 = moment(dateString[0]).format("YYYY");
@@ -312,7 +301,7 @@ export default function Home() {
             />
           </Space>
           <h1 className=" my-4 font-bold">Цагийн хуваарь</h1>
-          <Table columns={columns} dataSource={dataatable}></Table>
+          <Table columns={columns} dataSource={dataatable} />
           <h1 className=" my-4 font-bold">Захиалга</h1>
           <Table
             columns={columnsOrder}
