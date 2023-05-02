@@ -43,14 +43,6 @@ export default function Home() {
     const matchingData = tableData.filter((e) => e.teacher === dataa._id);
     setDataTableee(matchingData);
   }, [tableData]);
-  // useEffect(() => {
-  //   tableData.map((e, ind) => {
-  //     if (e.teacher === dataa._id) {
-  //       console.log(e._id);
-  //       setDataTableee(e);
-  //     }
-  //   });
-  // }, [tableData]);
   useEffect(() => {
     fetchDataa();
   }, []);
@@ -162,11 +154,30 @@ export default function Home() {
       console.log(error);
     }
   };
+  const handleDeleteOrder = async (id) => {
+
+    try {
+      fetch(`http://localhost:8000/api/order/${id}`, {
+        method: "DELETE",
+      })
+        .then(() => {
+          setNotification({
+            message: "Амжилттай устгагдлаа",
+            success: true,
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
   const handleSubmit = async (record) => {
-    const response = await fetch(
+    await fetch(
       `http://localhost:8000/api/order/${record._id}`,
       {
         method: "PUT",
@@ -259,8 +270,18 @@ export default function Home() {
             style={{ backgroundColor: "green", color: "white" }}
             onClick={() => handleSubmit(record)}
           >
+
             Илгээх
-          </Button>{" "}
+          </Button>
+          <Button
+            style={{ backgroundColor: "red", color: "white" }}
+            onClick={() => {
+              record.edate <= moment().format("YYYY-MM-DD HH:mm") ? handleDeleteOrder(record._id) : setNotification({
+                message: "Амжилтгүй: Тухайн хичээл нь заагдаж дуусаагүй байна.",
+                success: false,
+              });
+            }}
+          >Устгах</Button>
         </div>
       ),
     }

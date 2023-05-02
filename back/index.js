@@ -195,6 +195,16 @@ app.get("/api/order", async (req, res) => {
     res.send(obj);
   });
 });
+app.delete("/api/order/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    await Order.findByIdAndDelete(userId);
+    res.status(204).end();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to delete category.' });
+  }
+})
 app.put("/api/order/:id", async (req, res) => {
   try {
     const updatedOrder = await Order.findByIdAndUpdate(
@@ -276,6 +286,7 @@ app.delete("/api/categoryDataDelete/:id", async (req, res) => {
     res.status(500).json({ message: 'Failed to delete category.' });
   }
 })
+
 app.post("/api/timetableData", async (req, res) => {
   try {
     await Timetable.create({
