@@ -10,7 +10,7 @@ const Footer = () => {
         >
           <div className="container mx-auto ">
             <div className="xl:flex lg:flex md:flex pt-6">
-              <div className="w-11/12 xl:w-3/6 lg:w-2/5 mx-auto lg:mx-0 xl:mx-0">
+              <div className="w-11/12 xl:w-3/6 lg:w-2/5 mx-auto lg:mx-0 xl:mx-0 mr-56">
                 <div className="flex items-center mb-6 xl:mb-0 lg:mb-0">
                   <div aria-label="logo" role="img">
                     <Image
@@ -33,7 +33,7 @@ const Footer = () => {
                   tabIndex="0"
                   className="focus:outline-none text-gray-800 dark:text-white font-bold text-xl mb-6"
                 >
-                  Community
+                  Манай сайт
                 </h2>
                 <ul>
                   <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
@@ -42,7 +42,7 @@ const Footer = () => {
                       className="focus:underline focus:outline-none"
                       href="#"
                     >
-                      About Us
+                      Бидний тухай
                     </a>
                   </li>
                   <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
@@ -51,7 +51,7 @@ const Footer = () => {
                       className="focus:underline focus:outline-none"
                       href="#"
                     >
-                      Guidelines and how to
+                      Бидэнтэй холбогдох
                     </a>
                   </li>
                   <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
@@ -60,7 +60,7 @@ const Footer = () => {
                       className="focus:underline focus:outline-none"
                       href="#"
                     >
-                      Quote from the best
+                      Багш нар
                     </a>
                   </li>
                   <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
@@ -69,126 +69,7 @@ const Footer = () => {
                       className="focus:underline focus:outline-none"
                       href="#"
                     >
-                      How to start a blog
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="w-11/12 xl:w-1/6 lg:w-2/5 mx-auto lg:mx-0 xl:mx-0 pt-3 xl:flex flex-col xl:justify-start pl-3 sm:pl-0">
-                <h2
-                  tabIndex="0"
-                  className="focus:outline-none text-gray-800 dark:text-white font-bold text-xl mb-6"
-                >
-                  Getting Started
-                </h2>
-                <ul>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      About Us
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Guidelines and how to
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Quote from the best
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      How to start a blog
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Quote from the best
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Guidelines and how to
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="w-11/12 xl:w-1/6 lg:w-2/5 mx-auto lg:mx-0 xl:mx-0 pt-3 xl:flex flex-col xl:justify-start pl-3 sm:pl-0">
-                <h2
-                  tabIndex="0"
-                  className="focus:outline-none text-gray-800 dark:text-white font-bold text-xl mb-6"
-                >
-                  Resources
-                </h2>
-                <ul>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Accessibility
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Usability
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Marketplace
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Design & Dev
-                    </a>
-                  </li>
-                  <li className="text-base text-gray-800 dark:text-gray-200 hover:text-gray-700 mb-4">
-                    <a
-                      tabIndex="0"
-                      className="focus:underline focus:outline-none"
-                      href="#"
-                    >
-                      Marketplace
+                      Хичээлүүд
                     </a>
                   </li>
                 </ul>

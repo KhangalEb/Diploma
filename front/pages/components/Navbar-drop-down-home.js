@@ -36,7 +36,7 @@ export default function DropDownHome() {
                   className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-400 hover:text-0 font-roboto"
                   onClick={handleClick}
                 >
-                  Sign In
+                  Нэвтрэх
                 </button>
               </Menu.Item>
               <Menu.Item>
@@ -44,7 +44,7 @@ export default function DropDownHome() {
                   className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-500 hover:text-0 font-roboto"
                   onClick={handleClick1}
                 >
-                  Sign Up
+                  Бүртгүүлэх
                 </button>
               </Menu.Item>
             </div>

@@ -74,14 +74,14 @@ const FormStudent = () => {
               <div className="rounded-t bg-0 mb-0 px-6 py-6">
                 <div className="text-center flex justify-between">
                   <h6 className="text-blueGray-700 text-xl font-bold">
-                    My account
+                    Миний хаяг
                   </h6>
                   <button
                     className="bg-1 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={handleSubmit}
                   >
-                    Save
+                    Хадгалах
                   </button>
                   <button
                     className="bg-500 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -95,7 +95,7 @@ const FormStudent = () => {
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <form>
                   <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    User Information
+                    Хэрэглэгчийн мэдээлэл
                   </h6>
                   <div className="flex flex-wrap">
                     <div className="w-full lg:w-6/12 px-4">
@@ -104,7 +104,7 @@ const FormStudent = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          First Name
+                          Нэр
                         </label>
                         <input
                           type="text"
@@ -120,7 +120,7 @@ const FormStudent = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Last Name
+                          Овог
                         </label>
                         <input
                           type="text"
@@ -136,7 +136,7 @@ const FormStudent = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Phone Number 1
+                          Утасны дугаар 1
                         </label>
                         <input
                           type="text"
@@ -152,7 +152,7 @@ const FormStudent = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Phone Number 2
+                          Утасны дугаар 2
                         </label>
                         <input
                           type="text"
@@ -261,7 +261,7 @@ const FormStudent = () => {
                     </div>
                     <div className="w-full lg:w-3/12 px-4">
                       <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Gender
+                        Хүис
                       </label>
                       <input
                         className=""
@@ -270,7 +270,7 @@ const FormStudent = () => {
                         onChange={(e) => setUserrr({ ...userrr, gender: e.target.value })}
                         name="gender"
                       />
-                      Male
+                      Эр
                       <input
                         className="ml-6"
                         type="radio"
@@ -278,7 +278,7 @@ const FormStudent = () => {
                         onChange={(e) => setUserrr({ ...userrr, gender: e.target.value })}
                         name="gender"
                       />
-                      Female
+                      Эм
                     </div>
                     <div className="w-full lg:w-3/12 px-4">
                       <div className="relative w-full mb-3">
@@ -286,7 +286,7 @@ const FormStudent = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Date of birth
+                          Төрсөн он сар өдөр
                         </label>
                         <input
                           type="text"
@@ -337,7 +337,7 @@ const FormStudent = () => {
                           defaultValue={userrr.angi}
                           onChange={(e) => setUserrr({ ...userrr, angi: e.target.value })}
                         >
-                          <option value="null">-Select-</option>
+                          <option value="null">-Сонгох-</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>

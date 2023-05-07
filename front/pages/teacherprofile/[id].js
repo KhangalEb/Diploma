@@ -12,9 +12,11 @@ export default function TeacherProfile() {
     const [dataa, setData] = useState([]);
     const [datateacher, setDataTeacher] = useState([]);
     const [dataatable, setDatatable] = useState([]);
+    const [subject, setSubject] = useState("");
     const [dataaa, setDataaa] = useState("")
     const { Panel } = Collapse;
     const fetchData = async () => {
+        setSubject(localStorage.getItem("selectedCourse"));
         return fetch("http://localhost:8000/api/teacherList")
             .then((response) => response.json())
             .then((data) => setData(data));
@@ -46,18 +48,28 @@ export default function TeacherProfile() {
     const age = moment().year() - datateacher.year;
     const handleClick = async (record) => {
         console.log(record);
+        console.log(dataa);
         try {
-            const response = await fetch("http://localhost:8000/api/orderwindowData", {
+            const response = await fetch("http://localhost:8000/api/order", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    edate: record.edate,
-                    sdate: record.sdate,
+                    edate: moment(record.edate).format("YYYY-MM-DD HH:mm"),
+                    sdate: moment(record.sdate).format("YYYY-MM-DD HH:mm"),
                     teacher: record.teacher,
-                    student: dataaa._id,
                     datatable: record._id,
+                    subject: subject,
+                    user: dataaa._id,
+                    userEmail: dataaa.email,
+                    userPnum1: dataaa.pnum1,
+                    userPnum2: dataaa.pnum2,
+                    userName: dataaa.fname,
+                    price: datateacher.price,
+                    dateCreated: moment().format("YYYY-MM-DD HH:mm"),
+                    link: "",
+
                 }),
             });
             const data = await response.json();
@@ -142,7 +154,7 @@ export default function TeacherProfile() {
                             </div>
                         </div>
                         <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-                            <button className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                            <button className="text-0 py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500  font-medium transition transform hover:-translate-y-0.5">
                                 Connect
                             </button>
                         </div>
@@ -152,11 +164,13 @@ export default function TeacherProfile() {
                             {datateacher.fname} {datateacher.lname},
                             <span className="font-light text-gray-500">{age}</span>
                         </h1>
-                        <p className="font-light text-gray-600 mt-3">{datateacher.surguuli}</p>
+                    </div>
+                    <div className="mt-10  border-b pb-12">
+                        <p className="font-light text-gray-600 mt-3">Төгссөн сургууль: {datateacher.surguuli}</p>
                         <p className="mt-8 text-gray-500">
-                            {datateacher.gender}
+                            Хүйс: {datateacher.gender}
                         </p>
-                        <p className="mt-2 text-gray-500">{datateacher.province}</p>
+                        <p className="mt-2 text-gray-500">Аймаг/Хот: {datateacher.province}</p>
                     </div>
                     <div className="mt-12 flex flex-col justify-center">
                         <p className="text-gray-600 text-center font-light lg:px-16">

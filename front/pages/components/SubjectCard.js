@@ -71,25 +71,25 @@ const SubjectCard = () => {
                   </svg>
                 </div>
                 <div className="pl-3 pr-10 mt-1">
-                  <h3 className="break-words font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">
+                  <h3 className="break-words font-normal leading-4  text-900 dark:text-gray-100 text-base">
                     {i.category}
                   </h3>
                   <div className="flex items-end mt-4">
-                    <h2 className="break-all text-indigo-700 dark:text-indigo-600 text-2xl leading-normal font-bold">
-                      {i.name}
+                    <h2 className="break-all text-900 dark:text-indigo-600 leading-normal font-roboto text-l">
+                      {i.title}
                     </h2>
 
 
                   </div>
-                  <div className="flex items-end mt-4">
-                    <p className="break-all text-indigo-700 dark:text-indigo-600 leading-normal ">
+                  <div className="flex items-end mt-4 ">
+                    <p className="truncate w-64  text-900">
                       {i.description}
                     </p>
 
 
                   </div>
                   <div className="flex items-end mt-4">
-                    <h3 className="break-words font-normal leading-4 text-gray-800 dark:text-gray-100 text-base">
+                    <h3 className="break-words font-normal leading-4 text-gray-800 dark:text-gray-100 text-base  text-900">
                       Анги: {i.range}
                     </h3>
                   </div>

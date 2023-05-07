@@ -126,21 +126,21 @@ const FormTeacher = () => {
                     type="submit"
 
                   >
-                    Save
+                    Хадгалах
                   </button>
                   <button
                     className="bg-500 text-0 active:bg-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => Router.back()}
                   >
-                    back
+                    Буцах
                   </button>
                 </div>
               </div>
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <form>
                   <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    User Information
+                    Хэрэглэгчийн мэдээлэл
                   </h6>
                   <div className="flex flex-wrap">
                     <div className="w-full lg:w-6/12 px-4">
@@ -149,7 +149,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          First Name
+                          Нэр
                         </label>
                         <input
                           type="text"
@@ -166,7 +166,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Last Name
+                          Овог
                         </label>
                         <input
                           type="text"
@@ -182,7 +182,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Phone Number 1
+                          Утасны дугаар 1
                         </label>
                         <input
                           type="email"
@@ -198,7 +198,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Phone Number 2
+                          Утасны дугаар 2
                         </label>
                         <input
                           type="text"
@@ -214,7 +214,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          price
+                          Үнэ
                         </label>
                         <input
                           type="number"
@@ -229,7 +229,7 @@ const FormTeacher = () => {
                   <hr className="mt-6 border-b-1 border-blueGray-300" />
 
                   <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    Contact Information
+                    Холбогдо мэдээлэл
                   </h6>
                   <div className="flex flex-wrap">
                     <div className="w-full lg:w-4/12 px-4">
@@ -322,7 +322,7 @@ const FormTeacher = () => {
                     </div>
                     <div className="w-full lg:w-3/12 px-4">
                       <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Gender
+                        Хүис
                       </label>
                       <input
                         className=""
@@ -333,7 +333,7 @@ const FormTeacher = () => {
                         }}
                         name="gender"
                       />{" "}
-                      Male
+                      Эр
                       <input
                         className="ml-6"
                         type="radio"
@@ -343,7 +343,7 @@ const FormTeacher = () => {
                         }}
                         name="gender"
                       />{" "}
-                      Female
+                      Эм
                     </div>
                     <div className="w-full lg:w-3/12 px-4">
                       <div className="relative w-full mb-3">
@@ -351,7 +351,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Сургууль
+                          Төгссөн сургууль
                         </label>
                         <input
                           type="text"
@@ -367,7 +367,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Date of birth
+                          Төрсөн өдөр
                         </label>
                         <input
                           type="text"
@@ -418,7 +418,7 @@ const FormTeacher = () => {
                           // defaultValue={userrr.angi}
                           {...register("angi")}
                         >
-                          <option value="null">-Select-</option>
+                          <option value="null">-Сонгох-</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -433,36 +433,6 @@ const FormTeacher = () => {
                           <option value="12">12</option>
                         </select>
                       </div>
-                    </div>
-                  </div>
-                  <div className=" w-32 lg:w-4/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
-                        Start day
-                      </label>
-                      <DatePicker
-                        dateFormat="dd/MM/yyyy"
-                        // defaultValue={userrr.startDate}
-                        onChange={(date) => setStartDate(date)}
-                      />
-                    </div>
-                  </div>
-                  <div className=" w-32 lg:w-4/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
-                        End day
-                      </label>
-                      <DatePicker
-                        dateFormat="dd/MM/yyyy"
-                        // defaultValue={userrr.endDate}
-                        onChange={(date) => setEndDate(date)}
-                      />
                     </div>
                   </div>
                   <div className="flex flex-wrap">

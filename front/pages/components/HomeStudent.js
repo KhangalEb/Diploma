@@ -30,12 +30,6 @@ export default function Home() {
           </div>
         </div>
       </PageWrapper>
-      <div>
-        <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4">
-          Recommended Teachers
-        </h1>
-      </div>
-      <TeachersList />
       <Footer></Footer>
     </div>
   );

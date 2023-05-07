@@ -45,7 +45,7 @@ export default function DropDown() {
                   className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-400 hover:text-0"
                   onClick={handleClick}
                 >
-                  Profile
+                  Профайл
                 </button>
               </Menu.Item>
             </div>
@@ -56,7 +56,7 @@ export default function DropDown() {
                   className="bg-0 text-white group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-3 hover:text-0"
                   onClick={handleLogout}
                 >
-                  Log Out
+                  Гарах
                 </button>
               </Menu.Item>
             </div>

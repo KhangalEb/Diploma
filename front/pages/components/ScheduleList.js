@@ -30,7 +30,7 @@ const ScheduleList = () => {
   return (
     <div className="py-16 pl-8 ml-6">
       <p className="text-3xl font-semibold leading-none text-gray-800 ml-1">
-        Schedule
+        Хуваарь
       </p>
       <ol className=" py-5 items-center sm:flex table-auto overflow-scroll w-full">
         {dataatable && dataatable.map(i => {

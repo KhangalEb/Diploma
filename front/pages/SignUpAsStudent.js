@@ -74,7 +74,7 @@ const SignUp = () => {
             <div className="lg:w-3/12">
 
               <form>
-                <h1 className="text-center text-xl  uppercase font-semibold leading-snug m-4">Sign up as Teacher</h1>
+                <h1 className="text-center text-xl  uppercase font-semibold leading-snug m-4">Sign up as Student</h1>
                 <Image
                   src="/Logo eteacher.png"
                   alt="Logo"

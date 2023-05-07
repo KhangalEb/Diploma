@@ -55,29 +55,29 @@ const FormTeacher = () => {
     e.preventDefault();
     const user = jwt.decode(token);
     console.log(user);
-    if (userrr.subject.length < 4) {
-      try {
-        const res = await fetch(`http://localhost:8000/api/teacherData/${userrr._id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(userrr),
-        });
-        const updatedUser = await res.json();
-        localStorage.setItem("user", JSON.stringify(userrr));
-        setNotification({
-          message: "Амжилттай",
-          success: true,
-        });
-        return updatedUser;
-      } catch (error) {
-        setNotification({
-          message: "Алдаа гарлаа",
-          success: false,
-        });
-        console.error(error);
-        return null;
-      }
+    // if (userrr.subject.length < 4) {
+    try {
+      const res = await fetch(`http://localhost:8000/api/teacherData/${userrr._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userrr),
+      });
+      const updatedUser = await res.json();
+      localStorage.setItem("user", JSON.stringify(userrr));
+      setNotification({
+        message: "Амжилттай",
+        success: true,
+      });
+      return updatedUser;
+    } catch (error) {
+      setNotification({
+        message: "Алдаа гарлаа",
+        success: false,
+      });
+      console.error(error);
+      return null;
     }
+    // }
   };
   return (
     <div>
@@ -374,67 +374,10 @@ const FormTeacher = () => {
                         />
                       </div>
                     </div>
-                    <div className=" w-32 lg:w-3/12 px-4">
-                      <div className="relative w-32 mb-3">
-                        <label
-                          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          htmlFor="grid-password"
-                        >
-                          Анги
-                        </label>
-                        <select
-                          type="text"
-                          className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-0 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          defaultValue={userrr.angi}
-                          onChange={(e) => setUserrr({ ...userrr, angi: e.target.value })}
-                        >
-                          <option value="null">-Select-</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                        </select>
-                      </div>
-                    </div>
+
                   </div>
-                  <div className=" w-32 lg:w-4/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
-                        Start day
-                      </label>
-                      <DatePicker
-                        dateFormat="dd/MM/yyyy"
-                        defaultValue={userrr.startDate}
-                        onChange={(date) => setStartDate(date)}
-                      />
-                    </div>
-                  </div>
-                  <div className=" w-32 lg:w-4/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
-                        End day
-                      </label>
-                      <DatePicker
-                        dateFormat="dd/MM/yyyy"
-                        defaultValue={userrr.endDate}
-                        onChange={(date) => setEndDate(date)}
-                      />
-                    </div>
-                  </div>
+
+
                   <div className="flex flex-wrap">
                     <div className="w-full lg:w-12/12 px-4">
                       <div className="relative w-full mb-3">

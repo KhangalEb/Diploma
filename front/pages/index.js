@@ -1,12 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
-import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import TeachersList from "./components/TeachersList";
-import CategoryList from "./components/CategoryList";
-import ScheduleList from "./components/ScheduleList";
 import NavbarMainHome from "./components/NavbarMainHome";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -44,7 +39,7 @@ export default function Home() {
             />
 
             <h1 className=" mt-72 absolute xl:text-4xl my-auto  text-3xl text-gray-800 text-0 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10 font-roboto">
-              Let's study from today
+              Өнөөдрөөс эхлэхэд хэзээ ч оройтохгүй
             </h1>
 
           </div>
@@ -55,7 +50,7 @@ export default function Home() {
         <div>
 
           <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 font-roboto">
-            Recommended Teachers
+            Багш нар
           </h1>
 
           <TeachersList />

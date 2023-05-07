@@ -15,11 +15,8 @@ const Order = new mongoose.Schema(
     sdate: { type: String, required: true },
     edate: { type: String, required: true },
     dateCreated: { type: String, required: true },
-    cardNo: { type: String },
-    exDate: { type: String },
-    cvv: { type: String },
-    name: { type: String },
     link: { type: String },
+    datatable: { type: String },
   },
   { collection: "order" }
 );

@@ -10,7 +10,7 @@ const layout = {
     span: 16,
   },
 };
-
+const { TextArea } = Input;
 const validateMessages = {
   required: "${label} is required!",
   types: {
@@ -79,7 +79,7 @@ const Subjectsinfo = () => {
         name={["description", "description"]}
         label="Хичээлийн тайлбар"
       >
-        <Input />
+        <TextArea rows={6} />
       </Form.Item>
       <Form.Item
         name={["range", "range"]}

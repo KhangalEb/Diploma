@@ -86,10 +86,10 @@ function CategoryList() {
             </Select>
             <button
               type="submit"
-              className=" px-5 py-[6px] flex items-center justify-between w-56 shadow-md bg-500 mt-4 text-0 rounded-lg"
+              className=" px-5 py-[6px] flex items-center justify-between w-56 shadow-md bg-500 mt-4 text-0 rounded-lg text-center"
               onClick={handleClick}
             >
-              Search
+              Хайх
             </button>
           </div>
         </div>

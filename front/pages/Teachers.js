@@ -9,10 +9,10 @@ const Teachers = () => {
       <BackButton />
       <div>
         <p className="text-gray-500 dark:text-gray-200 text-lg text-center font-normal pb-3 mx-auto pt-16">
-          MONGOLIAN EDUCATION FIRST
+          Монголын боловсрол нэгт!
         </p>
         <h1 className="xl:text-4xl text-3xl text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
-          Our Teachers
+          Манай багш нар
         </h1>
       </div>
       <TeachersList />

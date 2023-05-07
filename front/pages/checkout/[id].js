@@ -24,7 +24,7 @@ const Checkout = () => {
     setSubject(localStorage.getItem("selectedCourse"));
     setUser(JSON.parse(localStorage.getItem("user")));
     console.log(subject);
-    await fetch("http://localhost:8000/api/orderwindowData")
+    await fetch("http://localhost:8000/api/order")
       .then((response) => response.json())
       .then(async (data) => {
         setDataOrder(data);
@@ -49,7 +49,7 @@ const Checkout = () => {
     console.log("filteredDataTable:", filteredDataTable);
     setOrderTable(filteredDataTable);
   };
-
+  console.log("ene :::::::", dataOrder);
   const filterData = async (teacherData, dataOrder) => {
     const filteredData = teacherData.filter((i) => {
       return i._id === dataOrder[0].teacher;

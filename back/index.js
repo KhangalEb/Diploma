@@ -7,7 +7,6 @@ const Student = require("./models/student.model");
 const Category = require("./models/category.model");
 const Subject = require("./models/subject.model");
 const Timetable = require("./models/timetable.model");
-const OrderWindow = require("./models/orderwindow.model");
 const Order = require("./models/order.model");
 const jwt = require("jsonwebtoken");
 const authenticateJWT = require("./middleware/index");
@@ -175,15 +174,12 @@ app.post("/api/order", async (req, res) => {
       sdate: req.body.sdate,
       edate: req.body.edate,
       dateCreated: req.body.dateCreated,
-      cardNo: req.body.cardNo,
-      exDate: req.body.exDate,
-      cvv: req.body.cvv,
-      name: req.body.name,
       userEmail: req.body.userEmail,
       userName: req.body.userName,
       userPnum1: req.body.userPnum1,
       userPnum2: req.body.userPnum2,
       link: req.body.link,
+      datatable: req.body.datatable,
     });
     res.json({ status: "ok" });
   } catch (error) {
@@ -222,20 +218,6 @@ app.put("/api/order/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-app.post("/api/orderwindowData", async (req, res) => {
-  try {
-    await OrderWindow.create({
-      sdate: req.body.sdate,
-      edate: req.body.edate,
-      teacher: req.body.teacher,
-      student: req.body.student,
-      datatable: req.body.datatable,
-    });
-    res.json({ status: "ok" });
-  } catch (error) {
-    console.log(error);
-  }
-});
 
 app.put("/api/orderwindowData/:id", async (req, res) => {
   try {
@@ -254,12 +236,6 @@ app.put("/api/orderwindowData/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-app.get("/api/orderwindowData", async (req, res) => {
-  OrderWindow.find({ id: req.params.id }, function (err, obj) {
-    res.send(obj);
-  });
-});
-
 app.post("/api/categoryData", async (req, res) => {
   try {
     await Category.create({

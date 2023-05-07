@@ -47,7 +47,6 @@ const SubjectDetails = () => {
         <h1 className="relative xl:text-4xl text-3xl text-center text-gray-800  font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10">
           {subjectDetails}
         </h1>
-        <h2 className="relative xl:text-2xl text-xl text-center text-gray-800  pb-6 sm:w-4/6 w-5/6 mx-auto pt-4 z-10">{subjectDetails}</h2>
         {JSON.parse(localStorage.getItem("FilteredTeachers")).map((i, ind) => {
           return (
             <div
