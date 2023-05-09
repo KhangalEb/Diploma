@@ -95,7 +95,7 @@ const SubjectCard = () => {
                   </div>
                   <div className="float-right mt-5">
                     <div className="bg-500 p-3 border text-0 rounded-2xl">
-                      <button onClick={() => handleClick(i.title)}>View</button>
+                      <button onClick={() => handleClick(i.title)}>Нээх</button>
                     </div>
                   </div>
                 </div>

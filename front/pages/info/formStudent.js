@@ -261,7 +261,7 @@ const FormStudent = () => {
                     </div>
                     <div className="w-full lg:w-3/12 px-4">
                       <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Хүис
+                        Хүйс
                       </label>
                       <input
                         className=""

@@ -47,16 +47,6 @@ const Profile = () => {
                     alt=""
                   />
                 </div>
-                <Image
-                  src="/userpro.png"
-                  alt="Pro"
-                  width={100}
-                  height={100}
-                  style={{
-                    margin: "auto",
-                    marginBottom: "20px",
-                  }}
-                />
                 <h1 className="text-900 font-bold text-xl leading-8 my-1">
                   {userrr.fname} {userrr.lname}
                 </h1>
@@ -137,7 +127,7 @@ const Profile = () => {
                       <div className="px-4 py-2"> {userrr.lname}</div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Хүис</div>
+                      <div className="px-4 py-2 font-semibold">Хүйс</div>
                       <div className="px-4 py-2"> {userrr.gender}</div>
                     </div>
                     <div className="grid grid-cols-2">

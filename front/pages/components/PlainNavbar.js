@@ -55,7 +55,7 @@ const PlainNavbar = () => {
                   href="/about-us"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">About Us</span>
+                  <span className="ml-2">Бидний тухай</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -64,7 +64,7 @@ const PlainNavbar = () => {
                   href="#"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-0 opacity-75"></i>
-                  <span className="ml-2">Contact Us</span>
+                  <span className="ml-2">Бидэнтэй холбогдох</span>
                 </a>
               </li>
             </ul>

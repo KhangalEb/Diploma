@@ -74,7 +74,7 @@ const SignUp = () => {
             <div className="lg:w-3/12">
 
               <form>
-                <h1 className="text-center text-xl  uppercase font-semibold leading-snug m-4">Sign up as Student</h1>
+                <h1 className="text-center text-xl  uppercase font-semibold leading-snug m-4">Сурагчаар бүртгүүлэх</h1>
                 <Image
                   src="/Logo eteacher.png"
                   alt="Logo"
@@ -103,19 +103,12 @@ const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <div className="mb-6">
-                  <input
-                    type="password"
-                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-1000 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-500 focus:outline-none"
-                    placeholder="Re-Enter Password"
-                  />
-                </div>
                 <div className="flex justify-between items-center mb-6 float-right">
                   <a
                     href="#!"
                     className=" hover:text-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out text-right"
                   >
-                    Forgot password?
+                    Нууц үгээ мартсан уу?
                   </a>
                 </div>
                 <button
@@ -125,7 +118,7 @@ const SignUp = () => {
                   data-mdb-ripple-color="light"
                   onClick={handleSubmit1}
                 >
-                  Sign Up
+                  Бүртгүүлэх
                 </button>
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                   <p className="text-center font-semibold mx-4 mb-0">OR</p>
@@ -157,7 +150,7 @@ const SignUp = () => {
                   data-mdb-ripple-color="light"
                   onClick={handleSubmit}
                 >
-                  Already have an account?
+                  Эсвэл бүртгэлтэй юу?
                 </button>
               </form>
             </div>

@@ -59,12 +59,17 @@ const Login = () => {
         });
         const dataa = await req.json();
         console.log(dataa.data);
+
         localStorage.setItem("user", JSON.stringify(dataa.data));
         setNotification({
           message: "Амжилттай",
           success: true,
         });
-        router.push("/dashboard");
+        if (dataa.data.fname == "") {
+          router.push("/info/formStudent");
+        } else {
+          router.push("/dashboard");
+        }
       } else {
         setNotification({
           message: "Э-Майл эсвэл нууц үг буруу байна",
@@ -88,7 +93,7 @@ const Login = () => {
           <div className="flex justify-center items-center flex-wrap mt-12 mb-28 text-gray-800">
             <div className="lg:w-3/12">
               <h1 className="text-center text-xl  uppercase font-semibold leading-snug">
-                Log in as a STUDENT
+                Сурагчаар нэвтрэх
               </h1>
               <form>
                 <Image
@@ -124,7 +129,7 @@ const Login = () => {
                     href="#!"
                     className=" hover:text-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out text-right"
                   >
-                    Forgot password?
+                    Нууц үгээ мартсан уу?
                   </a>
                 </div>
                 <button
@@ -134,7 +139,7 @@ const Login = () => {
                   data-mdb-ripple-color="light"
                   onClick={handleSubmit1}
                 >
-                  Sign in
+                  Нэвтрэх
                 </button>
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                   <p className="text-center font-semibold mx-4 mb-0">OR</p>
@@ -166,7 +171,7 @@ const Login = () => {
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                 >
-                  Sign Up
+                  Бүртгүүлэх
                 </button>
               </form>
             </div>

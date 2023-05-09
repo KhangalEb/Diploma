@@ -64,8 +64,12 @@ const Login = () => {
           message: "Амжилттай",
           success: true,
         });
+        if (dataa.data.fname == "") {
+          router.push("/info/formTeacher");
+        } else {
+          router.push("/dashboard");
+        }
 
-        router.push("/dashboard");
       } else {
         setNotification({
           message: "Э-Майл эсвэл нууц үг буруу байна",
@@ -89,7 +93,7 @@ const Login = () => {
           <div className="flex justify-center items-center flex-wrap mt-12 mb-28 text-gray-800">
             <div className="lg:w-3/12">
               <h1 className="text-center text-xl  uppercase font-semibold leading-snug">
-                Log in as a Teacher
+                Багшаар нэвтрэх
               </h1>
               <form>
                 <Image
@@ -125,7 +129,7 @@ const Login = () => {
                     href="#!"
                     className=" hover:text-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out text-right"
                   >
-                    Forgot password?
+                    Нууц үгээ мартсан?
                   </a>
                 </div>
                 <button
@@ -135,31 +139,11 @@ const Login = () => {
                   data-mdb-ripple-color="light"
                   onClick={handleSubmit1}
                 >
-                  Sign in
+                  Нэвтрэх
                 </button>
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                   <p className="text-center font-semibold mx-4 mb-0">OR</p>
                 </div>
-                {/* <a
-                className="px-7 py-3 text-0 font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-600"
-                href="#!"
-                role="button"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 320 512"
-                  className="w-3.5 h-3.5 mr-2"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
-                  />
-                </svg>
-                Continue with Facebook
-              </a> */}
-                {/* <div className="mt-2 ">Don't have account?</div> */}
                 <button
                   type="submit"
                   onClick={handleSubmit}
@@ -167,7 +151,7 @@ const Login = () => {
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                 >
-                  Sign Up
+                  Бүртгүүлэх
                 </button>
               </form>
             </div>

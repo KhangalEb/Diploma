@@ -80,35 +80,6 @@ const Checkout = () => {
       const errorData = await response.json();
       throw new Error(errorData.message || "Failed to update timetable");
     } else {
-
-      try {
-        await fetch(`http://localhost:8000/api/order`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            subject: subject,
-            user: user._id,
-            userEmail: user.email,
-            userPnum1: user.pnum1,
-            userPnum2: user.pnum2,
-            userName: user.fname,
-            price: datatable[0].price,
-            teacher: datatable[0]._id,
-            sdate: moment(dataOrder[0].sdate).format("YYYY-MM-DD HH:mm"),
-            edate: moment(dataOrder[0].edate).format("YYYY-MM-DD HH:mm"),
-            dateCreated: moment().format("YYYY-MM-DD HH:mm"),
-            link: "",
-          }),
-        });
-      } catch (error) {
-        setNotification({
-          message: "Амжилтгүй",
-          success: false,
-        });
-        console.log(error)
-      }
       setNotification({
         message: "Амжилттай",
         success: true,

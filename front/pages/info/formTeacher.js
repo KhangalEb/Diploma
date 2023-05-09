@@ -123,7 +123,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          First Name
+                          Нэр
                         </label>
                         <input
                           type="text"
@@ -140,7 +140,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Last Name
+                          Овог
                         </label>
                         <input
                           type="text"
@@ -156,7 +156,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Phone Number 1
+                          Утасны дугаар 1
                         </label>
                         <input
                           type="email"
@@ -172,7 +172,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Phone Number 2
+                          Утасны дугаар 2
                         </label>
                         <input
                           type="text"
@@ -188,7 +188,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          price
+                          Үнэ
                         </label>
                         <input
                           type="number"
@@ -203,7 +203,7 @@ const FormTeacher = () => {
                   <hr className="mt-6 border-b-1 border-blueGray-300" />
 
                   <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    Contact Information
+                    Холбогдох мэдээлэл
                   </h6>
                   <div className="flex flex-wrap">
                     <div className="w-full lg:w-4/12 px-4">
@@ -252,7 +252,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          баг/хороо
+                          Баг/хороо
                         </label>
                         <input
                           type="email"
@@ -268,7 +268,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          сум/дүүрэг
+                          Сум/дүүрэг
                         </label>
                         <input
                           type="email"
@@ -296,7 +296,7 @@ const FormTeacher = () => {
                     </div>
                     <div className="w-full lg:w-3/12 px-4">
                       <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Gender
+                        Хүйс
                       </label>
                       <input
                         className=""
@@ -305,7 +305,7 @@ const FormTeacher = () => {
                         onChange={(e) => setUserrr({ ...userrr, gender: e.target.value })}
                         name="gender"
                       />{" "}
-                      Male
+                      Эр
                       <input
                         className="ml-6"
                         type="radio"
@@ -313,7 +313,7 @@ const FormTeacher = () => {
                         onChange={(e) => setUserrr({ ...userrr, gender: e.target.value })}
                         name="gender"
                       />{" "}
-                      Female
+                      Эм
                     </div>
                     <div className="w-full lg:w-3/12 px-4">
                       <div className="relative w-full mb-3">
@@ -337,7 +337,7 @@ const FormTeacher = () => {
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Date of birth
+                          Төрсөн өдөр
                         </label>
                         <input
                           type="text"

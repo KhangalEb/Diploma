@@ -33,25 +33,10 @@ const Profile = () => {
                     alt=""
                   />
                 </div>
-                <Image
-                  src="/userpro.png"
-                  alt="Pro"
-                  width={100}
-                  height={100}
-                  style={{
-                    margin: "auto",
-                    marginBottom: "20px",
-                  }}
-                />
                 <h1 className="text-900 font-bold text-xl leading-8 my-1">
                   {userrr.fname} {userrr.lname}
                 </h1>
-                <ul className="bg-50 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                  <li className="flex items-center py-3">
-                    <span>Member since</span>
-                    <span className="ml-auto">Nov 07, 2016</span>
-                  </li>
-                </ul>
+
               </div>
               {/* <!-- End of profile card --> */}
               <div className="my-4"></div>
@@ -61,7 +46,7 @@ const Profile = () => {
                 className="bg-1 p-4 w-50 rounded-3xl mt-6"
                 onClick={() => router.push("/info/formStudent")}
               >
-                Update profile
+                Профайл шинэчлэх
               </button>
               {/* <!-- End of friends card --> */}
             </div>
@@ -92,35 +77,35 @@ const Profile = () => {
                 <div className="text-gray-700">
                   <div className="grid md:grid-cols-2 text-sm">
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">First Name</div>
+                      <div className="px-4 py-2 font-semibold">Нэр</div>
                       <div className="px-4 py-2">{userrr.fname}</div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Last Name</div>
+                      <div className="px-4 py-2 font-semibold">Овог</div>
                       <div className="px-4 py-2">{userrr.lname}</div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Gender</div>
+                      <div className="px-4 py-2 font-semibold">Хүйс</div>
                       <div className="px-4 py-2">{userrr.gender}</div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Phone No. 1</div>
+                      <div className="px-4 py-2 font-semibold">Утасны дугаар 1</div>
                       <div className="px-4 py-2">{userrr.pnum1}</div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">
-                        Current Address
+                        Одоогийн хаяг
                       </div>
                       <div className="px-4 py-2">
                         {userrr.province} {userrr.bag} {userrr.sum} {userrr.delgerengui}
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Phone No. 2</div>
+                      <div className="px-4 py-2 font-semibold">Утасны дугаар 2</div>
                       <div className="px-4 py-2">{userrr.pnum2}</div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Email.</div>
+                      <div className="px-4 py-2 font-semibold">И-мэйл</div>
                       <div className="px-4 py-2">
                         <a className="text-blue-800" href="mailto:ex@example.com">
                           {userrr.email}
@@ -128,7 +113,7 @@ const Profile = () => {
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Birthday</div>
+                      <div className="px-4 py-2 font-semibold">Төрсөн өдөр</div>
                       <div className="px-4 py-2">{userrr.day}, {userrr.month}, {userrr.year}</div>
                     </div>
                   </div>

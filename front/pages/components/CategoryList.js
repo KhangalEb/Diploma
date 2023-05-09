@@ -49,7 +49,7 @@ function CategoryList() {
 
   return (
     <div>
-      <div className="py-4 px-4 h-[550px] ">
+      <div className="py-4 px-4 h-[300px] ">
         <div className="lg:max-w-[356px] md:max-w-[744px] max-w-[375px] mx-auto py-3">
           <div className="mt-8 px-6">
 

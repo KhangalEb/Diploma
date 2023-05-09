@@ -5,22 +5,6 @@ const Teacher = () => {
       aria-label="cards"
       className="bg-white dark:bg-gray-800 shadow rounded"
     >
-      <div className="relative">
-        <img
-          tabindex="0"
-          className="focus:outline-none h-56 shadow rounded-t w-full object-cover object-center"
-          src="https://tuk-cdn.s3.amazonaws.com/assets/components/grid_cards/gc_29.png"
-          alt="mountains cover"
-        />
-        <div className="inset-0 m-auto w-24 h-24 absolute bottom-0 -mb-12 xl:ml-10 rounded border-2 shadow border-white">
-          <img
-            tabindex="0"
-            className="focus:outline-none w-full h-full overflow-hidden object-cover rounded"
-            src="https://image.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg"
-            alt="person"
-          />
-        </div>
-      </div>
       <div className="px-5 xl:px-10 pb-10">
         <div className="flex justify-center xl:justify-end w-full pt-16 xl:pt-5">
           <div
@@ -29,26 +13,6 @@ const Teacher = () => {
             role="img"
             className="focus:outline-none flex items-center"
           >
-            <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/full_width_user_profile_card-svg1.svg"
-              alt="yellow star"
-            />
-            <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/full_width_user_profile_card-svg1.svg"
-              alt="yellow star"
-            />
-            <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/full_width_user_profile_card-svg1.svg"
-              alt="yellow star"
-            />
-            <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/full_width_user_profile_card-svg1.svg"
-              alt="yellow star"
-            />
-            <img
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/full_width_user_profile_card-svg2.svg"
-              alt="gray star"
-            />
           </div>
         </div>
         <div className="pt-3 xl:pt-5 flex flex-col xl:flex-row items-start xl:items-center justify-between">
