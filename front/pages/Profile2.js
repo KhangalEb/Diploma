@@ -72,7 +72,7 @@ const Profile = () => {
                       />
                     </svg>
                   </span>
-                  <span className="tracking-wide">About</span>
+                  <span className="tracking-wide">Хувийн мэдээлэл</span>
                 </div>
                 <div className="text-gray-700">
                   <div className="grid md:grid-cols-2 text-sm">
